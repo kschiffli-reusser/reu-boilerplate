@@ -1,0 +1,158 @@
+{%- liquid
+  case section.settings.style
+    when 'info'
+      assign border_color = '#3B82F6'
+      assign bg_color = '#EFF6FF'
+      assign text_color = '#1D4ED8'
+      assign icon_path = 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+    when 'success'
+      assign border_color = '#22C55E'
+      assign bg_color = '#F0FDF4'
+      assign text_color = '#15803D'
+      assign icon_path = 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+    when 'warning'
+      assign border_color = '#F59E0B'
+      assign bg_color = '#FFFBEB'
+      assign text_color = '#B45309'
+      assign icon_path = 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
+    when 'error'
+      assign border_color = '#EF4444'
+      assign bg_color = '#FEF2F2'
+      assign text_color = '#B91C1C'
+      assign icon_path = 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
+    else
+      assign border_color = '#3B82F6'
+      assign bg_color = '#EFF6FF'
+      assign text_color = '#1D4ED8'
+      assign icon_path = 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+  endcase
+-%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-banner-alert"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div
+    class="pb-banner-alert__box"
+    style="
+      border-color: {{ border_color }};
+      background-color: {{ bg_color }};
+      color: {{ text_color }};
+    "
+    role="alert"
+  >
+    <svg
+      class="pb-banner-alert__icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ icon_path }}" />
+    </svg>
+    <div class="pb-banner-alert__content rte">
+      {{ section.settings.content }}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-banner-alert__box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid;
+    border-left-width: 4px;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+
+  .pb-banner-alert__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .pb-banner-alert__content {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .pb-banner-alert__content p {
+    margin: 0;
+  }
+
+  .pb-banner-alert__content p + p {
+    margin-top: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Banner Alert",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "info", "label": "Info (blue)" },
+        { "value": "success", "label": "Success (green)" },
+        { "value": "warning", "label": "Warning (yellow)" },
+        { "value": "error", "label": "Error (red)" }
+      ],
+      "default": "info"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>This is an informational message. Use it to highlight important details for your customers.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Alert",
+      "category": "Banners"
+    }
+  ]
+}
+{% endschema %}

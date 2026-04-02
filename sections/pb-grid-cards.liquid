@@ -1,0 +1,248 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-grid-cards"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="pb-grid-cards__inner">
+    {%- render 'pb-section-intro',
+      above_line: section.settings.above_line,
+      heading: section.settings.heading,
+      body_text: section.settings.body_text,
+      alignment: 'center'
+    -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div
+        class="pb-grid-cards__grid"
+        style="--pb-card-columns: {{ section.settings.columns }};"
+      >
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'card' -%}
+            <div
+              class="pb-grid-card pb-grid-card--{{ block.settings.alignment }}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.icon != blank -%}
+                <div class="pb-grid-card__icon">
+                  <img
+                    src="{{ block.settings.icon | image_url: width: 80 }}"
+                    alt="{{ block.settings.icon.alt | escape }}"
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                  >
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.heading != blank -%}
+                <h3 class="pb-grid-card__heading">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+
+              {%- if block.settings.body != blank -%}
+                <p class="pb-grid-card__body">{{ block.settings.body }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-grid-cards__inner {
+    width: 100%;
+  }
+
+  .pb-grid-cards__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media screen and (min-width: 600px) {
+    .pb-grid-cards__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-grid-cards__grid {
+      grid-template-columns: repeat(var(--pb-card-columns, 3), 1fr);
+    }
+  }
+
+  .pb-grid-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-background);
+  }
+
+  .pb-grid-card--center {
+    align-items: center;
+    text-align: center;
+  }
+
+  .pb-grid-card--right {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .pb-grid-card__icon {
+    margin-bottom: 1.25rem;
+  }
+
+  .pb-grid-card__icon img {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+  }
+
+  .pb-grid-card__heading {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-foreground-heading);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .pb-grid-card__body {
+    font-size: 0.9375rem;
+    color: var(--color-foreground);
+    line-height: 1.65;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Grid Cards",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section intro"
+    },
+    {
+      "type": "text",
+      "id": "above_line",
+      "label": "Eyebrow label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why choose us"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Feature title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body text",
+          "default": "Describe this feature or benefit in a sentence or two."
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid Cards",
+      "category": "Storytelling",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": { "heading": "Quality materials", "body": "We source only the finest materials from trusted suppliers around the world." }
+        },
+        {
+          "type": "card",
+          "settings": { "heading": "Expert craftsmanship", "body": "Every product is made with care by skilled artisans who take pride in their work." }
+        },
+        {
+          "type": "card",
+          "settings": { "heading": "100% satisfaction", "body": "Not happy? We'll make it right. Our commitment to you doesn't end at checkout." }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,80 @@
+{%- doc -%}
+  Renders a section intro header with above-line label, heading, and body text.
+
+  @param {string} [above_line] - Small eyebrow label above the heading
+  @param {string} [heading] - Main heading text
+  @param {string} [body_text] - Supporting paragraph text
+  @param {string} [alignment] - Text alignment: left | center | right. Default: center
+{%- enddoc -%}
+
+{%- liquid
+  assign text_alignment = alignment | default: 'center'
+-%}
+
+{%- if above_line != blank or heading != blank or body_text != blank -%}
+  <div class="pb-section-intro pb-section-intro--{{ text_alignment }}">
+    {%- if above_line != blank -%}
+      <p class="pb-section-intro__eyebrow">{{ above_line }}</p>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <h2 class="pb-section-intro__heading">{{ heading }}</h2>
+    {%- endif -%}
+    {%- if body_text != blank -%}
+      <p class="pb-section-intro__body">{{ body_text }}</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .pb-section-intro {
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .pb-section-intro--center {
+    text-align: center;
+  }
+
+  .pb-section-intro--left {
+    text-align: left;
+  }
+
+  .pb-section-intro--right {
+    text-align: right;
+  }
+
+  .pb-section-intro__eyebrow {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .pb-section-intro__heading {
+    font-size: clamp(1.75rem, 3vw, 2.75rem);
+    font-weight: 700;
+    color: var(--color-foreground-heading);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  .pb-section-intro__body {
+    font-size: 1.0625rem;
+    color: var(--color-foreground);
+    line-height: 1.65;
+    max-width: 44rem;
+    margin-top: 0;
+  }
+
+  .pb-section-intro--center .pb-section-intro__body {
+    margin-inline: auto;
+  }
+
+  .pb-section-intro--right .pb-section-intro__body {
+    margin-inline-start: auto;
+  }
+{% endstylesheet %}
