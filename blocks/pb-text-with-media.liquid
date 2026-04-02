@@ -1,0 +1,194 @@
+{%- liquid
+  assign block_settings = block.settings
+  assign media_position = block_settings.media_position | default: 'right'
+-%}
+
+<div
+  class="pb-block-twm pb-block-twm--{{ media_position }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="pb-block-twm__text">
+    {%- if block_settings.above_line != blank -%}
+      <p class="pb-block-twm__eyebrow">{{ block_settings.above_line }}</p>
+    {%- endif -%}
+    {%- if block_settings.heading != blank -%}
+      <h2 class="pb-block-twm__heading">{{ block_settings.heading }}</h2>
+    {%- endif -%}
+    {%- if block_settings.richtext != blank -%}
+      <div class="pb-block-twm__richtext rte">{{ block_settings.richtext }}</div>
+    {%- endif -%}
+    {%- if block_settings.button_label != blank -%}
+      <div class="pb-block-twm__button-wrap">
+        <a
+          {% if block_settings.button_link != blank %}href="{{ block_settings.button_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+          class="{{ block_settings.button_style }}"
+        >{{ block_settings.button_label }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="pb-block-twm__media{% if block_settings.smaller_image %} pb-block-twm__media--small{% endif %}">
+    {%- if block_settings.image != blank -%}
+      <img
+        src="{{ block_settings.image | image_url: width: 900 }}"
+        srcset="
+          {{ block_settings.image | image_url: width: 480 }} 480w,
+          {{ block_settings.image | image_url: width: 900 }} 900w
+        "
+        sizes="(min-width: 750px) 50vw, 100vw"
+        alt="{{ block_settings.image.alt | escape }}"
+        loading="lazy"
+        width="{{ block_settings.image.width }}"
+        height="{{ block_settings.image.height }}"
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'pb-block-twm__placeholder' }}
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-block-twm {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-block-twm {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .pb-block-twm--left .pb-block-twm__text { order: 2; }
+    .pb-block-twm--left .pb-block-twm__media { order: 1; }
+  }
+
+  .pb-block-twm__eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 0.75rem;
+  }
+
+  .pb-block-twm__heading {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-foreground-heading);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+
+  .pb-block-twm__richtext {
+    color: var(--color-foreground);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .pb-block-twm__button-wrap {
+    margin-top: 1.5rem;
+  }
+
+  .pb-block-twm__media img,
+  .pb-block-twm__media svg {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+  }
+
+  .pb-block-twm__media--small {
+    max-width: 400px;
+    margin-inline: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PB: Text with Media",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "above_line",
+      "label": "Eyebrow label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your story starts here"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Body text",
+      "default": "<p>Share your brand story, describe a product, or welcome customers with content that informs and inspires.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Style",
+      "options": [
+        { "value": "button", "label": "Primary" },
+        { "value": "button-secondary", "label": "Secondary" },
+        { "value": "link", "label": "Link" }
+      ],
+      "default": "button"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "checkbox",
+      "id": "smaller_image",
+      "label": "Constrain image width",
+      "info": "Limits image to 400px wide",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB: Text with Media",
+      "category": "t:categories.storytelling"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,106 @@
+{%- liquid
+  assign block_settings = block.settings
+  case block_settings.style
+    when 'success'
+      assign border_color = '#22C55E'
+      assign bg_color = '#F0FDF4'
+      assign text_color = '#15803D'
+      assign icon_path = 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
+    when 'warning'
+      assign border_color = '#F59E0B'
+      assign bg_color = '#FFFBEB'
+      assign text_color = '#B45309'
+      assign icon_path = 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'
+    when 'error'
+      assign border_color = '#EF4444'
+      assign bg_color = '#FEF2F2'
+      assign text_color = '#B91C1C'
+      assign icon_path = 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z'
+    else
+      assign border_color = '#3B82F6'
+      assign bg_color = '#EFF6FF'
+      assign text_color = '#1D4ED8'
+      assign icon_path = 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+  endcase
+-%}
+
+<div
+  class="pb-block-banner-alert"
+  role="alert"
+  style="border-color: {{ border_color }}; background-color: {{ bg_color }}; color: {{ text_color }};"
+  {{ block.shopify_attributes }}
+>
+  <svg class="pb-block-banner-alert__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ icon_path }}" />
+  </svg>
+  {%- if block_settings.content != blank -%}
+    <div class="pb-block-banner-alert__content rte">{{ block_settings.content }}</div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .pb-block-banner-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid;
+    border-left-width: 4px;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+
+  .pb-block-banner-alert__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .pb-block-banner-alert__content {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .pb-block-banner-alert__content p {
+    margin: 0;
+  }
+
+  .pb-block-banner-alert__content p + p {
+    margin-top: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PB: Banner Alert",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "info", "label": "Info (blue)" },
+        { "value": "success", "label": "Success (green)" },
+        { "value": "warning", "label": "Warning (yellow)" },
+        { "value": "error", "label": "Error (red)" }
+      ],
+      "default": "info"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>This is an informational message for your customers.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB: Banner Alert",
+      "category": "t:categories.banners"
+    }
+  ]
+}
+{% endschema %}

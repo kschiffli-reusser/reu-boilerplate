@@ -1,0 +1,247 @@
+{%- assign block_settings = block.settings -%}
+
+<div class="pb-block-iws" {{ block.shopify_attributes }}>
+  <div class="pb-block-iws__media">
+    {%- if block_settings.image != blank -%}
+      <img
+        src="{{ block_settings.image | image_url: width: 900 }}"
+        srcset="
+          {{ block_settings.image | image_url: width: 480 }} 480w,
+          {{ block_settings.image | image_url: width: 900 }} 900w
+        "
+        sizes="(min-width: 750px) 50vw, 100vw"
+        alt="{{ block_settings.image.alt | escape }}"
+        loading="lazy"
+        width="{{ block_settings.image.width }}"
+        height="{{ block_settings.image.height }}"
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'pb-block-iws__placeholder' }}
+    {%- endif -%}
+  </div>
+
+  <div class="pb-block-iws__stats">
+    {%- for i in (1..5) -%}
+      {%- liquid
+        assign value_key = 'stat_' | append: i | append: '_value'
+        assign headline_key = 'stat_' | append: i | append: '_headline'
+        assign desc_key = 'stat_' | append: i | append: '_description'
+        assign stat_value = block_settings[value_key]
+        assign stat_headline = block_settings[headline_key]
+        assign stat_desc = block_settings[desc_key]
+      -%}
+      {%- if stat_value != blank or stat_headline != blank -%}
+        <div class="pb-block-iws__card">
+          {%- if stat_value != blank -%}
+            <p class="pb-block-iws__value">{{ stat_value }}</p>
+          {%- endif -%}
+          <div class="pb-block-iws__card-text">
+            {%- if stat_headline != blank -%}
+              <h4 class="pb-block-iws__headline">{{ stat_headline }}</h4>
+            {%- endif -%}
+            {%- if stat_desc != blank -%}
+              <p class="pb-block-iws__desc">{{ stat_desc }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-block-iws {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-block-iws {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .pb-block-iws__media img,
+  .pb-block-iws__media svg {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    display: block;
+  }
+
+  .pb-block-iws__placeholder {
+    aspect-ratio: 4 / 3;
+    background: var(--color-border);
+  }
+
+  .pb-block-iws__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pb-block-iws__card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.125rem;
+    padding: 1.25rem;
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 0.5rem 0.5rem 0;
+    background-color: rgba(var(--color-background-rgb, 255,255,255), 0.5);
+  }
+
+  .pb-block-iws__value {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin: 0;
+    min-width: 4rem;
+    flex-shrink: 0;
+  }
+
+  .pb-block-iws__card-text {
+    flex: 1;
+  }
+
+  .pb-block-iws__headline {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-foreground-heading);
+    margin: 0 0 0.2rem;
+  }
+
+  .pb-block-iws__desc {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    line-height: 1.55;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PB: Image with Stats",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Stat 1"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Value",
+      "placeholder": "e.g. 99%"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_1_description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Stat 2"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Value"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_2_description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Stat 3"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Value"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_3_description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Stat 4"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_value",
+      "label": "Value"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_4_description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Stat 5"
+    },
+    {
+      "type": "text",
+      "id": "stat_5_value",
+      "label": "Value"
+    },
+    {
+      "type": "text",
+      "id": "stat_5_headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_5_description",
+      "label": "Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB: Image with Stats",
+      "category": "t:categories.storytelling",
+      "settings": {
+        "stat_1_value": "10K+",
+        "stat_1_headline": "Happy customers",
+        "stat_1_description": "Trusted by thousands worldwide.",
+        "stat_2_value": "99%",
+        "stat_2_headline": "Satisfaction rate",
+        "stat_2_description": "Our team ensures every order delights."
+      }
+    }
+  ]
+}
+{% endschema %}
