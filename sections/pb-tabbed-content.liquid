@@ -168,7 +168,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    align-items: center;
+    align-items: stretch;
   }
 
   @media screen and (min-width: 750px) {
@@ -177,10 +177,16 @@
     }
   }
 
+  .pb-tabs__panel-media {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    min-height: 200px;
+  }
+
   .pb-tabs__panel-media img {
     width: 100%;
-    height: auto;
-    border-radius: 0.75rem;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
