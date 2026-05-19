@@ -12,7 +12,7 @@
     -%}
 
     {%- if section.blocks.size > 0 -%}
-      <pb-tabs class="pb-tabs">
+      <pb-tabs class="pb-tabs pb-tabs--{{ section.settings.tab_style }}">
         <div class="pb-tabs__nav" role="tablist">
           {%- for block in section.blocks -%}
             {%- if block.type == 'tab' -%}
@@ -143,16 +143,30 @@
     white-space: nowrap;
     border-radius: var(--buttons-radius, 0);
     transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    border: 2px solid transparent;
     background: transparent;
-    color: var(--color-button);
-    border: 2px solid var(--color-button);
   }
 
-  .pb-tabs__button:hover,
-  .pb-tabs__button[aria-selected="true"] {
+  .pb-tabs--primary .pb-tabs__button {
+    color: var(--color-button);
+    border-color: var(--color-button);
+  }
+
+  .pb-tabs--primary .pb-tabs__button:hover,
+  .pb-tabs--primary .pb-tabs__button[aria-selected="true"] {
     background-color: var(--color-button);
     color: var(--color-button-label);
-    border-color: var(--color-button);
+  }
+
+  .pb-tabs--secondary .pb-tabs__button {
+    color: var(--color-secondary-button-label);
+    border-color: var(--color-secondary-button-label);
+  }
+
+  .pb-tabs--secondary .pb-tabs__button:hover,
+  .pb-tabs--secondary .pb-tabs__button[aria-selected="true"] {
+    background-color: var(--color-secondary-button-label);
+    color: var(--color-background);
   }
 
   .pb-tabs__panels {
@@ -257,6 +271,20 @@
       "id": "body_text",
       "label": "Body text",
       "default": "Browse our features and discover what makes us different."
+    },
+    {
+      "type": "header",
+      "content": "Tab buttons"
+    },
+    {
+      "type": "select",
+      "id": "tab_style",
+      "label": "Button style",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" }
+      ],
+      "default": "primary"
     },
     {
       "type": "color_scheme",
