@@ -5,4 +5,6 @@
   --pb-card-body: var(--color-foreground);
   --pb-card-accent: #801425;
   --pb-sidebar-bg: #801425;
+
+  --pb-narrow-content: 720px;
 }
