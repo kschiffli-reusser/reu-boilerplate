@@ -159,7 +159,7 @@
     background-color: var(--pb-card-bg);
     border: 1px solid var(--pb-card-border);
     border-radius: 0.75rem;
-    padding: 2rem 2.5rem;
+    overflow: hidden;
     max-width: var(--pb-narrow-content);
     margin-inline: auto;
   }
@@ -178,9 +178,11 @@
   }
 
   .pb-tabs__panel-media {
-    overflow: hidden;
-    border-radius: 0.5rem;
     min-height: 200px;
+  }
+
+  .pb-tabs__panel-content {
+    padding: 2rem 2.5rem;
   }
 
   .pb-tabs__panel-media img {
