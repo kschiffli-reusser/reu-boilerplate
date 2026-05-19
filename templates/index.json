@@ -19,10 +19,10 @@
         "padding-block-end": 16
       }
     },
-    "pb_call_to_action": {
+    "pb_call_to_action_ir8Kjy": {
       "type": "pb-call-to-action",
       "blocks": {
-        "cta_btn_1": {
+        "button_ckEEkB": {
           "type": "button",
           "settings": {
             "label": "Shop now",
@@ -31,7 +31,7 @@
             "open_in_new_tab": false
           }
         },
-        "cta_btn_2": {
+        "button_9wigUD": {
           "type": "button",
           "settings": {
             "label": "Learn more",
@@ -42,12 +42,16 @@
         }
       },
       "block_order": [
-        "cta_btn_1",
-        "cta_btn_2"
+        "button_ckEEkB",
+        "button_9wigUD"
       ],
+      "name": "Call to Action",
       "settings": {
         "richtext": "<h3>Ready to get started?</h3><p>Join thousands of happy customers today.</p>",
-        "color_scheme": "scheme-1",
+        "card_bg": "",
+        "card_heading": "",
+        "card_body": "",
+        "color_scheme": "",
         "padding-block-start": 40,
         "padding-block-end": 40
       }
@@ -90,95 +94,119 @@
         "padding-block-end": 52
       }
     },
-    "pb_grid_cards": {
+    "pb_grid_cards_R7w8ed": {
       "type": "pb-grid-cards",
       "blocks": {
-        "card_1": {
+        "card_W9PTw8": {
           "type": "card",
           "settings": {
             "heading": "Quality materials",
             "body": "We source only the finest materials from trusted suppliers around the world.",
-            "alignment": "left"
+            "alignment": "left",
+            "card_bg": "",
+            "card_heading": "",
+            "card_body": ""
           }
         },
-        "card_2": {
+        "card_bcztzn": {
           "type": "card",
           "settings": {
             "heading": "Expert craftsmanship",
             "body": "Every product is made with care by skilled artisans who take pride in their work.",
-            "alignment": "left"
+            "alignment": "left",
+            "card_bg": "",
+            "card_heading": "",
+            "card_body": ""
           }
         },
-        "card_3": {
+        "card_bC8mJH": {
           "type": "card",
           "settings": {
             "heading": "100% satisfaction",
             "body": "Not happy? We'll make it right. Our commitment to you doesn't end at checkout.",
-            "alignment": "left"
+            "alignment": "left",
+            "card_bg": "",
+            "card_heading": "",
+            "card_body": ""
           }
         }
       },
       "block_order": [
-        "card_1",
-        "card_2",
-        "card_3"
+        "card_W9PTw8",
+        "card_bcztzn",
+        "card_bC8mJH"
       ],
+      "name": "Grid Cards",
       "settings": {
-        "above_line": "",
+        "above_line": "What we offer",
         "heading": "Why choose us",
-        "body_text": "",
+        "body_text": "Here's what makes us stand out from the rest.",
         "columns": 3,
         "color_scheme": "",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
     },
-    "pb_image_with_stats": {
+    "pb_image_with_stats_mhGKif": {
       "type": "pb-image-with-stats",
       "blocks": {
-        "stat_1": {
+        "stat_tYYhfr": {
           "type": "stat",
           "settings": {
             "value": "10K+",
             "headline": "Happy customers",
-            "description": "Trusted by thousands of customers worldwide."
+            "description": "Trusted by thousands of customers worldwide.",
+            "card_bg": "",
+            "card_accent": "",
+            "card_heading": "",
+            "card_body": ""
           }
         },
-        "stat_2": {
+        "stat_zP6UXG": {
           "type": "stat",
           "settings": {
             "value": "99%",
             "headline": "Satisfaction rate",
-            "description": "Our team works hard to ensure every order delights."
+            "description": "Our team works hard to ensure every order delights.",
+            "card_bg": "",
+            "card_accent": "",
+            "card_heading": "",
+            "card_body": ""
           }
         },
-        "stat_3": {
+        "stat_P9NRdn": {
           "type": "stat",
           "settings": {
             "value": "5★",
             "headline": "Average rating",
-            "description": "Consistently top-rated across all review platforms."
+            "description": "Consistently top-rated across all review platforms.",
+            "card_bg": "",
+            "card_accent": "",
+            "card_heading": "",
+            "card_body": ""
           }
         }
       },
       "block_order": [
-        "stat_1",
-        "stat_2",
-        "stat_3"
+        "stat_tYYhfr",
+        "stat_zP6UXG",
+        "stat_P9NRdn"
       ],
+      "name": "Image with Stats",
       "settings": {
-        "above_line": "",
-        "heading": "",
-        "body_text": "",
+        "above_line": "By the numbers",
+        "heading": "Results that speak for themselves",
+        "body_text": "See how our approach has helped customers achieve real results.",
         "color_scheme": "",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
     },
-    "pb_section_header": {
+    "pb_section_header_gXEMJi": {
       "type": "pb-section-header",
+      "name": "Section Header",
       "settings": {
-        "above_line": "",
+        "above_line": "Featured section",
         "heading": "Your section title here",
         "body_text": "Add a supporting sentence or two to give context to the content that follows.",
         "text_alignment": "center",
@@ -187,114 +215,122 @@
         "padding-block-end": 32
       }
     },
-    "pb_stats": {
+    "pb_stats_9BMn3h": {
       "type": "pb-stats",
       "blocks": {
-        "s_1": {
+        "stat_AE6GzG": {
           "type": "stat",
           "settings": {
             "value": "10K+",
-            "description": "Happy customers"
+            "description": "Happy customers",
+            "accent_color": ""
           }
         },
-        "s_2": {
+        "stat_6GAfVh": {
           "type": "stat",
           "settings": {
             "value": "99%",
-            "description": "Satisfaction rate"
+            "description": "Satisfaction rate",
+            "accent_color": ""
           }
         },
-        "s_3": {
+        "stat_RWVMyq": {
           "type": "stat",
           "settings": {
             "value": "24/7",
-            "description": "Customer support"
+            "description": "Customer support",
+            "accent_color": ""
           }
         }
       },
       "block_order": [
-        "s_1",
-        "s_2",
-        "s_3"
+        "stat_AE6GzG",
+        "stat_6GAfVh",
+        "stat_RWVMyq"
       ],
+      "name": "Stats",
       "settings": {
-        "above_line": "",
-        "heading": "",
-        "body_text": "",
+        "above_line": "Our impact",
+        "heading": "Trusted by thousands",
+        "body_text": "The numbers tell the story of our commitment to our customers.",
         "color_scheme": "",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
     },
-    "pb_steps": {
+    "pb_steps_xVXpRE": {
       "type": "pb-steps",
       "blocks": {
-        "step_1": {
+        "step_4dyxMm": {
           "type": "step",
           "settings": {
             "headline": "Browse",
-            "description": "Explore our curated collection and find exactly what you're looking for."
+            "description": "Explore our curated collection and find exactly what you're looking for.",
+            "badge_color": ""
           }
         },
-        "step_2": {
+        "step_FAhR3C": {
           "type": "step",
           "settings": {
             "headline": "Order",
-            "description": "Add your favorites to the cart and check out securely in minutes."
+            "description": "Add your favorites to the cart and check out securely in minutes.",
+            "badge_color": ""
           }
         },
-        "step_3": {
+        "step_dgBdy4": {
           "type": "step",
           "settings": {
             "headline": "Enjoy",
-            "description": "We'll ship your order quickly, right to your door."
+            "description": "We'll ship your order quickly, right to your door.",
+            "badge_color": ""
           }
         }
       },
       "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
+        "step_4dyxMm",
+        "step_FAhR3C",
+        "step_dgBdy4"
       ],
+      "name": "Steps",
       "settings": {
-        "above_line": "",
+        "above_line": "Simple process",
         "heading": "How it works",
-        "body_text": "",
+        "body_text": "Getting started is easy. Here's how it works.",
         "color_scheme": "",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
     },
-    "pb_tabbed_content": {
+    "pb_tabbed_content_AH7WPy": {
       "type": "pb-tabbed-content",
       "blocks": {
-        "tab_1": {
+        "tab_kHD7xf": {
           "type": "tab",
           "settings": {
             "title": "Design",
-            "content": "<h3>Design</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
+            "content": "<h3>Feature title</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
             "button_label": "",
             "button_link": "",
             "sec_button_label": "",
             "sec_button_link": ""
           }
         },
-        "tab_2": {
+        "tab_RG344z": {
           "type": "tab",
           "settings": {
             "title": "Materials",
-            "content": "<h3>Materials</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
+            "content": "<h3>Feature title</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
             "button_label": "",
             "button_link": "",
             "sec_button_label": "",
             "sec_button_link": ""
           }
         },
-        "tab_3": {
+        "tab_yiii4B": {
           "type": "tab",
           "settings": {
             "title": "Craftsmanship",
-            "content": "<h3>Craftsmanship</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
+            "content": "<h3>Feature title</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
             "button_label": "",
             "button_link": "",
             "sec_button_label": "",
@@ -303,37 +339,43 @@
         }
       },
       "block_order": [
-        "tab_1",
-        "tab_2",
-        "tab_3"
+        "tab_kHD7xf",
+        "tab_RG344z",
+        "tab_yiii4B"
       ],
+      "name": "Tabbed Content",
       "settings": {
-        "above_line": "",
-        "heading": "",
-        "body_text": "",
+        "above_line": "Explore features",
+        "heading": "Everything you need",
+        "body_text": "Browse our features and discover what makes us different.",
         "color_scheme": "",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
     },
-    "pb_testimonial": {
+    "pb_testimonial_picVij": {
       "type": "pb-testimonial",
+      "name": "Testimonial",
       "settings": {
-        "above_line": "",
-        "heading": "",
-        "body_text": "",
+        "above_line": "Customer stories",
+        "heading": "What our customers say",
+        "body_text": "Don't just take our word for it — here's what our customers have to say.",
         "quote": "This is the most impressive product I've ever used. It completely transformed the way I work and I couldn't be happier.",
         "name": "Jane Smith",
         "position": "CEO, Acme Co.",
+        "card_bg": "",
+        "sidebar_bg": "",
+        "card_accent": "",
+        "card_body": "",
         "color_scheme": "",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
     },
-    "pb_text_columns": {
+    "pb_text_columns_BhpW6t": {
       "type": "pb-text-columns",
       "blocks": {
-        "col_1": {
+        "column_6acmde": {
           "type": "column",
           "settings": {
             "size": "half",
@@ -343,7 +385,7 @@
             "button_style": "link"
           }
         },
-        "col_2": {
+        "column_7D9VWP": {
           "type": "column",
           "settings": {
             "size": "half",
@@ -355,19 +397,21 @@
         }
       },
       "block_order": [
-        "col_1",
-        "col_2"
+        "column_6acmde",
+        "column_7D9VWP"
       ],
+      "name": "Text Columns",
       "settings": {
         "color_scheme": "",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
     },
-    "pb_text_with_media": {
+    "pb_text_with_media_73BUVY": {
       "type": "pb-text-with-media",
+      "name": "Text with Media",
       "settings": {
-        "above_line": "",
+        "above_line": "Our story",
         "heading": "Your story starts here",
         "richtext": "<p>Share your brand story, describe a product, or welcome customers with content that informs and inspires.</p>",
         "button_label": "",
@@ -380,12 +424,13 @@
         "padding-block-end": 60
       }
     },
-    "pb_video_embed": {
+    "pb_video_embed_TfCPCx": {
       "type": "pb-video-embed",
+      "name": "Video Embed",
       "settings": {
-        "above_line": "",
-        "heading": "",
-        "body_text": "",
+        "above_line": "Watch and learn",
+        "heading": "See it in action",
+        "body_text": "Watch the video to learn more about what we do and how we do it.",
         "video_url": "",
         "color_scheme": "",
         "padding-block-start": 60,
@@ -395,17 +440,17 @@
   },
   "order": [
     "pb_banner_alert",
-    "pb_call_to_action",
+    "pb_call_to_action_ir8Kjy",
     "pb_cta_banner",
-    "pb_grid_cards",
-    "pb_image_with_stats",
-    "pb_section_header",
-    "pb_stats",
-    "pb_steps",
-    "pb_tabbed_content",
-    "pb_testimonial",
-    "pb_text_columns",
-    "pb_text_with_media",
-    "pb_video_embed"
+    "pb_grid_cards_R7w8ed",
+    "pb_image_with_stats_mhGKif",
+    "pb_section_header_gXEMJi",
+    "pb_stats_9BMn3h",
+    "pb_steps_xVXpRE",
+    "pb_tabbed_content_AH7WPy",
+    "pb_testimonial_picVij",
+    "pb_text_columns_BhpW6t",
+    "pb_text_with_media_73BUVY",
+    "pb_video_embed_TfCPCx"
   ]
 }
