@@ -12,12 +12,16 @@
     -%}
 
     {%- if section.blocks.size > 0 -%}
+      {%- assign tab_btn_class = 'button' -%}
+      {%- if section.settings.tab_style == 'secondary' -%}
+        {%- assign tab_btn_class = 'button-secondary' -%}
+      {%- endif -%}
       <pb-tabs class="pb-tabs pb-tabs--{{ section.settings.tab_style }}">
         <div class="pb-tabs__nav" role="tablist">
           {%- for block in section.blocks -%}
             {%- if block.type == 'tab' -%}
               <button
-                class="pb-tabs__button"
+                class="pb-tabs__button {{ tab_btn_class }}"
                 role="tab"
                 data-tab-button
                 aria-selected="{{ forloop.first | json }}"
@@ -136,37 +140,19 @@
   }
 
   .pb-tabs__button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    cursor: pointer;
     white-space: nowrap;
-    border-radius: var(--buttons-radius, 0);
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-    border: 2px solid transparent;
-    background: transparent;
+    cursor: pointer;
   }
 
-  .pb-tabs--primary .pb-tabs__button {
+  /* Inactive tabs: ghost/outlined version of whichever button style is chosen */
+  .pb-tabs__button.button[aria-selected="false"] {
+    background-color: transparent;
     color: var(--color-button);
-    border-color: var(--color-button);
+    box-shadow: 0 0 0 2px var(--color-button) inset;
   }
 
-  .pb-tabs--primary .pb-tabs__button:hover,
-  .pb-tabs--primary .pb-tabs__button[aria-selected="true"] {
-    background-color: var(--color-button);
-    color: var(--color-button-label);
-  }
-
-  .pb-tabs--secondary .pb-tabs__button {
-    color: var(--color-secondary-button-label);
-    border-color: var(--color-secondary-button-label);
-  }
-
-  .pb-tabs--secondary .pb-tabs__button:hover,
-  .pb-tabs--secondary .pb-tabs__button[aria-selected="true"] {
-    background-color: var(--color-secondary-button-label);
-    color: var(--color-background);
+  .pb-tabs__button.button-secondary[aria-selected="false"] {
+    opacity: 0.45;
   }
 
   .pb-tabs__panels {
