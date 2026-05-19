@@ -172,6 +172,10 @@
   }
 
   @media screen and (min-width: 750px) {
+    .pb-tabs__panels {
+      min-height: 15em;
+    }
+
     .pb-tabs__panel-layout {
       grid-template-columns: 1fr 1fr;
     }
@@ -183,6 +187,9 @@
 
   .pb-tabs__panel-content {
     padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .pb-tabs__panel-media img {
