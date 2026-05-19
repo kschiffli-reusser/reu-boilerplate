@@ -4,7 +4,8 @@
     assign name_parts = section.settings.name | split: ' '
     assign initials = name_parts[0] | slice: 0
     if name_parts.size > 1
-      assign last_initial = name_parts[name_parts.size | minus: 1] | slice: 0
+      assign last_index = name_parts.size | minus: 1
+      assign last_initial = name_parts[last_index] | slice: 0
       assign initials = initials | append: last_initial
     endif
     assign initials = initials | upcase
