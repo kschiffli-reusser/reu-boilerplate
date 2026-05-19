@@ -21,6 +21,7 @@
             {%- capture card_style -%}
               {%- if block.settings.card_bg != blank -%}--pb-card-bg:{{ block.settings.card_bg }};{%- endif -%}
               {%- if block.settings.card_heading != blank -%}--pb-card-heading:{{ block.settings.card_heading }};{%- endif -%}
+              {%- if block.settings.card_body != blank -%}--pb-card-body:{{ block.settings.card_body }};{%- endif -%}
             {%- endcapture -%}
             <div
               class="pb-grid-card pb-grid-card--{{ block.settings.alignment }}"
@@ -239,6 +240,11 @@
           "type": "color",
           "id": "card_heading",
           "label": "Heading color"
+        },
+        {
+          "type": "color",
+          "id": "card_body",
+          "label": "Body text color"
         }
       ]
     }

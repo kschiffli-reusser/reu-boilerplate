@@ -39,6 +39,8 @@
               {%- capture card_style -%}
                 {%- if block.settings.card_bg != blank -%}--pb-card-bg:{{ block.settings.card_bg }};{%- endif -%}
                 {%- if block.settings.card_accent != blank -%}--pb-card-accent:{{ block.settings.card_accent }};{%- endif -%}
+                {%- if block.settings.card_heading != blank -%}--pb-card-heading:{{ block.settings.card_heading }};{%- endif -%}
+                {%- if block.settings.card_body != blank -%}--pb-card-body:{{ block.settings.card_body }};{%- endif -%}
               {%- endcapture -%}
               <div class="pb-iws-card" {% if card_style != blank %}style="{{ card_style }}"{% endif %} {{ block.shopify_attributes }}>
                 {%- if block.settings.value != blank -%}
@@ -241,6 +243,16 @@
           "type": "color",
           "id": "card_accent",
           "label": "Accent / value color"
+        },
+        {
+          "type": "color",
+          "id": "card_heading",
+          "label": "Heading color"
+        },
+        {
+          "type": "color",
+          "id": "card_body",
+          "label": "Body text color"
         }
       ]
     }

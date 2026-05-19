@@ -29,6 +29,7 @@
       {%- if section.settings.card_bg != blank -%}--pb-card-bg:{{ section.settings.card_bg }};{%- endif -%}
       {%- if section.settings.sidebar_bg != blank -%}--pb-sidebar-bg:{{ section.settings.sidebar_bg }};{%- endif -%}
       {%- if section.settings.card_accent != blank -%}--pb-card-accent:{{ section.settings.card_accent }};{%- endif -%}
+      {%- if section.settings.card_body != blank -%}--pb-card-body:{{ section.settings.card_body }};{%- endif -%}
     {%- endcapture -%}
     <div class="pb-testimonial__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
       <div class="pb-testimonial__sidebar">
@@ -272,6 +273,11 @@
       "type": "color",
       "id": "card_accent",
       "label": "Accent color"
+    },
+    {
+      "type": "color",
+      "id": "card_body",
+      "label": "Body text color"
     },
     {
       "type": "color_scheme",

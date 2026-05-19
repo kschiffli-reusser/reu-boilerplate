@@ -6,6 +6,7 @@
   {%- capture card_style -%}
     {%- if section.settings.card_bg != blank -%}--pb-card-bg:{{ section.settings.card_bg }};{%- endif -%}
     {%- if section.settings.card_heading != blank -%}--pb-card-heading:{{ section.settings.card_heading }};{%- endif -%}
+    {%- if section.settings.card_body != blank -%}--pb-card-body:{{ section.settings.card_body }};{%- endif -%}
   {%- endcapture -%}
   <div class="pb-cta__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
     <div class="pb-cta__text">
@@ -121,6 +122,11 @@
       "type": "color",
       "id": "card_heading",
       "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "card_body",
+      "label": "Body text color"
     },
     {
       "type": "color_scheme",
