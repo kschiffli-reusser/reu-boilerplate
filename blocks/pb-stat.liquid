@@ -1,0 +1,61 @@
+{%- assign block_settings = block.settings -%}
+
+<div class="pb-block-stat" {{ block.shopify_attributes }}>
+  {%- if block_settings.value != blank -%}
+    <p class="pb-block-stat__value">{{ block_settings.value }}</p>
+  {%- endif -%}
+  {%- if block_settings.description != blank -%}
+    <p class="pb-block-stat__description">{{ block_settings.description }}</p>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .pb-block-stat {
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .pb-block-stat__value {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin: 0 0 0.5rem;
+  }
+
+  .pb-block-stat__description {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PB: Stat",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "value",
+      "label": "Value",
+      "default": "99%",
+      "info": "e.g. 10,000+  •  99%  •  24/7"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Customer satisfaction"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB: Stat",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}

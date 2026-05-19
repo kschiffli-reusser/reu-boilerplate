@@ -1,0 +1,188 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-text-columns"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  {%- if section.blocks.size > 0 -%}
+    <div class="pb-text-columns__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'column' -%}
+          {%- liquid
+            case block.settings.size
+              when 'full'
+                assign col_class = 'pb-text-columns__col--full'
+              when 'half'
+                assign col_class = 'pb-text-columns__col--half'
+              when 'oneThird'
+                assign col_class = 'pb-text-columns__col--one-third'
+              when 'twoThirds'
+                assign col_class = 'pb-text-columns__col--two-thirds'
+              else
+                assign col_class = 'pb-text-columns__col--full'
+            endcase
+          -%}
+          <div class="pb-text-columns__col {{ col_class }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.richtext != blank -%}
+              <div class="pb-text-columns__richtext rte">{{ block.settings.richtext }}</div>
+            {%- endif -%}
+            {%- if block.settings.button_label != blank -%}
+              <div class="pb-text-columns__button-wrap">
+                <a
+                  {% if block.settings.button_link != blank %}
+                    href="{{ block.settings.button_link }}"
+                  {% else %}
+                    role="link" aria-disabled="true"
+                  {% endif %}
+                  class="{{ block.settings.button_style }}"
+                >{{ block.settings.button_label }}</a>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .pb-text-columns__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .pb-text-columns__col {
+    grid-column: span 12;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-text-columns__col--full {
+      grid-column: span 12;
+    }
+
+    .pb-text-columns__col--half {
+      grid-column: span 6;
+    }
+
+    .pb-text-columns__col--one-third {
+      grid-column: span 4;
+    }
+
+    .pb-text-columns__col--two-thirds {
+      grid-column: span 8;
+    }
+  }
+
+  .pb-text-columns__richtext {
+    color: var(--color-foreground);
+    line-height: 1.65;
+  }
+
+  .pb-text-columns__button-wrap {
+    margin-top: 1.25rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Text Columns",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Width",
+          "options": [
+            { "value": "full", "label": "Full (12/12)" },
+            { "value": "twoThirds", "label": "Two thirds (8/12)" },
+            { "value": "half", "label": "Half (6/12)" },
+            { "value": "oneThird", "label": "One third (4/12)" }
+          ],
+          "default": "half"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext",
+          "label": "Content",
+          "default": "<h3>Column heading</h3><p>Add your content here. Rich text supports bold, italic, links, lists, and more.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Optional button"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            { "value": "button", "label": "Primary" },
+            { "value": "button-secondary", "label": "Secondary" },
+            { "value": "link", "label": "Link" }
+          ],
+          "default": "link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Columns",
+      "category": "★ Custom Sections",
+      "blocks": [
+        { "type": "column", "settings": { "size": "half" } },
+        { "type": "column", "settings": { "size": "half" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

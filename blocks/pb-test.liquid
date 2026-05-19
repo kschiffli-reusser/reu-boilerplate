@@ -1,0 +1,22 @@
+<p {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+
+{% schema %}
+{
+  "name": "PB Test",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Hello from PB Test block"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB Test",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}

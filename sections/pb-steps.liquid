@@ -1,0 +1,216 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-steps"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="pb-steps__inner">
+    {%- render 'pb-section-intro',
+      above_line: section.settings.above_line,
+      heading: section.settings.heading,
+      body_text: section.settings.body_text,
+      alignment: 'center'
+    -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ol class="pb-steps__list" style="--pb-steps-count: {{ section.blocks.size }};">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'step' -%}
+            <li class="pb-steps__item" {{ block.shopify_attributes }}>
+              <div class="pb-steps__badge" aria-hidden="true">
+                <svg viewBox="0 0 100 115" width="52" height="60">
+                  <polygon
+                    points="50,4 96,28 96,88 50,112 4,88 4,28"
+                    fill="var(--color-primary)"
+                  />
+                  <text
+                    x="50"
+                    y="62"
+                    text-anchor="middle"
+                    dominant-baseline="central"
+                    font-size="40"
+                    font-weight="700"
+                    fill="var(--color-primary-button-text, #fff)"
+                  >{{ forloop.index }}</text>
+                </svg>
+              </div>
+              {%- if block.settings.headline != blank -%}
+                <h3 class="pb-steps__headline">{{ block.settings.headline }}</h3>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p class="pb-steps__description">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-steps__inner {
+    width: 100%;
+  }
+
+  .pb-steps__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    counter-reset: steps;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-steps__list {
+      grid-template-columns: repeat(var(--pb-steps-count, 3), 1fr);
+      gap: 0;
+    }
+  }
+
+  .pb-steps__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-steps__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 1.875rem;
+      left: calc(50% + 2rem);
+      right: calc(-50% + 2rem);
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        var(--color-border) 0%,
+        var(--color-border) 100%
+      );
+      z-index: 0;
+    }
+  }
+
+  .pb-steps__badge {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .pb-steps__badge svg {
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  }
+
+  .pb-steps__headline {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--color-foreground-heading);
+    margin: 0 0 0.5rem;
+  }
+
+  .pb-steps__description {
+    font-size: 0.9375rem;
+    color: var(--color-foreground);
+    line-height: 1.6;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Steps",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section intro"
+    },
+    {
+      "type": "text",
+      "id": "above_line",
+      "label": "Eyebrow label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How it works"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Step title",
+          "default": "Step title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Describe what happens in this step."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Steps",
+      "category": "★ Custom Sections",
+      "blocks": [
+        { "type": "step", "settings": { "headline": "Browse", "description": "Explore our curated collection and find exactly what you're looking for." } },
+        { "type": "step", "settings": { "headline": "Order", "description": "Add your favorites to the cart and check out securely in minutes." } },
+        { "type": "step", "settings": { "headline": "Enjoy", "description": "We'll ship your order quickly, right to your door." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

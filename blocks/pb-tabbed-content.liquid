@@ -1,0 +1,344 @@
+{%- assign block_settings = block.settings -%}
+
+<pb-tabs-block class="pb-block-tabs" {{ block.shopify_attributes }}>
+  <div class="pb-block-tabs__nav" role="tablist">
+    {%- for i in (1..4) -%}
+      {%- assign title_key = 'tab_' | append: i | append: '_title' -%}
+      {%- assign tab_title = block_settings[title_key] -%}
+      {%- if tab_title != blank -%}
+        <button
+          class="pb-block-tabs__button"
+          role="tab"
+          data-tab-index="{{ i }}"
+          aria-selected="{{ forloop.first | json }}"
+          aria-controls="pb-tabs-panel-{{ block.id }}-{{ i }}"
+          id="pb-tabs-btn-{{ block.id }}-{{ i }}"
+        >{{ tab_title }}</button>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="pb-block-tabs__panels">
+    {%- for i in (1..4) -%}
+      {%- liquid
+        assign title_key    = 'tab_' | append: i | append: '_title'
+        assign image_key    = 'tab_' | append: i | append: '_image'
+        assign content_key  = 'tab_' | append: i | append: '_content'
+        assign btn1_lbl_key = 'tab_' | append: i | append: '_button_1_label'
+        assign btn1_lnk_key = 'tab_' | append: i | append: '_button_1_link'
+        assign btn2_lbl_key = 'tab_' | append: i | append: '_button_2_label'
+        assign btn2_lnk_key = 'tab_' | append: i | append: '_button_2_link'
+
+        assign tab_title    = block_settings[title_key]
+        assign tab_image    = block_settings[image_key]
+        assign tab_content  = block_settings[content_key]
+        assign btn1_label   = block_settings[btn1_lbl_key]
+        assign btn1_link    = block_settings[btn1_lnk_key]
+        assign btn2_label   = block_settings[btn2_lbl_key]
+        assign btn2_link    = block_settings[btn2_lnk_key]
+      -%}
+      {%- if tab_title != blank -%}
+        <div
+          class="pb-block-tabs__panel"
+          role="tabpanel"
+          id="pb-tabs-panel-{{ block.id }}-{{ i }}"
+          aria-labelledby="pb-tabs-btn-{{ block.id }}-{{ i }}"
+          {% unless forloop.first %}hidden{% endunless %}
+        >
+          <div class="pb-block-tabs__panel-layout">
+            {%- if tab_image != blank -%}
+              <div class="pb-block-tabs__panel-media">
+                <img
+                  src="{{ tab_image | image_url: width: 800 }}"
+                  srcset="
+                    {{ tab_image | image_url: width: 480 }} 480w,
+                    {{ tab_image | image_url: width: 800 }} 800w
+                  "
+                  sizes="(min-width: 750px) 50vw, 100vw"
+                  alt="{{ tab_image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ tab_image.width }}"
+                  height="{{ tab_image.height }}"
+                >
+              </div>
+            {%- endif -%}
+            <div class="pb-block-tabs__panel-content">
+              {%- if tab_content != blank -%}
+                <div class="pb-block-tabs__panel-richtext rte">{{ tab_content }}</div>
+              {%- endif -%}
+              {%- if btn1_label != blank or btn2_label != blank -%}
+                <div class="pb-block-tabs__panel-buttons">
+                  {%- if btn1_label != blank -%}
+                    <a {% if btn1_link != blank %}href="{{ btn1_link }}"{% else %}role="link" aria-disabled="true"{% endif %} class="button">{{ btn1_label }}</a>
+                  {%- endif -%}
+                  {%- if btn2_label != blank -%}
+                    <a {% if btn2_link != blank %}href="{{ btn2_link }}"{% else %}role="link" aria-disabled="true"{% endif %} class="button-secondary">{{ btn2_label }}</a>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</pb-tabs-block>
+
+<script>
+  class PbTabsBlock extends HTMLElement {
+    connectedCallback() {
+      this._buttons = Array.from(this.querySelectorAll('[data-tab-index]'));
+      this._panels  = Array.from(this.querySelectorAll('[role="tabpanel"]'));
+      this._buttons.forEach((btn, i) => btn.addEventListener('click', () => this._activate(i)));
+    }
+    _activate(index) {
+      this._buttons.forEach((btn, i) => btn.setAttribute('aria-selected', i === index ? 'true' : 'false'));
+      this._panels.forEach((panel, i) => { panel.hidden = i !== index; });
+    }
+  }
+  if (!customElements.get('pb-tabs-block')) customElements.define('pb-tabs-block', PbTabsBlock);
+</script>
+
+{% stylesheet %}
+  .pb-block-tabs {
+    display: block;
+    width: 100%;
+  }
+
+  .pb-block-tabs__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 1.75rem;
+  }
+
+  .pb-block-tabs__button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .pb-block-tabs__button:hover {
+    color: var(--color-primary);
+  }
+
+  .pb-block-tabs__button[aria-selected="true"] {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+  }
+
+  .pb-block-tabs__panel-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-block-tabs__panel-layout {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .pb-block-tabs__panel-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    display: block;
+  }
+
+  .pb-block-tabs__panel-richtext {
+    color: var(--color-foreground);
+    line-height: 1.65;
+  }
+
+  .pb-block-tabs__panel-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-top: 1.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PB: Tabbed Content",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_title",
+      "label": "Tab label",
+      "default": "Feature 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_1_content",
+      "label": "Content",
+      "default": "<h3>Feature title</h3><p>Describe this feature in detail.</p>"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_button_1_label",
+      "label": "Button 1 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_1_button_1_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_button_2_label",
+      "label": "Button 2 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_1_button_2_link",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_title",
+      "label": "Tab label",
+      "default": "Feature 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_2_content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_button_1_label",
+      "label": "Button 1 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_2_button_1_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_button_2_label",
+      "label": "Button 2 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_2_button_2_link",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "header",
+      "content": "Tab 3"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_title",
+      "label": "Tab label"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_3_content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_button_1_label",
+      "label": "Button 1 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_3_button_1_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_button_2_label",
+      "label": "Button 2 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_3_button_2_link",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "header",
+      "content": "Tab 4"
+    },
+    {
+      "type": "text",
+      "id": "tab_4_title",
+      "label": "Tab label"
+    },
+    {
+      "type": "image_picker",
+      "id": "tab_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_4_content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tab_4_button_1_label",
+      "label": "Button 1 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_4_button_1_link",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "tab_4_button_2_label",
+      "label": "Button 2 label"
+    },
+    {
+      "type": "url",
+      "id": "tab_4_button_2_link",
+      "label": "Button 2 link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB: Tabbed Content",
+      "category": "t:categories.storytelling"
+    }
+  ]
+}
+{% endschema %}

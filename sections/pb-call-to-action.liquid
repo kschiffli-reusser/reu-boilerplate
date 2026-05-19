@@ -1,0 +1,186 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-call-to-action"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="pb-cta__card">
+    <div class="pb-cta__text">
+      {%- if section.settings.richtext != blank -%}
+        <div class="pb-cta__richtext rte">{{ section.settings.richtext }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="pb-cta__buttons">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'button' -%}
+            <a
+              {% if block.settings.link != blank %}
+                href="{{ block.settings.link }}"
+              {% else %}
+                role="link" aria-disabled="true"
+              {% endif %}
+              class="{{ block.settings.style }}"
+              {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+              {{ block.shopify_attributes }}
+            >
+              {{- block.settings.label -}}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-cta__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-background);
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-cta__card {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+  }
+
+  .pb-cta__text {
+    flex: 1;
+    max-width: 48rem;
+  }
+
+  .pb-cta__richtext {
+    color: var(--color-foreground);
+    line-height: 1.5;
+  }
+
+  .pb-cta__richtext h1,
+  .pb-cta__richtext h2,
+  .pb-cta__richtext h3,
+  .pb-cta__richtext h4 {
+    color: var(--color-foreground-heading);
+    margin-top: 0;
+  }
+
+  .pb-cta__richtext p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pb-cta__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-cta__buttons {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Call to Action",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Content",
+      "default": "<h3>Ready to get started?</h3><p>Join thousands of happy customers today.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Get started"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            { "value": "button", "label": "Primary" },
+            { "value": "button-secondary", "label": "Secondary" },
+            { "value": "link", "label": "Link" }
+          ],
+          "default": "button"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Call to Action",
+      "category": "★ Custom Sections",
+      "blocks": [
+        { "type": "button", "settings": { "label": "Shop now", "style": "button" } },
+        { "type": "button", "settings": { "label": "Learn more", "style": "button-secondary" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

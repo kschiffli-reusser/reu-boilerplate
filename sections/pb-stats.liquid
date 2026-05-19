@@ -1,0 +1,176 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-stats"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="pb-stats__inner">
+    {%- render 'pb-section-intro',
+      above_line: section.settings.above_line,
+      heading: section.settings.heading,
+      body_text: section.settings.body_text,
+      alignment: 'center'
+    -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="pb-stats__row">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <div class="pb-stats__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.value != blank -%}
+                <p class="pb-stats__value">{{ block.settings.value }}</p>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p class="pb-stats__description">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-stats__inner {
+    width: 100%;
+  }
+
+  .pb-stats__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .pb-stats__item {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .pb-stats__item:first-child {
+    border-left: 1px solid var(--color-border);
+  }
+
+  @media screen and (max-width: 749px) {
+    .pb-stats__item {
+      min-width: 50%;
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .pb-stats__item:nth-child(odd) {
+      border-right: 1px solid var(--color-border);
+    }
+  }
+
+  .pb-stats__value {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin: 0 0 0.5rem;
+  }
+
+  .pb-stats__description {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Stats",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section intro"
+    },
+    {
+      "type": "text",
+      "id": "above_line",
+      "label": "Eyebrow label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "99%",
+          "info": "e.g. 10,000+, 99%, 24/7"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Customer satisfaction"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats",
+      "category": "★ Custom Sections",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "10K+", "description": "Happy customers" } },
+        { "type": "stat", "settings": { "value": "99%", "description": "Satisfaction rate" } },
+        { "type": "stat", "settings": { "value": "24/7", "description": "Customer support" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

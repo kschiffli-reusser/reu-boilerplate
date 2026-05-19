@@ -1,0 +1,93 @@
+{%- assign block_settings = block.settings -%}
+
+<div class="pb-block-step" {{ block.shopify_attributes }}>
+  <div class="pb-block-step__badge" aria-hidden="true">
+    <svg viewBox="0 0 100 115" width="52" height="60">
+      <polygon points="50,4 96,28 96,88 50,112 4,88 4,28" fill="var(--color-primary)" />
+      <text
+        x="50" y="62"
+        text-anchor="middle"
+        dominant-baseline="central"
+        font-size="40"
+        font-weight="700"
+        fill="var(--color-primary-button-text, #fff)"
+      >{{ block_settings.step_number | default: '1' }}</text>
+    </svg>
+  </div>
+
+  {%- if block_settings.headline != blank -%}
+    <h3 class="pb-block-step__headline">{{ block_settings.headline }}</h3>
+  {%- endif -%}
+
+  {%- if block_settings.description != blank -%}
+    <p class="pb-block-step__description">{{ block_settings.description }}</p>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .pb-block-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .pb-block-step__badge {
+    margin-bottom: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .pb-block-step__badge svg {
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+  }
+
+  .pb-block-step__headline {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--color-foreground-heading);
+    margin: 0 0 0.5rem;
+  }
+
+  .pb-block-step__description {
+    font-size: 0.9375rem;
+    color: var(--color-foreground);
+    line-height: 1.6;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PB: Step",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "step_number",
+      "label": "Step number",
+      "default": "1",
+      "info": "Displayed inside the badge"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Step title",
+      "default": "Step title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Describe what happens in this step."
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB: Step",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}

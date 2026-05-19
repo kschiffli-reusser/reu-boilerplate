@@ -1,0 +1,210 @@
+{%- liquid
+  assign block_settings = block.settings
+  assign initials = ''
+  if block_settings.name != blank
+    assign name_parts = block_settings.name | split: ' '
+    assign initials = name_parts[0] | slice: 0
+    if name_parts.size > 1
+      assign last_initial = name_parts[name_parts.size | minus: 1] | slice: 0
+      assign initials = initials | append: last_initial
+    endif
+    assign initials = initials | upcase
+  endif
+-%}
+
+<div class="pb-block-testimonial" {{ block.shopify_attributes }}>
+  <div class="pb-block-testimonial__sidebar">
+    {%- if block_settings.background_image != blank -%}
+      <div class="pb-block-testimonial__sidebar-bg" aria-hidden="true">
+        <img
+          src="{{ block_settings.background_image | image_url: width: 600 }}"
+          alt="{{ block_settings.background_image.alt | escape }}"
+          loading="lazy"
+        >
+      </div>
+    {%- endif -%}
+    <div class="pb-block-testimonial__author">
+      <div class="pb-block-testimonial__avatar">
+        {%- if block_settings.avatar_image != blank -%}
+          <img
+            src="{{ block_settings.avatar_image | image_url: width: 80 }}"
+            alt="{{ block_settings.avatar_image.alt | default: block_settings.name | escape }}"
+            loading="lazy"
+            width="56"
+            height="56"
+          >
+        {%- elsif initials != blank -%}
+          <span aria-hidden="true">{{ initials }}</span>
+        {%- endif -%}
+      </div>
+      {%- if block_settings.name != blank -%}
+        <p class="pb-block-testimonial__name">{{ block_settings.name }}</p>
+      {%- endif -%}
+      {%- if block_settings.position != blank -%}
+        <p class="pb-block-testimonial__position">{{ block_settings.position }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="pb-block-testimonial__quote-wrap">
+    {%- if block_settings.quote != blank -%}
+      <blockquote class="pb-block-testimonial__quote">
+        <span class="pb-block-testimonial__quote-mark" aria-hidden="true">&ldquo;</span>
+        <p>{{ block_settings.quote }}</p>
+      </blockquote>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-block-testimonial {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-block-testimonial {
+      grid-template-columns: 260px 1fr;
+    }
+  }
+
+  .pb-block-testimonial__sidebar {
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    align-items: flex-end;
+    background-color: var(--color-primary);
+  }
+
+  .pb-block-testimonial__sidebar-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .pb-block-testimonial__sidebar-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    mix-blend-mode: multiply;
+  }
+
+  .pb-block-testimonial__author {
+    position: relative;
+    z-index: 1;
+    padding: 1.25rem;
+    color: #fff;
+  }
+
+  .pb-block-testimonial__avatar {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.6);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.2);
+    margin-bottom: 0.625rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+
+  .pb-block-testimonial__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pb-block-testimonial__name {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    margin: 0 0 0.2rem;
+  }
+
+  .pb-block-testimonial__position {
+    font-size: 0.8125rem;
+    margin: 0;
+    opacity: 0.75;
+  }
+
+  .pb-block-testimonial__quote-wrap {
+    display: flex;
+    align-items: center;
+    padding: 2rem 2.25rem;
+  }
+
+  .pb-block-testimonial__quote {
+    margin: 0;
+  }
+
+  .pb-block-testimonial__quote-mark {
+    display: block;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--color-primary);
+    margin-bottom: -0.75rem;
+    font-family: Georgia, serif;
+  }
+
+  .pb-block-testimonial__quote p {
+    font-size: clamp(0.9375rem, 1.5vw, 1.1875rem);
+    line-height: 1.7;
+    color: var(--color-foreground);
+    font-style: italic;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "PB: Testimonial",
+  "tag": null,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "This is the most impressive product I've ever used. It completely changed the way I work."
+    },
+    {
+      "type": "header",
+      "content": "Author"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name",
+      "default": "Jane Smith"
+    },
+    {
+      "type": "text",
+      "id": "position",
+      "label": "Title / Position",
+      "default": "CEO, Acme Co."
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_image",
+      "label": "Avatar image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Sidebar background image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PB: Testimonial",
+      "category": "t:categories.storytelling"
+    }
+  ]
+}
+{% endschema %}

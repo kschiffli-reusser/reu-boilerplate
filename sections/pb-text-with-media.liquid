@@ -1,0 +1,260 @@
+{%- liquid
+  assign media_position = section.settings.media_position | default: 'right'
+  assign image_modifier = ''
+  if section.settings.smaller_image
+    assign image_modifier = 'pb-text-with-media__media--small'
+  endif
+  if media_position == 'left'
+    assign layout_modifier = 'pb-text-with-media--media-left'
+  else
+    assign layout_modifier = 'pb-text-with-media--media-right'
+  endif
+-%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-text-with-media {{ layout_modifier }}"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="pb-text-with-media__inner">
+    <div class="pb-text-with-media__text">
+      {%- if section.settings.above_line != blank -%}
+        <p class="pb-text-with-media__eyebrow">{{ section.settings.above_line }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="pb-text-with-media__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.richtext != blank -%}
+        <div class="pb-text-with-media__richtext rte">{{ section.settings.richtext }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="pb-text-with-media__button-wrap">
+          <a
+            {% if section.settings.button_link != blank %}
+              href="{{ section.settings.button_link }}"
+            {% else %}
+              role="link" aria-disabled="true"
+            {% endif %}
+            class="{{ section.settings.button_style }}"
+          >
+            {{- section.settings.button_label -}}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="pb-text-with-media__media {{ image_modifier }}">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 900 }}"
+          srcset="
+            {{ section.settings.image | image_url: width: 480 }} 480w,
+            {{ section.settings.image | image_url: width: 700 }} 700w,
+            {{ section.settings.image | image_url: width: 900 }} 900w
+          "
+          sizes="(min-width: 750px) 50vw, 100vw"
+          alt="{{ section.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+        >
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'pb-text-with-media__placeholder' }}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pb-text-with-media__inner {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .pb-text-with-media__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .pb-text-with-media--media-left .pb-text-with-media__text {
+      order: 2;
+    }
+
+    .pb-text-with-media--media-left .pb-text-with-media__media {
+      order: 1;
+    }
+  }
+
+  .pb-text-with-media__eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+  }
+
+  .pb-text-with-media__heading {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-foreground-heading);
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .pb-text-with-media__richtext {
+    color: var(--color-foreground);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  .pb-text-with-media__button-wrap {
+    margin-top: 1.5rem;
+  }
+
+  .pb-text-with-media__media img,
+  .pb-text-with-media__media svg {
+    width: 100%;
+    height: auto;
+    border-radius: var(--media-radius, 0.5rem);
+    display: block;
+  }
+
+  .pb-text-with-media__media--small {
+    max-width: 400px;
+    margin-inline: auto;
+  }
+
+  .pb-text-with-media__placeholder {
+    width: 100%;
+    height: auto;
+    background: var(--color-border);
+    color: var(--color-foreground);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Text with Media",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "above_line",
+      "label": "Eyebrow label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your story starts here"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Body text",
+      "default": "<p>Share your brand story, describe a product, or welcome customers with content that informs and inspires.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        { "value": "button", "label": "Primary" },
+        { "value": "button-secondary", "label": "Secondary" },
+        { "value": "link", "label": "Link" }
+      ],
+      "default": "button"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "checkbox",
+      "id": "smaller_image",
+      "label": "Constrain image width",
+      "info": "Limits image to 400px wide, centered",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with Media",
+      "category": "★ Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
