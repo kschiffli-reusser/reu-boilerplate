@@ -362,7 +362,8 @@
         "above_line": "Explore features",
         "heading": "Everything you need",
         "body_text": "Browse our features and discover what makes us different.",
-        "color_scheme": "",
+        "tab_style": "secondary",
+        "color_scheme": "scheme-1",
         "padding-block-start": 60,
         "padding-block-end": 60
       }
