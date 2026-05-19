@@ -15,12 +15,12 @@
       <ol class="pb-steps__list" style="--pb-steps-count: {{ section.blocks.size }};">
         {%- for block in section.blocks -%}
           {%- if block.type == 'step' -%}
-            <li class="pb-steps__item" {{ block.shopify_attributes }}>
+            <li class="pb-steps__item" style="{%- if block.settings.badge_color != blank -%}--pb-badge-color:{{ block.settings.badge_color }};{%- endif -%}" {{ block.shopify_attributes }}>
               <div class="pb-steps__badge" aria-hidden="true">
                 <svg viewBox="0 0 100 115" width="52" height="60">
                   <polygon
                     points="50,4 96,28 96,88 50,112 4,88 4,28"
-                    fill="var(--color-primary)"
+                    fill="var(--pb-badge-color, var(--color-primary))"
                   />
                   <text
                     x="50"
@@ -29,7 +29,7 @@
                     dominant-baseline="central"
                     font-size="40"
                     font-weight="700"
-                    fill="var(--color-primary-button-text, #fff)"
+                    fill="var(--pb-badge-text, var(--color-primary-button-text, #fff))"
                   >{{ forloop.index }}</text>
                 </svg>
               </div>
@@ -196,6 +196,11 @@
           "id": "description",
           "label": "Description",
           "default": "Describe what happens in this step."
+        },
+        {
+          "type": "color",
+          "id": "badge_color",
+          "label": "Badge color"
         }
       ]
     }

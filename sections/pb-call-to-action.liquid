@@ -3,7 +3,11 @@
   class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-call-to-action"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-cta__card">
+  {%- capture card_style -%}
+    {%- if section.settings.card_bg != blank -%}--pb-card-bg:{{ section.settings.card_bg }};{%- endif -%}
+    {%- if section.settings.card_heading != blank -%}--pb-card-heading:{{ section.settings.card_heading }};{%- endif -%}
+  {%- endcapture -%}
+  <div class="pb-cta__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
     <div class="pb-cta__text">
       {%- if section.settings.richtext != blank -%}
         <div class="pb-cta__richtext rte">{{ section.settings.richtext }}</div>
@@ -39,9 +43,9 @@
     flex-direction: column;
     gap: 1.5rem;
     padding: 2rem;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--pb-card-border);
     border-radius: 0.75rem;
-    background-color: var(--color-background);
+    background-color: var(--pb-card-bg);
     width: 100%;
   }
 
@@ -60,7 +64,7 @@
   }
 
   .pb-cta__richtext {
-    color: var(--color-foreground);
+    color: var(--pb-card-body);
     line-height: 1.5;
   }
 
@@ -68,7 +72,7 @@
   .pb-cta__richtext h2,
   .pb-cta__richtext h3,
   .pb-cta__richtext h4 {
-    color: var(--color-foreground-heading);
+    color: var(--pb-card-heading);
     margin-top: 0;
   }
 
@@ -103,6 +107,20 @@
       "id": "richtext",
       "label": "Content",
       "default": "<h3>Ready to get started?</h3><p>Join thousands of happy customers today.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Card colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background"
+    },
+    {
+      "type": "color",
+      "id": "card_heading",
+      "label": "Heading color"
     },
     {
       "type": "color_scheme",

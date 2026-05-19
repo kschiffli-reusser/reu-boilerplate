@@ -25,7 +25,12 @@
       alignment: 'center'
     -%}
 
-    <div class="pb-testimonial__card">
+    {%- capture card_style -%}
+      {%- if section.settings.card_bg != blank -%}--pb-card-bg:{{ section.settings.card_bg }};{%- endif -%}
+      {%- if section.settings.sidebar_bg != blank -%}--pb-sidebar-bg:{{ section.settings.sidebar_bg }};{%- endif -%}
+      {%- if section.settings.card_accent != blank -%}--pb-card-accent:{{ section.settings.card_accent }};{%- endif -%}
+    {%- endcapture -%}
+    <div class="pb-testimonial__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
       <div class="pb-testimonial__sidebar">
         {%- if section.settings.background_image != blank -%}
           <div class="pb-testimonial__sidebar-bg" aria-hidden="true">
@@ -103,7 +108,7 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background-color: var(--color-primary);
+    background-color: var(--pb-sidebar-bg);
   }
 
   .pb-testimonial__sidebar-bg img {
@@ -162,7 +167,7 @@
     display: flex;
     align-items: center;
     padding: 2rem 2.5rem;
-    background-color: var(--color-background);
+    background-color: var(--pb-card-bg);
   }
 
   .pb-testimonial__quote {
@@ -173,7 +178,7 @@
     display: block;
     font-size: 5rem;
     line-height: 1;
-    color: var(--color-primary);
+    color: var(--pb-card-accent);
     margin-bottom: -1rem;
     font-family: Georgia, serif;
   }
@@ -181,7 +186,7 @@
   .pb-testimonial__quote p {
     font-size: clamp(1rem, 1.5vw, 1.25rem);
     line-height: 1.7;
-    color: var(--color-foreground);
+    color: var(--pb-card-body);
     margin: 0;
     font-style: italic;
   }
@@ -248,6 +253,25 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Sidebar background image"
+    },
+    {
+      "type": "header",
+      "content": "Card colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Quote area background"
+    },
+    {
+      "type": "color",
+      "id": "sidebar_bg",
+      "label": "Sidebar background"
+    },
+    {
+      "type": "color",
+      "id": "card_accent",
+      "label": "Accent color"
     },
     {
       "type": "color_scheme",

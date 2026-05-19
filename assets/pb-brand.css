@@ -1,0 +1,8 @@
+:root {
+  --pb-card-bg: var(--color-background);
+  --pb-card-border: var(--color-border);
+  --pb-card-heading: var(--color-foreground-heading);
+  --pb-card-body: var(--color-foreground);
+  --pb-card-accent: #801425;
+  --pb-sidebar-bg: #801425;
+}

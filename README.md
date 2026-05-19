@@ -4,6 +4,41 @@ A Shopify theme boilerplate built on Horizon with custom sections, brand colors,
 
 ---
 
+## Starting a New Project
+
+When using this as a boilerplate for a new client, work through these steps in order:
+
+### 1. Brand colors
+
+Update the two files that control color across the theme:
+
+**`assets/pb-brand.css`** — Set the client's primary brand color for card accents and the testimonial sidebar. These are intentionally hardcoded here (not scheme-driven) so they stay consistent across all color schemes:
+
+```css
+:root {
+  --pb-card-accent: #801425;   /* ← primary brand color */
+  --pb-sidebar-bg: #801425;    /* ← usually same as above */
+}
+```
+
+**`config/settings_data.json`** — Update the 6 color scheme definitions with the new palette (backgrounds, heading colors, button colors, borders). See the [Color Scheme Summary](#color-scheme-summary) below for the current defaults.
+
+After updating `settings_data.json`, also update the Brand Colors and Color Scheme Summary tables in this README.
+
+### 2. Home page
+
+`templates/index.json` is pre-populated with one of each custom section for demo purposes. Replace it with the actual home page layout and section configuration for the new project.
+
+### 3. Theme editor settings
+
+Log in to the Shopify admin and set the logo, favicon, and typography under **Online Store → Themes → Customize → Theme settings**. These are not stored in the repository.
+
+### 4. GitHub integration
+
+The Shopify GitHub integration must be configured for each new store. In the Shopify admin: **Online Store → Themes → Add theme → Connect from GitHub**. Point it to the correct repo and branch.
+
+---
+
 ## Getting Started
 
 The theme lives in the `reu-boilerplate/` subdirectory. All Shopify CLI commands should be run from there.
@@ -41,7 +76,22 @@ To add a new custom section, set its preset `"category"` to `"★ Custom Section
 
 ## Brand Colors
 
-Source of truth for brand colors. When the palette changes, update the table below and apply the changes to `config/settings_data.json` color schemes.
+Source of truth for brand colors. When the palette changes, update the table below, apply the changes to `config/settings_data.json` color schemes, and update the hardcoded hex values in `assets/pb-brand.css`.
+
+### CSS variable layer
+
+`assets/pb-brand.css` defines `--pb-*` custom properties used by all `pb-*` card sections. Most variables default to the active color scheme, but accent colors are brand-fixed:
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `--pb-card-bg` | `var(--color-background)` | Card background |
+| `--pb-card-border` | `var(--color-border)` | Card border |
+| `--pb-card-heading` | `var(--color-foreground-heading)` | Card heading text |
+| `--pb-card-body` | `var(--color-foreground)` | Card body text |
+| `--pb-card-accent` | `#801425` | Stat values, quote marks, border highlights |
+| `--pb-sidebar-bg` | `#801425` | Testimonial sidebar background |
+
+These can be overridden per-block or per-section via color pickers in the theme editor.
 
 | Label | Hex | Usage in Shopify schemes |
 |-------|-----|--------------------------|

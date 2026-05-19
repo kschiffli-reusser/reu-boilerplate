@@ -15,7 +15,7 @@
       <div class="pb-stats__row">
         {%- for block in section.blocks -%}
           {%- if block.type == 'stat' -%}
-            <div class="pb-stats__item" {{ block.shopify_attributes }}>
+            <div class="pb-stats__item" style="{%- if block.settings.accent_color != blank -%}--pb-stat-accent:{{ block.settings.accent_color }};{%- endif -%}" {{ block.shopify_attributes }}>
               {%- if block.settings.value != blank -%}
                 <p class="pb-stats__value">{{ block.settings.value }}</p>
               {%- endif -%}
@@ -68,7 +68,7 @@
   .pb-stats__value {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--pb-stat-accent, var(--color-primary));
     line-height: 1;
     margin: 0 0 0.5rem;
   }
@@ -156,6 +156,11 @@
           "id": "description",
           "label": "Description",
           "default": "Customer satisfaction"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Value color"
         }
       ]
     }

@@ -18,8 +18,13 @@
       >
         {%- for block in section.blocks -%}
           {%- if block.type == 'card' -%}
+            {%- capture card_style -%}
+              {%- if block.settings.card_bg != blank -%}--pb-card-bg:{{ block.settings.card_bg }};{%- endif -%}
+              {%- if block.settings.card_heading != blank -%}--pb-card-heading:{{ block.settings.card_heading }};{%- endif -%}
+            {%- endcapture -%}
             <div
               class="pb-grid-card pb-grid-card--{{ block.settings.alignment }}"
+              {% if card_style != blank %}style="{{ card_style }}"{% endif %}
               {{ block.shopify_attributes }}
             >
               {%- if block.settings.icon != blank -%}
@@ -76,9 +81,9 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--pb-card-border);
     border-radius: 0.75rem;
-    background-color: var(--color-background);
+    background-color: var(--pb-card-bg);
   }
 
   .pb-grid-card--center {
@@ -104,14 +109,14 @@
   .pb-grid-card__heading {
     font-size: 1.125rem;
     font-weight: 700;
-    color: var(--color-foreground-heading);
+    color: var(--pb-card-heading);
     margin-top: 0;
     margin-bottom: 0.75rem;
   }
 
   .pb-grid-card__body {
     font-size: 0.9375rem;
-    color: var(--color-foreground);
+    color: var(--pb-card-body);
     line-height: 1.65;
     margin: 0;
   }
@@ -220,6 +225,20 @@
             { "value": "right", "label": "Right" }
           ],
           "default": "left"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Card background"
+        },
+        {
+          "type": "color",
+          "id": "card_heading",
+          "label": "Heading color"
         }
       ]
     }
