@@ -319,7 +319,18 @@
           "type": "tab",
           "settings": {
             "title": "Materials",
-            "content": "<h3>Feature title</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
+            "content": "<h3>Feature title 2</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
+            "button_label": "",
+            "button_link": "",
+            "sec_button_label": "",
+            "sec_button_link": ""
+          }
+        },
+        "tab_8nxYtc": {
+          "type": "tab",
+          "settings": {
+            "title": "Feature",
+            "content": "<h3>Feature title 3</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
             "button_label": "",
             "button_link": "",
             "sec_button_label": "",
@@ -330,9 +341,9 @@
           "type": "tab",
           "settings": {
             "title": "Craftsmanship",
-            "content": "<h3>Feature title</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
-            "button_label": "",
-            "button_link": "",
+            "content": "<h3>Feature title 4</h3><p>Describe this feature in detail. Explain the value it provides and why customers will love it.</p>",
+            "button_label": "test",
+            "button_link": "#",
             "sec_button_label": "",
             "sec_button_link": ""
           }
@@ -341,6 +352,7 @@
       "block_order": [
         "tab_kHD7xf",
         "tab_RG344z",
+        "tab_8nxYtc",
         "tab_yiii4B"
       ],
       "name": "Tabbed Content",
