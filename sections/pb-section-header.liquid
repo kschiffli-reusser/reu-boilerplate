@@ -5,7 +5,7 @@
 >
   <div class="pb-section-header__inner pb-section-header__inner--{{ section.settings.text_alignment }}">
     {%- if section.settings.above_line != blank -%}
-      <p class="pb-section-header__eyebrow">{{ section.settings.above_line }}</p>
+      <p class="pb-section-header__above-headline">{{ section.settings.above_line }}</p>
     {%- endif -%}
 
     {%- if section.settings.heading != blank -%}
@@ -36,15 +36,6 @@
   .pb-section-header__inner--right {
     margin-inline-start: auto;
     text-align: right;
-  }
-
-  .pb-section-header__eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin: 0 0 0.75rem;
   }
 
   .pb-section-header__heading {

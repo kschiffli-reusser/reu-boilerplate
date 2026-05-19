@@ -8,3 +8,13 @@
 
   --pb-narrow-content: 860px;
 }
+
+[class*="__above-headline"] {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+}

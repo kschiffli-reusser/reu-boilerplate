@@ -6,7 +6,7 @@
   {{ block.shopify_attributes }}
 >
   {%- if block_settings.above_line != blank -%}
-    <p class="pb-block-section-header__eyebrow">{{ block_settings.above_line }}</p>
+    <p class="pb-block-section-header__above-headline">{{ block_settings.above_line }}</p>
   {%- endif -%}
   {%- if block_settings.heading != blank -%}
     <h2 class="pb-block-section-header__heading">{{ block_settings.heading }}</h2>
@@ -31,15 +31,6 @@
 
   .pb-block-section-header--right {
     text-align: right;
-  }
-
-  .pb-block-section-header__eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin: 0 0 0.75rem;
   }
 
   .pb-block-section-header__heading {

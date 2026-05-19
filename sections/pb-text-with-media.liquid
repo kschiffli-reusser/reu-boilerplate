@@ -19,7 +19,7 @@
   <div class="pb-text-with-media__inner">
     <div class="pb-text-with-media__text">
       {%- if section.settings.above_line != blank -%}
-        <p class="pb-text-with-media__eyebrow">{{ section.settings.above_line }}</p>
+        <p class="pb-text-with-media__above-headline">{{ section.settings.above_line }}</p>
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
@@ -87,16 +87,6 @@
     .pb-text-with-media--media-left .pb-text-with-media__media {
       order: 1;
     }
-  }
-
-  .pb-text-with-media__eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
-    margin-top: 0;
   }
 
   .pb-text-with-media__heading {

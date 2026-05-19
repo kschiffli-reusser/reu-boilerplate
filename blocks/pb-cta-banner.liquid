@@ -33,7 +33,7 @@
 
   <div class="pb-block-cta-banner__content">
     {%- if block_settings.above_line != blank -%}
-      <p class="pb-block-cta-banner__eyebrow">{{ block_settings.above_line }}</p>
+      <p class="pb-block-cta-banner__above-headline">{{ block_settings.above_line }}</p>
     {%- endif -%}
 
     {%- if block_settings.heading != blank -%}
@@ -108,15 +108,6 @@
   .pb-block-cta-banner--right .pb-block-cta-banner__content {
     margin-inline-start: auto;
     text-align: right;
-  }
-
-  .pb-block-cta-banner__eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin: 0 0 0.75rem;
   }
 
   .pb-block-cta-banner__heading {

@@ -1,7 +1,7 @@
 {%- doc -%}
   Renders a section intro header with above-line label, heading, and body text.
 
-  @param {string} [above_line] - Small eyebrow label above the heading
+  @param {string} [above_line] - Small above-headline label above the heading
   @param {string} [heading] - Main heading text
   @param {string} [body_text] - Supporting paragraph text
   @param {string} [alignment] - Text alignment: left | center | right. Default: center
@@ -14,7 +14,7 @@
 {%- if above_line != blank or heading != blank or body_text != blank -%}
   <div class="pb-section-intro pb-section-intro--{{ text_alignment }}">
     {%- if above_line != blank -%}
-      <p class="pb-section-intro__eyebrow">{{ above_line }}</p>
+      <p class="pb-section-intro__above-headline">{{ above_line }}</p>
     {%- endif -%}
     {%- if heading != blank -%}
       <h2 class="pb-section-intro__heading">{{ heading }}</h2>
@@ -41,16 +41,6 @@
 
   .pb-section-intro--right {
     text-align: right;
-  }
-
-  .pb-section-intro__eyebrow {
-    display: inline-block;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
   }
 
   .pb-section-intro__heading {
