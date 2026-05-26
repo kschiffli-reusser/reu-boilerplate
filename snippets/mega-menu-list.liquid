@@ -165,15 +165,7 @@
       # Check conditions for closing the span at the end of each iteration, then close the span if needed
       assign next_linklist = parent_link.links[forloop.index]
 
-      if forloop.last
-        assign open_column_span = false
-      elsif menu_content_type == 'collection_images'
-        assign open_column_span = false
-      elsif next_linklist.links != blank
-        assign open_column_span = false
-      elsif link.links != blank and next_linklist.links == blank
-        assign open_column_span = false
-      endif
+      assign open_column_span = false
 
       if open_column_span == false
         echo '</li>'
