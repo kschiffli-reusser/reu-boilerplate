@@ -177,6 +177,222 @@
         "padding-block-end": 40
       }
     },
+    "pb_grid_cards_R7w8ed": {
+      "type": "pb-grid-cards",
+      "blocks": {
+        "card_W9PTw8": {
+          "type": "card",
+          "settings": {
+            "heading": "Quality materials",
+            "body": "We source only the finest materials from trusted suppliers around the world.",
+            "alignment": "left",
+            "card_bg": "",
+            "card_heading": "",
+            "card_body": ""
+          }
+        },
+        "card_bcztzn": {
+          "type": "card",
+          "settings": {
+            "heading": "Expert craftsmanship",
+            "body": "Every product is made with care by skilled artisans who take pride in their work.",
+            "alignment": "left",
+            "card_bg": "",
+            "card_heading": "",
+            "card_body": ""
+          }
+        },
+        "card_bC8mJH": {
+          "type": "card",
+          "settings": {
+            "heading": "100% satisfaction",
+            "body": "Not happy? We'll make it right. Our commitment to you doesn't end at checkout.",
+            "alignment": "left",
+            "card_bg": "",
+            "card_heading": "",
+            "card_body": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_W9PTw8",
+        "card_bcztzn",
+        "card_bC8mJH"
+      ],
+      "name": "Grid Cards",
+      "settings": {
+        "above_line": "What we offer",
+        "heading": "Why choose us",
+        "body_text": "Here's what makes us stand out from the rest.",
+        "columns": 3,
+        "color_scheme": "",
+        "padding-block-start": 60,
+        "padding-block-end": 60
+      }
+    },
+    "collection_list_JbxQYc": {
+      "type": "collection-list",
+      "blocks": {
+        "group_jPN64i": {
+          "type": "group",
+          "name": "t:names.header",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_kMjHLb": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h3>Shop by collection</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 16,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_kMjHLb"
+          ]
+        },
+        "static-collection-card": {
+          "type": "_collection-card",
+          "name": "t:names.collection_card",
+          "static": true,
+          "settings": {
+            "placement": "below_image",
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "collection_card_gap": 8,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0
+          },
+          "blocks": {
+            "collection_title_CCAdnf": {
+              "type": "collection-title",
+              "name": "t:names.collection_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "name": "t:names.collection_card_image",
+              "static": true,
+              "settings": {
+                "image_ratio": "adapt",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collection_title_CCAdnf"
+          ]
+        }
+      },
+      "block_order": [
+        "group_jPN64i"
+      ],
+      "name": "t:names.collections_carousel",
+      "settings": {
+        "collection_list": [],
+        "layout_type": "carousel",
+        "carousel_on_mobile": false,
+        "columns": 3,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "bento_gap": 8,
+        "rows_gap": 8,
+        "max_collections": 4,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 12,
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "pb_call_to_action_ir8Kjy": {
       "type": "pb-call-to-action",
       "blocks": {
@@ -240,59 +456,6 @@
         "color_scheme": "scheme-6",
         "padding-block-start": 52,
         "padding-block-end": 52
-      }
-    },
-    "pb_grid_cards_R7w8ed": {
-      "type": "pb-grid-cards",
-      "blocks": {
-        "card_W9PTw8": {
-          "type": "card",
-          "settings": {
-            "heading": "Quality materials",
-            "body": "We source only the finest materials from trusted suppliers around the world.",
-            "alignment": "left",
-            "card_bg": "",
-            "card_heading": "",
-            "card_body": ""
-          }
-        },
-        "card_bcztzn": {
-          "type": "card",
-          "settings": {
-            "heading": "Expert craftsmanship",
-            "body": "Every product is made with care by skilled artisans who take pride in their work.",
-            "alignment": "left",
-            "card_bg": "",
-            "card_heading": "",
-            "card_body": ""
-          }
-        },
-        "card_bC8mJH": {
-          "type": "card",
-          "settings": {
-            "heading": "100% satisfaction",
-            "body": "Not happy? We'll make it right. Our commitment to you doesn't end at checkout.",
-            "alignment": "left",
-            "card_bg": "",
-            "card_heading": "",
-            "card_body": ""
-          }
-        }
-      },
-      "block_order": [
-        "card_W9PTw8",
-        "card_bcztzn",
-        "card_bC8mJH"
-      ],
-      "name": "Grid Cards",
-      "settings": {
-        "above_line": "What we offer",
-        "heading": "Why choose us",
-        "body_text": "Here's what makes us stand out from the rest.",
-        "columns": 3,
-        "color_scheme": "",
-        "padding-block-start": 60,
-        "padding-block-end": 60
       }
     },
     "pb_image_with_stats_mhGKif": {
@@ -610,9 +773,10 @@
   },
   "order": [
     "hero_m83QPT",
+    "pb_grid_cards_R7w8ed",
+    "collection_list_JbxQYc",
     "pb_call_to_action_ir8Kjy",
     "pb_cta_banner",
-    "pb_grid_cards_R7w8ed",
     "pb_image_with_stats_mhGKif",
     "pb_section_header_gXEMJi",
     "pb_stats_9BMn3h",
