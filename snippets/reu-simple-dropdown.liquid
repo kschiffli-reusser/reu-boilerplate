@@ -1,14 +1,27 @@
 {% stylesheet %}
+  /*
+    Override Horizon's full-width submenu behavior.
+    The existing .menu-list__submenu is position:absolute relative to a high ancestor
+    with width:100%, left:0, and clip-path that creates the full-width background.
+    Adding position:relative to the <li> changes the containing block to the list item,
+    then we reset width, top, clip-path, and padding to make a standard narrow dropdown.
+  */
   .menu-list__list-item--simple-dropdown {
     position: relative;
   }
 
-  .menu-list__list-item--simple-dropdown .menu-list__submenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
+  .menu-list__list-item--simple-dropdown > .menu-list__submenu {
     width: auto;
-    inset-inline: unset;
+    top: 100%;
+    clip-path: none;
+    padding-inline: 0;
+  }
+
+  .menu-list__list-item--simple-dropdown .menu-list__submenu-inner {
+    padding-block-start: 0;
+    padding-block-end: 0;
+    padding-inline: 0;
+    transform: none;
   }
 
   .reu-simple-dropdown {
