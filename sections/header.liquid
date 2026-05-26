@@ -400,7 +400,6 @@
       {{ navigation_bar }}
     </div>
   {% endif %}
-  <div hidden>{%- content_for 'blocks' -%}</div>
 </header-component>
 
 <script
@@ -1649,21 +1648,6 @@
       ],
       "default": "default",
       "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "reu_mega_menu",
-      "name": "Mega Menu",
-      "limit": 12,
-      "settings": [
-        {
-          "type": "text",
-          "id": "nav_item_title",
-          "label": "Navigation item title",
-          "info": "Enter the exact title of the top-level nav item to enable mega menu (e.g. \"Playsets\")"
-        }
-      ]
     }
   ],
   "presets": []

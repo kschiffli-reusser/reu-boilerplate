@@ -85,8 +85,9 @@
     {% capture children %}
       {% for link in block_settings.menu.links %}
         {%- assign is_mega_menu = false -%}
-        {%- for reu_block in section.blocks -%}
-          {%- if reu_block.type == 'reu_mega_menu' and reu_block.settings.nav_item_title == link.title -%}
+        {%- assign mega_menu_titles = block_settings.mega_menu_items | split: "\n" -%}
+        {%- for title in mega_menu_titles -%}
+          {%- if title | strip == link.title -%}
             {%- assign is_mega_menu = true -%}
             {%- break -%}
           {%- endif -%}
@@ -923,6 +924,16 @@
       "id": "drawer_dividers",
       "label": "t:settings.dividers",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Mega menu"
+    },
+    {
+      "type": "textarea",
+      "id": "mega_menu_items",
+      "label": "Mega menu nav items",
+      "info": "Enter one top-level nav item title per line to show a mega menu instead of a dropdown (e.g. Playsets)"
     }
   ]
 }
