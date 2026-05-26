@@ -177,7 +177,7 @@
         <nav
           class="menu-list"
           aria-label="{{ 'accessibility.header_navigation_label' | t }}"
-          style="{% render 'menu-font-styles', settings: block_settings, menu_type: 'mega_menu' %}"
+          style="{% render 'menu-font-styles', settings: block_settings, menu_type: 'mega_menu' %}{% if block_settings.nav_item_padding != blank %} --nav-item-padding: {{ block_settings.nav_item_padding }}px;{% endif %}"
         >
           {% assign class = 'overflow-menu' | append: color_scheme_classes %}
           {% render 'overflow-list',
@@ -330,7 +330,7 @@
   }
 
   .menu-list__link-title {
-    padding-inline: calc(var(--gap-xl) / 2);
+    padding-inline: var(--nav-item-padding, calc(var(--gap-xl) / 2));
   }
   [slot='overflow'] .menu-list__link-title {
     padding-inline: 0;
@@ -938,6 +938,20 @@
       "id": "mega_menu_items",
       "label": "Mega menu items",
       "info": "One nav item title per line to enable mega menu (e.g. Playsets)"
+    },
+    {
+      "type": "header",
+      "content": "Desktop nav spacing"
+    },
+    {
+      "type": "range",
+      "id": "nav_item_padding",
+      "label": "Item horizontal padding",
+      "min": 4,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
     }
   ]
 }
