@@ -1,7 +1,7 @@
 {%- assign block_settings = block.settings -%}
 
-<div class="pb-block-step" {{ block.shopify_attributes }}>
-  <div class="pb-block-step__badge" aria-hidden="true">
+<div class="reu-block-step" {{ block.shopify_attributes }}>
+  <div class="reu-block-step__badge" aria-hidden="true">
     <svg viewBox="0 0 100 115" width="52" height="60">
       <polygon points="50,4 96,28 96,88 50,112 4,88 4,28" fill="var(--color-primary)" />
       <text
@@ -16,16 +16,16 @@
   </div>
 
   {%- if block_settings.headline != blank -%}
-    <h3 class="pb-block-step__headline">{{ block_settings.headline }}</h3>
+    <h3 class="reu-block-step__headline">{{ block_settings.headline }}</h3>
   {%- endif -%}
 
   {%- if block_settings.description != blank -%}
-    <p class="pb-block-step__description">{{ block_settings.description }}</p>
+    <p class="reu-block-step__description">{{ block_settings.description }}</p>
   {%- endif -%}
 </div>
 
 {% stylesheet %}
-  .pb-block-step {
+  .reu-block-step {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,24 +33,24 @@
     padding: 0 1rem;
   }
 
-  .pb-block-step__badge {
+  .reu-block-step__badge {
     margin-bottom: 1.25rem;
     flex-shrink: 0;
   }
 
-  .pb-block-step__badge svg {
+  .reu-block-step__badge svg {
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
   }
 
-  .pb-block-step__headline {
+  .reu-block-step__headline {
     font-size: 1.0625rem;
     font-weight: 700;
     color: var(--color-foreground-heading);
     margin: 0 0 0.5rem;
   }
 
-  .pb-block-step__description {
+  .reu-block-step__description {
     font-size: 0.9375rem;
     color: var(--color-foreground);
     line-height: 1.6;

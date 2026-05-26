@@ -25,21 +25,21 @@
 -%}
 
 <div
-  class="pb-block-banner-alert"
+  class="reu-block-banner-alert"
   role="alert"
   style="border-color: {{ border_color }}; background-color: {{ bg_color }}; color: {{ text_color }};"
   {{ block.shopify_attributes }}
 >
-  <svg class="pb-block-banner-alert__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+  <svg class="reu-block-banner-alert__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ icon_path }}" />
   </svg>
   {%- if block_settings.content != blank -%}
-    <div class="pb-block-banner-alert__content rte">{{ block_settings.content }}</div>
+    <div class="reu-block-banner-alert__content rte">{{ block_settings.content }}</div>
   {%- endif -%}
 </div>
 
 {% stylesheet %}
-  .pb-block-banner-alert {
+  .reu-block-banner-alert {
     display: flex;
     align-items: flex-start;
     gap: 0.875rem;
@@ -50,24 +50,24 @@
     width: 100%;
   }
 
-  .pb-block-banner-alert__icon {
+  .reu-block-banner-alert__icon {
     width: 1.25rem;
     height: 1.25rem;
     flex-shrink: 0;
     margin-top: 0.125rem;
   }
 
-  .pb-block-banner-alert__content {
+  .reu-block-banner-alert__content {
     font-size: 0.9375rem;
     line-height: 1.6;
     flex: 1;
   }
 
-  .pb-block-banner-alert__content p {
+  .reu-block-banner-alert__content p {
     margin: 0;
   }
 
-  .pb-block-banner-alert__content p + p {
+  .reu-block-banner-alert__content p + p {
     margin-top: 0.5rem;
   }
 {% endstylesheet %}

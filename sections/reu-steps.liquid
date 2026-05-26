@@ -1,10 +1,10 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-steps"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-steps"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-steps__inner">
-    {%- render 'pb-section-intro',
+  <div class="reu-steps__inner">
+    {%- render 'reu-section-intro',
       above_line: section.settings.above_line,
       heading: section.settings.heading,
       body_text: section.settings.body_text,
@@ -12,15 +12,15 @@
     -%}
 
     {%- if section.blocks.size > 0 -%}
-      <ol class="pb-steps__list" style="--pb-steps-count: {{ section.blocks.size }};">
+      <ol class="reu-steps__list" style="--reu-steps-count: {{ section.blocks.size }};">
         {%- for block in section.blocks -%}
           {%- if block.type == 'step' -%}
-            <li class="pb-steps__item" style="{%- if block.settings.badge_color != blank -%}--pb-badge-color:{{ block.settings.badge_color }};{%- endif -%}" {{ block.shopify_attributes }}>
-              <div class="pb-steps__badge" aria-hidden="true">
+            <li class="reu-steps__item" style="{%- if block.settings.badge_color != blank -%}--reu-badge-color:{{ block.settings.badge_color }};{%- endif -%}" {{ block.shopify_attributes }}>
+              <div class="reu-steps__badge" aria-hidden="true">
                 <svg viewBox="0 0 100 115" width="52" height="60">
                   <polygon
                     points="50,4 96,28 96,88 50,112 4,88 4,28"
-                    fill="var(--pb-badge-color, var(--color-primary))"
+                    fill="var(--reu-badge-color, var(--color-primary))"
                   />
                   <text
                     x="50"
@@ -29,15 +29,15 @@
                     dominant-baseline="central"
                     font-size="40"
                     font-weight="700"
-                    fill="var(--pb-badge-text, var(--color-primary-button-text, #fff))"
+                    fill="var(--reu-badge-text, var(--color-primary-button-text, #fff))"
                   >{{ forloop.index }}</text>
                 </svg>
               </div>
               {%- if block.settings.headline != blank -%}
-                <h3 class="pb-steps__headline">{{ block.settings.headline }}</h3>
+                <h3 class="reu-steps__headline">{{ block.settings.headline }}</h3>
               {%- endif -%}
               {%- if block.settings.description != blank -%}
-                <p class="pb-steps__description">{{ block.settings.description }}</p>
+                <p class="reu-steps__description">{{ block.settings.description }}</p>
               {%- endif -%}
             </li>
           {%- endif -%}
@@ -48,11 +48,11 @@
 </div>
 
 {% stylesheet %}
-  .pb-steps__inner {
+  .reu-steps__inner {
     width: 100%;
   }
 
-  .pb-steps__list {
+  .reu-steps__list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -63,13 +63,13 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-steps__list {
-      grid-template-columns: repeat(var(--pb-steps-count, 3), 1fr);
+    .reu-steps__list {
+      grid-template-columns: repeat(var(--reu-steps-count, 3), 1fr);
       gap: 0;
     }
   }
 
-  .pb-steps__item {
+  .reu-steps__item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,7 +79,7 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-steps__item:not(:last-child)::after {
+    .reu-steps__item:not(:last-child)::after {
       content: '';
       position: absolute;
       top: 1.875rem;
@@ -95,26 +95,26 @@
     }
   }
 
-  .pb-steps__badge {
+  .reu-steps__badge {
     position: relative;
     z-index: 1;
     margin-bottom: 1.25rem;
     flex-shrink: 0;
   }
 
-  .pb-steps__badge svg {
+  .reu-steps__badge svg {
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
   }
 
-  .pb-steps__headline {
+  .reu-steps__headline {
     font-size: 1.0625rem;
     font-weight: 700;
     color: var(--color-foreground-heading);
     margin: 0 0 0.5rem;
   }
 
-  .pb-steps__description {
+  .reu-steps__description {
     font-size: 0.9375rem;
     color: var(--color-foreground);
     line-height: 1.6;

@@ -12,12 +12,12 @@ When using this as a boilerplate for a new client, work through these steps in o
 
 Update the two files that control color across the theme:
 
-**`assets/pb-brand.css`** — Set the client's primary brand color for card accents and the testimonial sidebar. These are intentionally hardcoded here (not scheme-driven) so they stay consistent across all color schemes:
+**`assets/reu-brand.css`** — Set the client's primary brand color for card accents and the testimonial sidebar. These are intentionally hardcoded here (not scheme-driven) so they stay consistent across all color schemes:
 
 ```css
 :root {
-  --pb-card-accent: #801425;   /* ← primary brand color */
-  --pb-sidebar-bg: #801425;    /* ← usually same as above */
+  --reu-card-accent: #801425;   /* ← primary brand color */
+  --reu-sidebar-bg: #801425;    /* ← usually same as above */
 }
 ```
 
@@ -52,23 +52,23 @@ shopify theme dev
 
 ## Custom Sections
 
-All custom sections are prefixed `pb-` and appear under the **★ Custom Sections** category in the Shopify theme editor section picker.
+All custom sections are prefixed `reu-` and appear under the **★ Custom Sections** category in the Shopify theme editor section picker.
 
 | Section | File |
 |---------|------|
-| Banner Alert | `sections/pb-banner-alert.liquid` |
-| Call to Action | `sections/pb-call-to-action.liquid` |
-| CTA Banner | `sections/pb-cta-banner.liquid` |
-| Grid Cards | `sections/pb-grid-cards.liquid` |
-| Image with Stats | `sections/pb-image-with-stats.liquid` |
-| Section Header | `sections/pb-section-header.liquid` |
-| Stats | `sections/pb-stats.liquid` |
-| Steps | `sections/pb-steps.liquid` |
-| Tabbed Content | `sections/pb-tabbed-content.liquid` |
-| Testimonial | `sections/pb-testimonial.liquid` |
-| Text Columns | `sections/pb-text-columns.liquid` |
-| Text with Media | `sections/pb-text-with-media.liquid` |
-| Video Embed | `sections/pb-video-embed.liquid` |
+| Banner Alert | `sections/reu-banner-alert.liquid` |
+| Call to Action | `sections/reu-call-to-action.liquid` |
+| CTA Banner | `sections/reu-cta-banner.liquid` |
+| Grid Cards | `sections/reu-grid-cards.liquid` |
+| Image with Stats | `sections/reu-image-with-stats.liquid` |
+| Section Header | `sections/reu-section-header.liquid` |
+| Stats | `sections/reu-stats.liquid` |
+| Steps | `sections/reu-steps.liquid` |
+| Tabbed Content | `sections/reu-tabbed-content.liquid` |
+| Testimonial | `sections/reu-testimonial.liquid` |
+| Text Columns | `sections/reu-text-columns.liquid` |
+| Text with Media | `sections/reu-text-with-media.liquid` |
+| Video Embed | `sections/reu-video-embed.liquid` |
 
 To add a new custom section, set its preset `"category"` to `"★ Custom Sections"` in the `{% schema %}` block.
 
@@ -76,20 +76,20 @@ To add a new custom section, set its preset `"category"` to `"★ Custom Section
 
 ## Brand Colors
 
-Source of truth for brand colors. When the palette changes, update the table below, apply the changes to `config/settings_data.json` color schemes, and update the hardcoded hex values in `assets/pb-brand.css`.
+Source of truth for brand colors. When the palette changes, update the table below, apply the changes to `config/settings_data.json` color schemes, and update the hardcoded hex values in `assets/reu-brand.css`.
 
 ### CSS variable layer
 
-`assets/pb-brand.css` defines `--pb-*` custom properties used by all `pb-*` card sections. Most variables default to the active color scheme, but accent colors are brand-fixed:
+`assets/reu-brand.css` defines `--reu-*` custom properties used by all `reu-*` card sections. Most variables default to the active color scheme, but accent colors are brand-fixed:
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `--pb-card-bg` | `var(--color-background)` | Card background |
-| `--pb-card-border` | `var(--color-border)` | Card border |
-| `--pb-card-heading` | `var(--color-foreground-heading)` | Card heading text |
-| `--pb-card-body` | `var(--color-foreground)` | Card body text |
-| `--pb-card-accent` | `#801425` | Stat values, quote marks, border highlights |
-| `--pb-sidebar-bg` | `#801425` | Testimonial sidebar background |
+| `--reu-card-bg` | `var(--color-background)` | Card background |
+| `--reu-card-border` | `var(--color-border)` | Card border |
+| `--reu-card-heading` | `var(--color-foreground-heading)` | Card heading text |
+| `--reu-card-body` | `var(--color-foreground)` | Card body text |
+| `--reu-card-accent` | `#801425` | Stat values, quote marks, border highlights |
+| `--reu-sidebar-bg` | `#801425` | Testimonial sidebar background |
 
 These can be overridden per-block or per-section via color pickers in the theme editor.
 

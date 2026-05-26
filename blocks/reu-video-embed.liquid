@@ -15,9 +15,9 @@
   endif
 -%}
 
-<div class="pb-block-video-embed" {{ block.shopify_attributes }}>
+<div class="reu-block-video-embed" {{ block.shopify_attributes }}>
   {%- if embed_url != blank -%}
-    <div class="pb-block-video-embed__frame">
+    <div class="reu-block-video-embed__frame">
       <iframe
         src="{{ embed_url }}"
         title="{{ block_settings.title | default: 'Video' | escape }}"
@@ -28,11 +28,11 @@
       ></iframe>
     </div>
   {%- elsif video_url != blank -%}
-    <div class="pb-block-video-embed__error">
+    <div class="reu-block-video-embed__error">
       <p>Unable to embed video. Please use a YouTube or Vimeo URL.</p>
     </div>
   {%- else -%}
-    <div class="pb-block-video-embed__placeholder">
+    <div class="reu-block-video-embed__placeholder">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd" />
       </svg>
@@ -42,11 +42,11 @@
 </div>
 
 {% stylesheet %}
-  .pb-block-video-embed {
+  .reu-block-video-embed {
     width: 100%;
   }
 
-  .pb-block-video-embed__frame {
+  .reu-block-video-embed__frame {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
@@ -55,7 +55,7 @@
     background-color: #000;
   }
 
-  .pb-block-video-embed__frame iframe {
+  .reu-block-video-embed__frame iframe {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -63,8 +63,8 @@
     border: none;
   }
 
-  .pb-block-video-embed__error,
-  .pb-block-video-embed__placeholder {
+  .reu-block-video-embed__error,
+  .reu-block-video-embed__placeholder {
     aspect-ratio: 16 / 9;
     display: flex;
     flex-direction: column;
@@ -77,13 +77,13 @@
     opacity: 0.6;
   }
 
-  .pb-block-video-embed__placeholder svg {
+  .reu-block-video-embed__placeholder svg {
     width: 3rem;
     height: 3rem;
   }
 
-  .pb-block-video-embed__placeholder p,
-  .pb-block-video-embed__error p {
+  .reu-block-video-embed__placeholder p,
+  .reu-block-video-embed__error p {
     font-size: 0.9375rem;
     margin: 0;
   }

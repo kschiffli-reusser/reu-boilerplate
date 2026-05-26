@@ -12,38 +12,38 @@
 -%}
 
 {%- if above_line != blank or heading != blank or body_text != blank -%}
-  <div class="pb-section-intro pb-section-intro--{{ text_alignment }}">
+  <div class="reu-section-intro reu-section-intro--{{ text_alignment }}">
     {%- if above_line != blank -%}
-      <p class="pb-section-intro__above-headline">{{ above_line }}</p>
+      <p class="reu-section-intro__above-headline">{{ above_line }}</p>
     {%- endif -%}
     {%- if heading != blank -%}
-      <h2 class="pb-section-intro__heading">{{ heading }}</h2>
+      <h2 class="reu-section-intro__heading">{{ heading }}</h2>
     {%- endif -%}
     {%- if body_text != blank -%}
-      <p class="pb-section-intro__body">{{ body_text }}</p>
+      <p class="reu-section-intro__body">{{ body_text }}</p>
     {%- endif -%}
   </div>
 {%- endif -%}
 
 {% stylesheet %}
-  .pb-section-intro {
+  .reu-section-intro {
     margin-bottom: 3rem;
     width: 100%;
   }
 
-  .pb-section-intro--center {
+  .reu-section-intro--center {
     text-align: center;
   }
 
-  .pb-section-intro--left {
+  .reu-section-intro--left {
     text-align: left;
   }
 
-  .pb-section-intro--right {
+  .reu-section-intro--right {
     text-align: right;
   }
 
-  .pb-section-intro__heading {
+  .reu-section-intro__heading {
     font-size: clamp(1.75rem, 3vw, 2.75rem);
     font-weight: 700;
     color: var(--color-foreground-heading);
@@ -52,7 +52,7 @@
     margin-top: 0;
   }
 
-  .pb-section-intro__body {
+  .reu-section-intro__body {
     font-size: 1.0625rem;
     color: var(--color-foreground);
     line-height: 1.65;
@@ -60,11 +60,11 @@
     margin-top: 0;
   }
 
-  .pb-section-intro--center .pb-section-intro__body {
+  .reu-section-intro--center .reu-section-intro__body {
     margin-inline: auto;
   }
 
-  .pb-section-intro--right .pb-section-intro__body {
+  .reu-section-intro--right .reu-section-intro__body {
     margin-inline-start: auto;
   }
 {% endstylesheet %}

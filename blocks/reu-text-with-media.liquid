@@ -4,21 +4,21 @@
 -%}
 
 <div
-  class="pb-block-twm pb-block-twm--{{ media_position }}"
+  class="reu-block-twm reu-block-twm--{{ media_position }}"
   {{ block.shopify_attributes }}
 >
-  <div class="pb-block-twm__text">
+  <div class="reu-block-twm__text">
     {%- if block_settings.above_line != blank -%}
-      <p class="pb-block-twm__above-headline">{{ block_settings.above_line }}</p>
+      <p class="reu-block-twm__above-headline">{{ block_settings.above_line }}</p>
     {%- endif -%}
     {%- if block_settings.heading != blank -%}
-      <h2 class="pb-block-twm__heading">{{ block_settings.heading }}</h2>
+      <h2 class="reu-block-twm__heading">{{ block_settings.heading }}</h2>
     {%- endif -%}
     {%- if block_settings.richtext != blank -%}
-      <div class="pb-block-twm__richtext rte">{{ block_settings.richtext }}</div>
+      <div class="reu-block-twm__richtext rte">{{ block_settings.richtext }}</div>
     {%- endif -%}
     {%- if block_settings.button_label != blank -%}
-      <div class="pb-block-twm__button-wrap">
+      <div class="reu-block-twm__button-wrap">
         <a
           {% if block_settings.button_link != blank %}href="{{ block_settings.button_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
           class="{{ block_settings.button_style }}"
@@ -27,7 +27,7 @@
     {%- endif -%}
   </div>
 
-  <div class="pb-block-twm__media{% if block_settings.smaller_image %} pb-block-twm__media--small{% endif %}">
+  <div class="reu-block-twm__media{% if block_settings.smaller_image %} reu-block-twm__media--small{% endif %}">
     {%- if block_settings.image != blank -%}
       <img
         src="{{ block_settings.image | image_url: width: 900 }}"
@@ -42,13 +42,13 @@
         height="{{ block_settings.image.height }}"
       >
     {%- else -%}
-      {{ 'image' | placeholder_svg_tag: 'pb-block-twm__placeholder' }}
+      {{ 'image' | placeholder_svg_tag: 'reu-block-twm__placeholder' }}
     {%- endif -%}
   </div>
 </div>
 
 {% stylesheet %}
-  .pb-block-twm {
+  .reu-block-twm {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -57,15 +57,15 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-block-twm {
+    .reu-block-twm {
       grid-template-columns: 1fr 1fr;
     }
 
-    .pb-block-twm--left .pb-block-twm__text { order: 2; }
-    .pb-block-twm--left .pb-block-twm__media { order: 1; }
+    .reu-block-twm--left .reu-block-twm__text { order: 2; }
+    .reu-block-twm--left .reu-block-twm__media { order: 1; }
   }
 
-  .pb-block-twm__heading {
+  .reu-block-twm__heading {
     font-size: clamp(1.5rem, 2.5vw, 2.25rem);
     font-weight: 700;
     color: var(--color-foreground-heading);
@@ -73,25 +73,25 @@
     margin: 0 0 1.25rem;
   }
 
-  .pb-block-twm__richtext {
+  .reu-block-twm__richtext {
     color: var(--color-foreground);
     line-height: 1.65;
     margin-bottom: 1rem;
   }
 
-  .pb-block-twm__button-wrap {
+  .reu-block-twm__button-wrap {
     margin-top: 1.5rem;
   }
 
-  .pb-block-twm__media img,
-  .pb-block-twm__media svg {
+  .reu-block-twm__media img,
+  .reu-block-twm__media svg {
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
     display: block;
   }
 
-  .pb-block-twm__media--small {
+  .reu-block-twm__media--small {
     max-width: 400px;
     margin-inline: auto;
   }

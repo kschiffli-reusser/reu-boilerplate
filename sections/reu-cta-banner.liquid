@@ -1,10 +1,10 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--full-width color-{{ section.settings.color_scheme }} spacing-style pb-cta-banner"
+  class="section section--full-width color-{{ section.settings.color_scheme }} spacing-style reu-cta-banner"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
   {%- if section.settings.background_image != blank -%}
-    <div class="pb-cta-banner__bg" aria-hidden="true">
+    <div class="reu-cta-banner__bg" aria-hidden="true">
       <img
         src="{{ section.settings.background_image | image_url: width: 2000 }}"
         srcset="
@@ -23,13 +23,13 @@
   {%- endif -%}
 
   <div
-    class="pb-cta-banner__overlay"
+    class="reu-cta-banner__overlay"
     aria-hidden="true"
     style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
   ></div>
 
-  <div class="pb-cta-banner__content pb-cta-banner__content--{{ section.settings.text_alignment }}">
-    {%- render 'pb-section-intro',
+  <div class="reu-cta-banner__content reu-cta-banner__content--{{ section.settings.text_alignment }}">
+    {%- render 'reu-section-intro',
       above_line: section.settings.above_line,
       heading: section.settings.heading,
       body_text: section.settings.body_text,
@@ -37,7 +37,7 @@
     -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="pb-cta-banner__buttons">
+      <div class="reu-cta-banner__buttons">
         {%- for block in section.blocks -%}
           {%- if block.type == 'button' -%}
             <a
@@ -60,32 +60,32 @@
 </div>
 
 {% stylesheet %}
-  .pb-cta-banner {
+  .reu-cta-banner {
     position: relative;
     overflow: hidden;
   }
 
-  .pb-cta-banner__bg {
+  .reu-cta-banner__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
 
-  .pb-cta-banner__bg img {
+  .reu-cta-banner__bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
 
-  .pb-cta-banner__overlay {
+  .reu-cta-banner__overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background-color: var(--color-background);
   }
 
-  .pb-cta-banner__content {
+  .reu-cta-banner__content {
     position: relative;
     z-index: 2;
     max-width: var(--page-width, 120rem);
@@ -95,30 +95,30 @@
     width: 100%;
   }
 
-  .pb-cta-banner__content--center {
+  .reu-cta-banner__content--center {
     text-align: center;
   }
 
-  .pb-cta-banner__content--left {
+  .reu-cta-banner__content--left {
     text-align: left;
   }
 
-  .pb-cta-banner__content--right {
+  .reu-cta-banner__content--right {
     text-align: right;
   }
 
-  .pb-cta-banner__buttons {
+  .reu-cta-banner__buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 2rem;
   }
 
-  .pb-cta-banner__content--center .pb-cta-banner__buttons {
+  .reu-cta-banner__content--center .reu-cta-banner__buttons {
     justify-content: center;
   }
 
-  .pb-cta-banner__content--right .pb-cta-banner__buttons {
+  .reu-cta-banner__content--right .reu-cta-banner__buttons {
     justify-content: flex-end;
   }
 {% endstylesheet %}

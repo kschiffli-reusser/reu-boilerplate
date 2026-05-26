@@ -177,8 +177,8 @@
         "padding-block-end": 40
       }
     },
-    "pb_cta_banner": {
-      "type": "pb-cta-banner",
+    "reu_cta_banner": {
+      "type": "reu-cta-banner",
       "blocks": {
         "ctab_btn_1": {
           "type": "button",
@@ -377,8 +377,8 @@
         "padding-block-end": 48
       }
     },
-    "pb_cta_banner_9T3AQa": {
-      "type": "pb-cta-banner",
+    "reu_cta_banner_9T3AQa": {
+      "type": "reu-cta-banner",
       "settings": {
         "above_line": "",
         "heading": "",
@@ -391,8 +391,8 @@
         "padding-block-end": 52
       }
     },
-    "pb_stats_9BMn3h": {
-      "type": "pb-stats",
+    "reu_stats_9BMn3h": {
+      "type": "reu-stats",
       "blocks": {
         "stat_AE6GzG": {
           "type": "stat",
@@ -443,8 +443,8 @@
         "padding-block-end": 60
       }
     },
-    "pb_text_with_media_73BUVY": {
-      "type": "pb-text-with-media",
+    "reu_text_with_media_73BUVY": {
+      "type": "reu-text-with-media",
       "name": "Text with Media",
       "settings": {
         "above_line": "Our story",
@@ -461,8 +461,8 @@
         "padding-block-end": 120
       }
     },
-    "pb_section_header_gXEMJi": {
-      "type": "pb-section-header",
+    "reu_section_header_gXEMJi": {
+      "type": "reu-section-header",
       "name": "Section Header",
       "settings": {
         "above_line": "Featured section",
@@ -474,8 +474,8 @@
         "padding-block-end": 32
       }
     },
-    "pb_text_columns_BhpW6t": {
-      "type": "pb-text-columns",
+    "reu_text_columns_BhpW6t": {
+      "type": "reu-text-columns",
       "blocks": {
         "column_6acmde": {
           "type": "column",
@@ -509,8 +509,8 @@
         "padding-block-end": 60
       }
     },
-    "pb_text_with_media_qLaFNU": {
-      "type": "pb-text-with-media",
+    "reu_text_with_media_qLaFNU": {
+      "type": "reu-text-with-media",
       "name": "Text with Media",
       "settings": {
         "above_line": "Our story",
@@ -530,13 +530,13 @@
   },
   "order": [
     "hero_m83QPT",
-    "pb_cta_banner",
+    "reu_cta_banner",
     "collection_list_JbxQYc",
-    "pb_cta_banner_9T3AQa",
-    "pb_stats_9BMn3h",
-    "pb_text_with_media_73BUVY",
-    "pb_section_header_gXEMJi",
-    "pb_text_columns_BhpW6t",
-    "pb_text_with_media_qLaFNU"
+    "reu_cta_banner_9T3AQa",
+    "reu_stats_9BMn3h",
+    "reu_text_with_media_73BUVY",
+    "reu_section_header_gXEMJi",
+    "reu_text_columns_BhpW6t",
+    "reu_text_with_media_qLaFNU"
   ]
 }

@@ -14,11 +14,11 @@
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-testimonial"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-testimonial"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-testimonial__inner">
-    {%- render 'pb-section-intro',
+  <div class="reu-testimonial__inner">
+    {%- render 'reu-section-intro',
       above_line: section.settings.above_line,
       heading: section.settings.heading,
       body_text: section.settings.body_text,
@@ -26,15 +26,15 @@
     -%}
 
     {%- capture card_style -%}
-      {%- if section.settings.card_bg != blank -%}--pb-card-bg:{{ section.settings.card_bg }};{%- endif -%}
-      {%- if section.settings.sidebar_bg != blank -%}--pb-sidebar-bg:{{ section.settings.sidebar_bg }};{%- endif -%}
-      {%- if section.settings.card_accent != blank -%}--pb-card-accent:{{ section.settings.card_accent }};{%- endif -%}
-      {%- if section.settings.card_body != blank -%}--pb-card-body:{{ section.settings.card_body }};{%- endif -%}
+      {%- if section.settings.card_bg != blank -%}--reu-card-bg:{{ section.settings.card_bg }};{%- endif -%}
+      {%- if section.settings.sidebar_bg != blank -%}--reu-sidebar-bg:{{ section.settings.sidebar_bg }};{%- endif -%}
+      {%- if section.settings.card_accent != blank -%}--reu-card-accent:{{ section.settings.card_accent }};{%- endif -%}
+      {%- if section.settings.card_body != blank -%}--reu-card-body:{{ section.settings.card_body }};{%- endif -%}
     {%- endcapture -%}
-    <div class="pb-testimonial__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
-      <div class="pb-testimonial__sidebar">
+    <div class="reu-testimonial__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
+      <div class="reu-testimonial__sidebar">
         {%- if section.settings.background_image != blank -%}
-          <div class="pb-testimonial__sidebar-bg" aria-hidden="true">
+          <div class="reu-testimonial__sidebar-bg" aria-hidden="true">
             <img
               src="{{ section.settings.background_image | image_url: width: 600 }}"
               alt="{{ section.settings.background_image.alt | escape }}"
@@ -44,8 +44,8 @@
             >
           </div>
         {%- endif -%}
-        <div class="pb-testimonial__sidebar-content">
-          <div class="pb-testimonial__avatar">
+        <div class="reu-testimonial__sidebar-content">
+          <div class="reu-testimonial__avatar">
             {%- if section.settings.avatar_image != blank -%}
               <img
                 src="{{ section.settings.avatar_image | image_url: width: 80 }}"
@@ -55,22 +55,22 @@
                 height="56"
               >
             {%- else -%}
-              <span class="pb-testimonial__initials" aria-hidden="true">{{ initials }}</span>
+              <span class="reu-testimonial__initials" aria-hidden="true">{{ initials }}</span>
             {%- endif -%}
           </div>
           {%- if section.settings.name != blank -%}
-            <p class="pb-testimonial__name">{{ section.settings.name }}</p>
+            <p class="reu-testimonial__name">{{ section.settings.name }}</p>
           {%- endif -%}
           {%- if section.settings.position != blank -%}
-            <p class="pb-testimonial__position">{{ section.settings.position }}</p>
+            <p class="reu-testimonial__position">{{ section.settings.position }}</p>
           {%- endif -%}
         </div>
       </div>
 
-      <div class="pb-testimonial__quote-wrap">
+      <div class="reu-testimonial__quote-wrap">
         {%- if section.settings.quote != blank -%}
-          <blockquote class="pb-testimonial__quote">
-            <span class="pb-testimonial__quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote class="reu-testimonial__quote">
+            <span class="reu-testimonial__quote-mark" aria-hidden="true">&ldquo;</span>
             <p>{{ section.settings.quote }}</p>
           </blockquote>
         {%- endif -%}
@@ -80,11 +80,11 @@
 </div>
 
 {% stylesheet %}
-  .pb-testimonial__inner {
+  .reu-testimonial__inner {
     width: 100%;
   }
 
-  .pb-testimonial__card {
+  .reu-testimonial__card {
     display: grid;
     grid-template-columns: 1fr;
     border: 1px solid var(--color-border);
@@ -93,40 +93,40 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-testimonial__card {
+    .reu-testimonial__card {
       grid-template-columns: 280px 1fr;
     }
   }
 
-  .pb-testimonial__sidebar {
+  .reu-testimonial__sidebar {
     position: relative;
     min-height: 220px;
     display: flex;
     align-items: flex-end;
   }
 
-  .pb-testimonial__sidebar-bg {
+  .reu-testimonial__sidebar-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background-color: var(--pb-sidebar-bg);
+    background-color: var(--reu-sidebar-bg);
   }
 
-  .pb-testimonial__sidebar-bg img {
+  .reu-testimonial__sidebar-bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.5;
   }
 
-  .pb-testimonial__sidebar-content {
+  .reu-testimonial__sidebar-content {
     position: relative;
     z-index: 1;
     padding: 1.5rem;
     color: #fff;
   }
 
-  .pb-testimonial__avatar {
+  .reu-testimonial__avatar {
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
@@ -139,55 +139,55 @@
     margin-bottom: 0.75rem;
   }
 
-  .pb-testimonial__avatar img {
+  .reu-testimonial__avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .pb-testimonial__initials {
+  .reu-testimonial__initials {
     font-weight: 700;
     font-size: 1rem;
     color: #fff;
   }
 
-  .pb-testimonial__name {
+  .reu-testimonial__name {
     font-weight: 700;
     font-size: 0.9375rem;
     margin: 0 0 0.25rem;
     color: #fff;
   }
 
-  .pb-testimonial__position {
+  .reu-testimonial__position {
     font-size: 0.8125rem;
     margin: 0;
     color: rgba(255, 255, 255, 0.75);
   }
 
-  .pb-testimonial__quote-wrap {
+  .reu-testimonial__quote-wrap {
     display: flex;
     align-items: center;
     padding: 2rem 2.5rem;
-    background-color: var(--pb-card-bg);
+    background-color: var(--reu-card-bg);
   }
 
-  .pb-testimonial__quote {
+  .reu-testimonial__quote {
     margin: 0;
   }
 
-  .pb-testimonial__quote-mark {
+  .reu-testimonial__quote-mark {
     display: block;
     font-size: 5rem;
     line-height: 1;
-    color: var(--pb-card-accent);
+    color: var(--reu-card-accent);
     margin-bottom: -1rem;
     font-family: Georgia, serif;
   }
 
-  .pb-testimonial__quote p {
+  .reu-testimonial__quote p {
     font-size: clamp(1rem, 1.5vw, 1.25rem);
     line-height: 1.7;
-    color: var(--pb-card-body);
+    color: var(--reu-card-body);
     margin: 0;
     font-style: italic;
   }

@@ -1,24 +1,24 @@
 {%- assign block_settings = block.settings -%}
 
-<pb-tabs-block class="pb-block-tabs" {{ block.shopify_attributes }}>
-  <div class="pb-block-tabs__nav" role="tablist">
+<reu-tabs-block class="reu-block-tabs" {{ block.shopify_attributes }}>
+  <div class="reu-block-tabs__nav" role="tablist">
     {%- for i in (1..4) -%}
       {%- assign title_key = 'tab_' | append: i | append: '_title' -%}
       {%- assign tab_title = block_settings[title_key] -%}
       {%- if tab_title != blank -%}
         <button
-          class="pb-block-tabs__button"
+          class="reu-block-tabs__button"
           role="tab"
           data-tab-index="{{ i }}"
           aria-selected="{{ forloop.first | json }}"
-          aria-controls="pb-tabs-panel-{{ block.id }}-{{ i }}"
-          id="pb-tabs-btn-{{ block.id }}-{{ i }}"
+          aria-controls="reu-tabs-panel-{{ block.id }}-{{ i }}"
+          id="reu-tabs-btn-{{ block.id }}-{{ i }}"
         >{{ tab_title }}</button>
       {%- endif -%}
     {%- endfor -%}
   </div>
 
-  <div class="pb-block-tabs__panels">
+  <div class="reu-block-tabs__panels">
     {%- for i in (1..4) -%}
       {%- liquid
         assign title_key    = 'tab_' | append: i | append: '_title'
@@ -39,15 +39,15 @@
       -%}
       {%- if tab_title != blank -%}
         <div
-          class="pb-block-tabs__panel"
+          class="reu-block-tabs__panel"
           role="tabpanel"
-          id="pb-tabs-panel-{{ block.id }}-{{ i }}"
-          aria-labelledby="pb-tabs-btn-{{ block.id }}-{{ i }}"
+          id="reu-tabs-panel-{{ block.id }}-{{ i }}"
+          aria-labelledby="reu-tabs-btn-{{ block.id }}-{{ i }}"
           {% unless forloop.first %}hidden{% endunless %}
         >
-          <div class="pb-block-tabs__panel-layout">
+          <div class="reu-block-tabs__panel-layout">
             {%- if tab_image != blank -%}
-              <div class="pb-block-tabs__panel-media">
+              <div class="reu-block-tabs__panel-media">
                 <img
                   src="{{ tab_image | image_url: width: 800 }}"
                   srcset="
@@ -62,12 +62,12 @@
                 >
               </div>
             {%- endif -%}
-            <div class="pb-block-tabs__panel-content">
+            <div class="reu-block-tabs__panel-content">
               {%- if tab_content != blank -%}
-                <div class="pb-block-tabs__panel-richtext rte">{{ tab_content }}</div>
+                <div class="reu-block-tabs__panel-richtext rte">{{ tab_content }}</div>
               {%- endif -%}
               {%- if btn1_label != blank or btn2_label != blank -%}
-                <div class="pb-block-tabs__panel-buttons">
+                <div class="reu-block-tabs__panel-buttons">
                   {%- if btn1_label != blank -%}
                     <a {% if btn1_link != blank %}href="{{ btn1_link }}"{% else %}role="link" aria-disabled="true"{% endif %} class="button">{{ btn1_label }}</a>
                   {%- endif -%}
@@ -82,7 +82,7 @@
       {%- endif -%}
     {%- endfor -%}
   </div>
-</pb-tabs-block>
+</reu-tabs-block>
 
 <script>
   class PbTabsBlock extends HTMLElement {
@@ -96,16 +96,16 @@
       this._panels.forEach((panel, i) => { panel.hidden = i !== index; });
     }
   }
-  if (!customElements.get('pb-tabs-block')) customElements.define('pb-tabs-block', PbTabsBlock);
+  if (!customElements.get('reu-tabs-block')) customElements.define('reu-tabs-block', PbTabsBlock);
 </script>
 
 {% stylesheet %}
-  .pb-block-tabs {
+  .reu-block-tabs {
     display: block;
     width: 100%;
   }
 
-  .pb-block-tabs__nav {
+  .reu-block-tabs__nav {
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem;
@@ -113,7 +113,7 @@
     margin-bottom: 1.75rem;
   }
 
-  .pb-block-tabs__button {
+  .reu-block-tabs__button {
     padding: 0.625rem 1.25rem;
     font-size: 0.9375rem;
     font-weight: 600;
@@ -127,16 +127,16 @@
     white-space: nowrap;
   }
 
-  .pb-block-tabs__button:hover {
+  .reu-block-tabs__button:hover {
     color: var(--color-primary);
   }
 
-  .pb-block-tabs__button[aria-selected="true"] {
+  .reu-block-tabs__button[aria-selected="true"] {
     color: var(--color-primary);
     border-bottom-color: var(--color-primary);
   }
 
-  .pb-block-tabs__panel-layout {
+  .reu-block-tabs__panel-layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -144,24 +144,24 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-block-tabs__panel-layout {
+    .reu-block-tabs__panel-layout {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  .pb-block-tabs__panel-media img {
+  .reu-block-tabs__panel-media img {
     width: 100%;
     height: auto;
     border-radius: 0.75rem;
     display: block;
   }
 
-  .pb-block-tabs__panel-richtext {
+  .reu-block-tabs__panel-richtext {
     color: var(--color-foreground);
     line-height: 1.65;
   }
 
-  .pb-block-tabs__panel-buttons {
+  .reu-block-tabs__panel-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 0.875rem;

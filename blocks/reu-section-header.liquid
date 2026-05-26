@@ -2,38 +2,38 @@
 {%- assign alignment = block_settings.text_alignment | default: 'center' -%}
 
 <div
-  class="pb-block-section-header pb-block-section-header--{{ alignment }}"
+  class="reu-block-section-header reu-block-section-header--{{ alignment }}"
   {{ block.shopify_attributes }}
 >
   {%- if block_settings.above_line != blank -%}
-    <p class="pb-block-section-header__above-headline">{{ block_settings.above_line }}</p>
+    <p class="reu-block-section-header__above-headline">{{ block_settings.above_line }}</p>
   {%- endif -%}
   {%- if block_settings.heading != blank -%}
-    <h2 class="pb-block-section-header__heading">{{ block_settings.heading }}</h2>
+    <h2 class="reu-block-section-header__heading">{{ block_settings.heading }}</h2>
   {%- endif -%}
   {%- if block_settings.body_text != blank -%}
-    <p class="pb-block-section-header__body">{{ block_settings.body_text }}</p>
+    <p class="reu-block-section-header__body">{{ block_settings.body_text }}</p>
   {%- endif -%}
 </div>
 
 {% stylesheet %}
-  .pb-block-section-header {
+  .reu-block-section-header {
     width: 100%;
   }
 
-  .pb-block-section-header--center {
+  .reu-block-section-header--center {
     text-align: center;
   }
 
-  .pb-block-section-header--left {
+  .reu-block-section-header--left {
     text-align: left;
   }
 
-  .pb-block-section-header--right {
+  .reu-block-section-header--right {
     text-align: right;
   }
 
-  .pb-block-section-header__heading {
+  .reu-block-section-header__heading {
     font-size: clamp(1.75rem, 3.5vw, 3rem);
     font-weight: 700;
     color: var(--color-foreground-heading);
@@ -41,7 +41,7 @@
     margin: 0 0 1rem;
   }
 
-  .pb-block-section-header__body {
+  .reu-block-section-header__body {
     font-size: 1.0625rem;
     color: var(--color-foreground);
     line-height: 1.65;
@@ -49,11 +49,11 @@
     margin: 0;
   }
 
-  .pb-block-section-header--center .pb-block-section-header__body {
+  .reu-block-section-header--center .reu-block-section-header__body {
     margin-inline: auto;
   }
 
-  .pb-block-section-header--right .pb-block-section-header__body {
+  .reu-block-section-header--right .reu-block-section-header__body {
     margin-inline-start: auto;
   }
 {% endstylesheet %}

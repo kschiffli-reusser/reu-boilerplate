@@ -1,22 +1,22 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-call-to-action"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-call-to-action"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
   {%- capture card_style -%}
-    {%- if section.settings.card_bg != blank -%}--pb-card-bg:{{ section.settings.card_bg }};{%- endif -%}
-    {%- if section.settings.card_heading != blank -%}--pb-card-heading:{{ section.settings.card_heading }};{%- endif -%}
-    {%- if section.settings.card_body != blank -%}--pb-card-body:{{ section.settings.card_body }};{%- endif -%}
+    {%- if section.settings.card_bg != blank -%}--reu-card-bg:{{ section.settings.card_bg }};{%- endif -%}
+    {%- if section.settings.card_heading != blank -%}--reu-card-heading:{{ section.settings.card_heading }};{%- endif -%}
+    {%- if section.settings.card_body != blank -%}--reu-card-body:{{ section.settings.card_body }};{%- endif -%}
   {%- endcapture -%}
-  <div class="pb-cta__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
-    <div class="pb-cta__text">
+  <div class="reu-cta__card" {% if card_style != blank %}style="{{ card_style }}"{% endif %}>
+    <div class="reu-cta__text">
       {%- if section.settings.richtext != blank -%}
-        <div class="pb-cta__richtext rte">{{ section.settings.richtext }}</div>
+        <div class="reu-cta__richtext rte">{{ section.settings.richtext }}</div>
       {%- endif -%}
     </div>
 
     {%- if section.blocks.size > 0 -%}
-      <div class="pb-cta__buttons">
+      <div class="reu-cta__buttons">
         {%- for block in section.blocks -%}
           {%- if block.type == 'button' -%}
             <a
@@ -39,19 +39,19 @@
 </div>
 
 {% stylesheet %}
-  .pb-cta__card {
+  .reu-cta__card {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     padding: 2rem;
-    border: 1px solid var(--pb-card-border);
+    border: 1px solid var(--reu-card-border);
     border-radius: 0.75rem;
-    background-color: var(--pb-card-bg);
+    background-color: var(--reu-card-bg);
     width: 100%;
   }
 
   @media screen and (min-width: 750px) {
-    .pb-cta__card {
+    .reu-cta__card {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
@@ -59,29 +59,29 @@
     }
   }
 
-  .pb-cta__text {
+  .reu-cta__text {
     flex: 1;
     max-width: 48rem;
   }
 
-  .pb-cta__richtext {
-    color: var(--pb-card-body);
+  .reu-cta__richtext {
+    color: var(--reu-card-body);
     line-height: 1.5;
   }
 
-  .pb-cta__richtext h1,
-  .pb-cta__richtext h2,
-  .pb-cta__richtext h3,
-  .pb-cta__richtext h4 {
-    color: var(--pb-card-heading);
+  .reu-cta__richtext h1,
+  .reu-cta__richtext h2,
+  .reu-cta__richtext h3,
+  .reu-cta__richtext h4 {
+    color: var(--reu-card-heading);
     margin-top: 0;
   }
 
-  .pb-cta__richtext p:last-child {
+  .reu-cta__richtext p:last-child {
     margin-bottom: 0;
   }
 
-  .pb-cta__buttons {
+  .reu-cta__buttons {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -89,7 +89,7 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-cta__buttons {
+    .reu-cta__buttons {
       flex-direction: row;
       align-items: center;
     }

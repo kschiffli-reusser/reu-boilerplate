@@ -1,7 +1,7 @@
 {%- assign block_settings = block.settings -%}
 
-<div class="pb-block-iws" {{ block.shopify_attributes }}>
-  <div class="pb-block-iws__media">
+<div class="reu-block-iws" {{ block.shopify_attributes }}>
+  <div class="reu-block-iws__media">
     {%- if block_settings.image != blank -%}
       <img
         src="{{ block_settings.image | image_url: width: 900 }}"
@@ -16,11 +16,11 @@
         height="{{ block_settings.image.height }}"
       >
     {%- else -%}
-      {{ 'image' | placeholder_svg_tag: 'pb-block-iws__placeholder' }}
+      {{ 'image' | placeholder_svg_tag: 'reu-block-iws__placeholder' }}
     {%- endif -%}
   </div>
 
-  <div class="pb-block-iws__stats">
+  <div class="reu-block-iws__stats">
     {%- for i in (1..5) -%}
       {%- liquid
         assign value_key = 'stat_' | append: i | append: '_value'
@@ -31,16 +31,16 @@
         assign stat_desc = block_settings[desc_key]
       -%}
       {%- if stat_value != blank or stat_headline != blank -%}
-        <div class="pb-block-iws__card">
+        <div class="reu-block-iws__card">
           {%- if stat_value != blank -%}
-            <p class="pb-block-iws__value">{{ stat_value }}</p>
+            <p class="reu-block-iws__value">{{ stat_value }}</p>
           {%- endif -%}
-          <div class="pb-block-iws__card-text">
+          <div class="reu-block-iws__card-text">
             {%- if stat_headline != blank -%}
-              <h4 class="pb-block-iws__headline">{{ stat_headline }}</h4>
+              <h4 class="reu-block-iws__headline">{{ stat_headline }}</h4>
             {%- endif -%}
             {%- if stat_desc != blank -%}
-              <p class="pb-block-iws__desc">{{ stat_desc }}</p>
+              <p class="reu-block-iws__desc">{{ stat_desc }}</p>
             {%- endif -%}
           </div>
         </div>
@@ -50,7 +50,7 @@
 </div>
 
 {% stylesheet %}
-  .pb-block-iws {
+  .reu-block-iws {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -59,31 +59,31 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-block-iws {
+    .reu-block-iws {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  .pb-block-iws__media img,
-  .pb-block-iws__media svg {
+  .reu-block-iws__media img,
+  .reu-block-iws__media svg {
     width: 100%;
     height: auto;
     border-radius: 0.75rem;
     display: block;
   }
 
-  .pb-block-iws__placeholder {
+  .reu-block-iws__placeholder {
     aspect-ratio: 4 / 3;
     background: var(--color-border);
   }
 
-  .pb-block-iws__stats {
+  .reu-block-iws__stats {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .pb-block-iws__card {
+  .reu-block-iws__card {
     display: flex;
     align-items: flex-start;
     gap: 1.125rem;
@@ -93,7 +93,7 @@
     background-color: rgba(var(--color-background-rgb, 255,255,255), 0.5);
   }
 
-  .pb-block-iws__value {
+  .reu-block-iws__value {
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 700;
     color: var(--color-primary);
@@ -103,18 +103,18 @@
     flex-shrink: 0;
   }
 
-  .pb-block-iws__card-text {
+  .reu-block-iws__card-text {
     flex: 1;
   }
 
-  .pb-block-iws__headline {
+  .reu-block-iws__headline {
     font-size: 0.9375rem;
     font-weight: 700;
     color: var(--color-foreground-heading);
     margin: 0 0 0.2rem;
   }
 
-  .pb-block-iws__desc {
+  .reu-block-iws__desc {
     font-size: 0.875rem;
     color: var(--color-foreground);
     line-height: 1.55;

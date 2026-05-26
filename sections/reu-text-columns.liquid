@@ -1,32 +1,32 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-text-columns"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-text-columns"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
   {%- if section.blocks.size > 0 -%}
-    <div class="pb-text-columns__grid">
+    <div class="reu-text-columns__grid">
       {%- for block in section.blocks -%}
         {%- if block.type == 'column' -%}
           {%- liquid
             case block.settings.size
               when 'full'
-                assign col_class = 'pb-text-columns__col--full'
+                assign col_class = 'reu-text-columns__col--full'
               when 'half'
-                assign col_class = 'pb-text-columns__col--half'
+                assign col_class = 'reu-text-columns__col--half'
               when 'oneThird'
-                assign col_class = 'pb-text-columns__col--one-third'
+                assign col_class = 'reu-text-columns__col--one-third'
               when 'twoThirds'
-                assign col_class = 'pb-text-columns__col--two-thirds'
+                assign col_class = 'reu-text-columns__col--two-thirds'
               else
-                assign col_class = 'pb-text-columns__col--full'
+                assign col_class = 'reu-text-columns__col--full'
             endcase
           -%}
-          <div class="pb-text-columns__col {{ col_class }}" {{ block.shopify_attributes }}>
+          <div class="reu-text-columns__col {{ col_class }}" {{ block.shopify_attributes }}>
             {%- if block.settings.richtext != blank -%}
-              <div class="pb-text-columns__richtext rte">{{ block.settings.richtext }}</div>
+              <div class="reu-text-columns__richtext rte">{{ block.settings.richtext }}</div>
             {%- endif -%}
             {%- if block.settings.button_label != blank -%}
-              <div class="pb-text-columns__button-wrap">
+              <div class="reu-text-columns__button-wrap">
                 <a
                   {% if block.settings.button_link != blank %}
                     href="{{ block.settings.button_link }}"
@@ -45,41 +45,41 @@
 </div>
 
 {% stylesheet %}
-  .pb-text-columns__grid {
+  .reu-text-columns__grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
     align-items: start;
   }
 
-  .pb-text-columns__col {
+  .reu-text-columns__col {
     grid-column: span 12;
   }
 
   @media screen and (min-width: 750px) {
-    .pb-text-columns__col--full {
+    .reu-text-columns__col--full {
       grid-column: span 12;
     }
 
-    .pb-text-columns__col--half {
+    .reu-text-columns__col--half {
       grid-column: span 6;
     }
 
-    .pb-text-columns__col--one-third {
+    .reu-text-columns__col--one-third {
       grid-column: span 4;
     }
 
-    .pb-text-columns__col--two-thirds {
+    .reu-text-columns__col--two-thirds {
       grid-column: span 8;
     }
   }
 
-  .pb-text-columns__richtext {
+  .reu-text-columns__richtext {
     color: var(--color-foreground);
     line-height: 1.65;
   }
 
-  .pb-text-columns__button-wrap {
+  .reu-text-columns__button-wrap {
     margin-top: 1.25rem;
   }
 {% endstylesheet %}

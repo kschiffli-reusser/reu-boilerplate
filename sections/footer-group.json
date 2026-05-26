@@ -213,8 +213,8 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "pb_footer_link_list_8hfmhN": {
-                  "type": "pb-footer-link-list",
+                "reu_footer_link_list_8hfmhN": {
+                  "type": "reu-footer-link-list",
                   "name": "PB: Link List",
                   "settings": {
                     "heading": "Our Mission",
@@ -233,8 +233,8 @@
                   },
                   "blocks": {}
                 },
-                "pb_footer_link_list_9TiWHC": {
-                  "type": "pb-footer-link-list",
+                "reu_footer_link_list_9TiWHC": {
+                  "type": "reu-footer-link-list",
                   "name": "PB: Link List",
                   "settings": {
                     "heading": "Our Mission",
@@ -253,8 +253,8 @@
                   },
                   "blocks": {}
                 },
-                "pb_footer_link_list_8hbRC8": {
-                  "type": "pb-footer-link-list",
+                "reu_footer_link_list_8hbRC8": {
+                  "type": "reu-footer-link-list",
                   "name": "PB: Link List",
                   "settings": {
                     "heading": "Our Mission",
@@ -275,9 +275,9 @@
                 }
               },
               "block_order": [
-                "pb_footer_link_list_8hfmhN",
-                "pb_footer_link_list_9TiWHC",
-                "pb_footer_link_list_8hbRC8"
+                "reu_footer_link_list_8hfmhN",
+                "reu_footer_link_list_9TiWHC",
+                "reu_footer_link_list_8hbRC8"
               ]
             },
             "group_9B8WeE": {
@@ -320,8 +320,8 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "pb_footer_social_link_list_4pVyRW": {
-                  "type": "pb-footer-social-link-list",
+                "reu_footer_social_link_list_4pVyRW": {
+                  "type": "reu-footer-social-link-list",
                   "name": "PB: Social Link List",
                   "settings": {
                     "heading": "Follow us",
@@ -342,7 +342,7 @@
                 }
               },
               "block_order": [
-                "pb_footer_social_link_list_4pVyRW"
+                "reu_footer_social_link_list_4pVyRW"
               ]
             }
           },

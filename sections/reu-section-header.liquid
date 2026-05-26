@@ -1,44 +1,44 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-section-header"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-section-header"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-section-header__inner pb-section-header__inner--{{ section.settings.text_alignment }}">
+  <div class="reu-section-header__inner reu-section-header__inner--{{ section.settings.text_alignment }}">
     {%- if section.settings.above_line != blank -%}
-      <p class="pb-section-header__above-headline">{{ section.settings.above_line }}</p>
+      <p class="reu-section-header__above-headline">{{ section.settings.above_line }}</p>
     {%- endif -%}
 
     {%- if section.settings.heading != blank -%}
-      <h2 class="pb-section-header__heading">{{ section.settings.heading }}</h2>
+      <h2 class="reu-section-header__heading">{{ section.settings.heading }}</h2>
     {%- endif -%}
 
     {%- if section.settings.body_text != blank -%}
-      <p class="pb-section-header__body">{{ section.settings.body_text }}</p>
+      <p class="reu-section-header__body">{{ section.settings.body_text }}</p>
     {%- endif -%}
   </div>
 </div>
 
 {% stylesheet %}
-  .pb-section-header__inner {
+  .reu-section-header__inner {
     width: 100%;
     max-width: 54rem;
   }
 
-  .pb-section-header__inner--center {
+  .reu-section-header__inner--center {
     margin-inline: auto;
     text-align: center;
   }
 
-  .pb-section-header__inner--left {
+  .reu-section-header__inner--left {
     text-align: left;
   }
 
-  .pb-section-header__inner--right {
+  .reu-section-header__inner--right {
     margin-inline-start: auto;
     text-align: right;
   }
 
-  .pb-section-header__heading {
+  .reu-section-header__heading {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 700;
     color: var(--color-foreground-heading);
@@ -46,7 +46,7 @@
     margin: 0 0 1.25rem;
   }
 
-  .pb-section-header__body {
+  .reu-section-header__body {
     font-size: 1.0625rem;
     color: var(--color-foreground);
     line-height: 1.65;
@@ -54,11 +54,11 @@
     margin: 0;
   }
 
-  .pb-section-header__inner--center .pb-section-header__body {
+  .reu-section-header__inner--center .reu-section-header__body {
     margin-inline: auto;
   }
 
-  .pb-section-header__inner--right .pb-section-header__body {
+  .reu-section-header__inner--right .reu-section-header__body {
     margin-inline-start: auto;
   }
 {% endstylesheet %}

@@ -1,10 +1,10 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-grid-cards"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-grid-cards"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-grid-cards__inner">
-    {%- render 'pb-section-intro',
+  <div class="reu-grid-cards__inner">
+    {%- render 'reu-section-intro',
       above_line: section.settings.above_line,
       heading: section.settings.heading,
       body_text: section.settings.body_text,
@@ -13,23 +13,23 @@
 
     {%- if section.blocks.size > 0 -%}
       <div
-        class="pb-grid-cards__grid"
-        style="--pb-card-columns: {{ section.settings.columns }};"
+        class="reu-grid-cards__grid"
+        style="--reu-card-columns: {{ section.settings.columns }};"
       >
         {%- for block in section.blocks -%}
           {%- if block.type == 'card' -%}
             {%- capture card_style -%}
-              {%- if block.settings.card_bg != blank -%}--pb-card-bg:{{ block.settings.card_bg }};{%- endif -%}
-              {%- if block.settings.card_heading != blank -%}--pb-card-heading:{{ block.settings.card_heading }};{%- endif -%}
-              {%- if block.settings.card_body != blank -%}--pb-card-body:{{ block.settings.card_body }};{%- endif -%}
+              {%- if block.settings.card_bg != blank -%}--reu-card-bg:{{ block.settings.card_bg }};{%- endif -%}
+              {%- if block.settings.card_heading != blank -%}--reu-card-heading:{{ block.settings.card_heading }};{%- endif -%}
+              {%- if block.settings.card_body != blank -%}--reu-card-body:{{ block.settings.card_body }};{%- endif -%}
             {%- endcapture -%}
             <div
-              class="pb-grid-card pb-grid-card--{{ block.settings.alignment }}"
+              class="reu-grid-card reu-grid-card--{{ block.settings.alignment }}"
               {% if card_style != blank %}style="{{ card_style }}"{% endif %}
               {{ block.shopify_attributes }}
             >
               {%- if block.settings.icon != blank -%}
-                <div class="pb-grid-card__icon">
+                <div class="reu-grid-card__icon">
                   <img
                     src="{{ block.settings.icon | image_url: width: 80 }}"
                     alt="{{ block.settings.icon.alt | escape }}"
@@ -41,11 +41,11 @@
               {%- endif -%}
 
               {%- if block.settings.heading != blank -%}
-                <h3 class="pb-grid-card__heading">{{ block.settings.heading }}</h3>
+                <h3 class="reu-grid-card__heading">{{ block.settings.heading }}</h3>
               {%- endif -%}
 
               {%- if block.settings.body != blank -%}
-                <p class="pb-grid-card__body">{{ block.settings.body }}</p>
+                <p class="reu-grid-card__body">{{ block.settings.body }}</p>
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -56,68 +56,68 @@
 </div>
 
 {% stylesheet %}
-  .pb-grid-cards__inner {
+  .reu-grid-cards__inner {
     width: 100%;
   }
 
-  .pb-grid-cards__grid {
+  .reu-grid-cards__grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
   @media screen and (min-width: 600px) {
-    .pb-grid-cards__grid {
+    .reu-grid-cards__grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media screen and (min-width: 750px) {
-    .pb-grid-cards__grid {
-      grid-template-columns: repeat(var(--pb-card-columns, 3), 1fr);
+    .reu-grid-cards__grid {
+      grid-template-columns: repeat(var(--reu-card-columns, 3), 1fr);
     }
   }
 
-  .pb-grid-card {
+  .reu-grid-card {
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    border: 1px solid var(--pb-card-border);
+    border: 1px solid var(--reu-card-border);
     border-radius: 0.75rem;
-    background-color: var(--pb-card-bg);
+    background-color: var(--reu-card-bg);
   }
 
-  .pb-grid-card--center {
+  .reu-grid-card--center {
     align-items: center;
     text-align: center;
   }
 
-  .pb-grid-card--right {
+  .reu-grid-card--right {
     align-items: flex-end;
     text-align: right;
   }
 
-  .pb-grid-card__icon {
+  .reu-grid-card__icon {
     margin-bottom: 1.25rem;
   }
 
-  .pb-grid-card__icon img {
+  .reu-grid-card__icon img {
     width: 2.5rem;
     height: 2.5rem;
     object-fit: contain;
   }
 
-  .pb-grid-card__heading {
+  .reu-grid-card__heading {
     font-size: 1.125rem;
     font-weight: 700;
-    color: var(--pb-card-heading);
+    color: var(--reu-card-heading);
     margin-top: 0;
     margin-bottom: 0.75rem;
   }
 
-  .pb-grid-card__body {
+  .reu-grid-card__body {
     font-size: 0.9375rem;
-    color: var(--pb-card-body);
+    color: var(--reu-card-body);
     line-height: 1.65;
     margin: 0;
   }

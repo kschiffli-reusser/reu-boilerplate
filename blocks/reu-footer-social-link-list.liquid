@@ -1,22 +1,38 @@
 {%- assign block_settings = block.settings -%}
 
-<div class="pb-footer-link-list" {{ block.shopify_attributes }}>
+<div class="reu-footer-social-link-list" {{ block.shopify_attributes }}>
   {%- if block_settings.heading != blank -%}
-    <p class="pb-footer-link-list__heading">{{ block_settings.heading }}</p>
+    <p class="reu-footer-link-list__heading">{{ block_settings.heading }}</p>
   {%- endif -%}
 
-  <ul class="pb-footer-link-list__list">
+  <ul class="reu-footer-link-list__list">
     {%- for i in (1..6) -%}
       {%- assign label_key = 'link_' | append: i | append: '_label' -%}
-      {%- assign url_key = 'link_' | append: i | append: '_url' -%}
+      {%- assign url_key   = 'link_' | append: i | append: '_url' -%}
       {%- assign link_label = block_settings[label_key] -%}
-      {%- assign link_url = block_settings[url_key] -%}
+      {%- assign link_url   = block_settings[url_key] -%}
       {%- if link_label != blank -%}
+        {%- assign platform = link_url | split: '//' | last | remove: 'www.' | split: '.' | first -%}
         <li>
           {%- if link_url != blank -%}
-            <a href="{{ link_url }}" class="pb-footer-link-list__link">{{ link_label }}</a>
+            <a href="{{ link_url }}" class="reu-footer-social-link-list__link" target="_blank" rel="noopener noreferrer">
           {%- else -%}
-            <span class="pb-footer-link-list__link">{{ link_label }}</span>
+            <span class="reu-footer-social-link-list__link">
+          {%- endif -%}
+              <svg
+                class="reu-footer-social-link-list__icon"
+                aria-hidden="true"
+                focusable="false"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                {%- render 'icon', icon: platform -%}
+              </svg>
+              {{ link_label }}
+          {%- if link_url != blank -%}
+            </a>
+          {%- else -%}
+            </span>
           {%- endif -%}
         </li>
       {%- endif -%}
@@ -25,51 +41,43 @@
 </div>
 
 {% stylesheet %}
-  .pb-footer-link-list {
+  .reu-footer-social-link-list {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
 
-  .pb-footer-link-list__heading {
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-foreground-heading);
-    margin: 0;
-  }
-
-  .pb-footer-link-list__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .reu-footer-social-link-list__link {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
-  }
-
-  .pb-footer-link-list__link {
     font-size: 0.875rem;
     color: var(--color-foreground);
     text-decoration: none;
   }
 
-  a.pb-footer-link-list__link:hover {
+  a.reu-footer-social-link-list__link:hover {
     text-decoration: underline;
+  }
+
+  .reu-footer-social-link-list__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+    fill: currentColor;
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "PB: Link List",
+  "name": "PB: Social Link List",
   "tag": null,
   "settings": [
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Quick links"
+      "default": "Follow us"
     },
     {
       "type": "header",
@@ -79,7 +87,7 @@
       "type": "text",
       "id": "link_1_label",
       "label": "Label",
-      "default": "Home"
+      "default": "Instagram"
     },
     {
       "type": "url",
@@ -94,7 +102,7 @@
       "type": "text",
       "id": "link_2_label",
       "label": "Label",
-      "default": "About us"
+      "default": "Facebook"
     },
     {
       "type": "url",
@@ -109,7 +117,7 @@
       "type": "text",
       "id": "link_3_label",
       "label": "Label",
-      "default": "Contact"
+      "default": "LinkedIn"
     },
     {
       "type": "url",
@@ -161,7 +169,7 @@
   ],
   "presets": [
     {
-      "name": "PB: Link List",
+      "name": "PB: Social Link List",
       "category": "t:categories.footer"
     }
   ]

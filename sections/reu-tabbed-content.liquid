@@ -1,10 +1,10 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-tabbed-content"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-tabbed-content"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-tabbed-content__inner">
-    {%- render 'pb-section-intro',
+  <div class="reu-tabbed-content__inner">
+    {%- render 'reu-section-intro',
       above_line: section.settings.above_line,
       heading: section.settings.heading,
       body_text: section.settings.body_text,
@@ -16,17 +16,17 @@
       {%- if section.settings.tab_style == 'secondary' -%}
         {%- assign tab_btn_class = 'button-secondary' -%}
       {%- endif -%}
-      <pb-tabs class="pb-tabs pb-tabs--{{ section.settings.tab_style }}">
-        <div class="pb-tabs__nav" role="tablist">
+      <reu-tabs class="reu-tabs reu-tabs--{{ section.settings.tab_style }}">
+        <div class="reu-tabs__nav" role="tablist">
           {%- for block in section.blocks -%}
             {%- if block.type == 'tab' -%}
               <button
-                class="pb-tabs__button {{ tab_btn_class }}"
+                class="reu-tabs__button {{ tab_btn_class }}"
                 role="tab"
                 data-tab-button
                 aria-selected="{{ forloop.first | json }}"
-                aria-controls="pb-tab-panel-{{ block.id }}"
-                id="pb-tab-{{ block.id }}"
+                aria-controls="reu-tab-panel-{{ block.id }}"
+                id="reu-tab-{{ block.id }}"
                 {{ block.shopify_attributes }}
               >
                 {{ block.settings.title }}
@@ -35,20 +35,20 @@
           {%- endfor -%}
         </div>
 
-        <div class="pb-tabs__panels">
+        <div class="reu-tabs__panels">
           {%- for block in section.blocks -%}
             {%- if block.type == 'tab' -%}
               <div
-                class="pb-tabs__panel"
+                class="reu-tabs__panel"
                 role="tabpanel"
                 data-tab-panel
-                id="pb-tab-panel-{{ block.id }}"
-                aria-labelledby="pb-tab-{{ block.id }}"
+                id="reu-tab-panel-{{ block.id }}"
+                aria-labelledby="reu-tab-{{ block.id }}"
                 {% unless forloop.first %}hidden{% endunless %}
               >
-                <div class="pb-tabs__panel-layout">
+                <div class="reu-tabs__panel-layout">
                   {%- if block.settings.image != blank -%}
-                    <div class="pb-tabs__panel-media">
+                    <div class="reu-tabs__panel-media">
                       <img
                         src="{{ block.settings.image | image_url: width: 800 }}"
                         srcset="
@@ -64,13 +64,13 @@
                     </div>
                   {%- endif -%}
 
-                  <div class="pb-tabs__panel-content">
+                  <div class="reu-tabs__panel-content">
                     {%- if block.settings.content != blank -%}
-                      <div class="pb-tabs__panel-richtext rte">{{ block.settings.content }}</div>
+                      <div class="reu-tabs__panel-richtext rte">{{ block.settings.content }}</div>
                     {%- endif -%}
 
                     {%- if block.settings.button_label != blank or block.settings.sec_button_label != blank -%}
-                      <div class="pb-tabs__panel-buttons">
+                      <div class="reu-tabs__panel-buttons">
                         {%- if block.settings.button_label != blank -%}
                           <a
                             {% if block.settings.button_link != blank %}
@@ -99,7 +99,7 @@
             {%- endif -%}
           {%- endfor -%}
         </div>
-      </pb-tabs>
+      </reu-tabs>
     {%- endif -%}
   </div>
 </div>
@@ -118,20 +118,20 @@
     }
   }
 
-  if (!customElements.get('pb-tabs')) customElements.define('pb-tabs', PbTabs);
+  if (!customElements.get('reu-tabs')) customElements.define('reu-tabs', PbTabs);
 </script>
 
 {% stylesheet %}
-  .pb-tabbed-content__inner {
+  .reu-tabbed-content__inner {
     width: 100%;
   }
 
-  .pb-tabs {
+  .reu-tabs {
     display: block;
     width: 100%;
   }
 
-  .pb-tabs__nav {
+  .reu-tabs__nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -139,48 +139,48 @@
     margin-bottom: 1.5rem;
   }
 
-  .pb-tabs__button {
+  .reu-tabs__button {
     white-space: nowrap;
     cursor: pointer;
   }
 
   /* Inactive tabs: ghost/outlined version of whichever button style is chosen */
-  .pb-tabs__button.button[aria-selected="false"] {
+  .reu-tabs__button.button[aria-selected="false"] {
     background-color: transparent;
     color: var(--color-button);
     box-shadow: 0 0 0 2px var(--color-button) inset;
   }
 
-  .pb-tabs__button.button-secondary[aria-selected="false"] {
+  .reu-tabs__button.button-secondary[aria-selected="false"] {
     opacity: 0.45;
   }
 
-  .pb-tabs__panels {
-    background-color: var(--pb-card-bg);
-    border: 1px solid var(--pb-card-border);
+  .reu-tabs__panels {
+    background-color: var(--reu-card-bg);
+    border: 1px solid var(--reu-card-border);
     border-radius: 0.75rem;
     overflow: hidden;
-    max-width: var(--pb-narrow-content);
+    max-width: var(--reu-narrow-content);
     margin-inline: auto;
     display: flex;
     flex-direction: column;
   }
 
-  .pb-tabs__panel {
+  .reu-tabs__panel {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
-  .pb-tabs__panel[hidden] {
+  .reu-tabs__panel[hidden] {
     display: none;
   }
 
-  .pb-tabs__panel-layout {
+  .reu-tabs__panel-layout {
     flex: 1;
   }
 
-  .pb-tabs__panel-layout {
+  .reu-tabs__panel-layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -188,40 +188,40 @@
   }
 
   @media screen and (min-width: 750px) {
-    .pb-tabs__panels {
+    .reu-tabs__panels {
       min-height: 30em;
     }
 
-    .pb-tabs__panel-layout {
+    .reu-tabs__panel-layout {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  .pb-tabs__panel-media {
+  .reu-tabs__panel-media {
     min-height: 200px;
   }
 
-  .pb-tabs__panel-content {
+  .reu-tabs__panel-content {
     padding: 2rem 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .pb-tabs__panel-media img {
+  .reu-tabs__panel-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .pb-tabs__panel-richtext {
+  .reu-tabs__panel-richtext {
     color: var(--color-foreground);
     line-height: 1.65;
     margin-bottom: 1.5rem;
   }
 
-  .pb-tabs__panel-buttons {
+  .reu-tabs__panel-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;

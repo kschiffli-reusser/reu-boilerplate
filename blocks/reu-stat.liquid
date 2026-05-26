@@ -1,21 +1,21 @@
 {%- assign block_settings = block.settings -%}
 
-<div class="pb-block-stat" {{ block.shopify_attributes }}>
+<div class="reu-block-stat" {{ block.shopify_attributes }}>
   {%- if block_settings.value != blank -%}
-    <p class="pb-block-stat__value">{{ block_settings.value }}</p>
+    <p class="reu-block-stat__value">{{ block_settings.value }}</p>
   {%- endif -%}
   {%- if block_settings.description != blank -%}
-    <p class="pb-block-stat__description">{{ block_settings.description }}</p>
+    <p class="reu-block-stat__description">{{ block_settings.description }}</p>
   {%- endif -%}
 </div>
 
 {% stylesheet %}
-  .pb-block-stat {
+  .reu-block-stat {
     text-align: center;
     padding: 1.5rem 1rem;
   }
 
-  .pb-block-stat__value {
+  .reu-block-stat__value {
     font-size: clamp(2.25rem, 5vw, 3.5rem);
     font-weight: 700;
     color: var(--color-primary);
@@ -23,7 +23,7 @@
     margin: 0 0 0.5rem;
   }
 
-  .pb-block-stat__description {
+  .reu-block-stat__description {
     font-size: 0.875rem;
     color: var(--color-foreground);
     text-transform: uppercase;

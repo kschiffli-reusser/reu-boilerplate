@@ -2,11 +2,11 @@
 {%- assign alignment = block_settings.alignment | default: 'left' -%}
 
 <div
-  class="pb-block-feature-card pb-block-feature-card--{{ alignment }}"
+  class="reu-block-feature-card reu-block-feature-card--{{ alignment }}"
   {{ block.shopify_attributes }}
 >
   {%- if block_settings.icon != blank -%}
-    <div class="pb-block-feature-card__icon">
+    <div class="reu-block-feature-card__icon">
       <img
         src="{{ block_settings.icon | image_url: width: 80 }}"
         alt="{{ block_settings.icon.alt | escape }}"
@@ -18,16 +18,16 @@
   {%- endif -%}
 
   {%- if block_settings.heading != blank -%}
-    <h3 class="pb-block-feature-card__heading">{{ block_settings.heading }}</h3>
+    <h3 class="reu-block-feature-card__heading">{{ block_settings.heading }}</h3>
   {%- endif -%}
 
   {%- if block_settings.body != blank -%}
-    <p class="pb-block-feature-card__body">{{ block_settings.body }}</p>
+    <p class="reu-block-feature-card__body">{{ block_settings.body }}</p>
   {%- endif -%}
 </div>
 
 {% stylesheet %}
-  .pb-block-feature-card {
+  .reu-block-feature-card {
     display: flex;
     flex-direction: column;
     padding: 1.75rem;
@@ -36,34 +36,34 @@
     height: 100%;
   }
 
-  .pb-block-feature-card--center {
+  .reu-block-feature-card--center {
     align-items: center;
     text-align: center;
   }
 
-  .pb-block-feature-card--right {
+  .reu-block-feature-card--right {
     align-items: flex-end;
     text-align: right;
   }
 
-  .pb-block-feature-card__icon {
+  .reu-block-feature-card__icon {
     margin-bottom: 1.125rem;
   }
 
-  .pb-block-feature-card__icon img {
+  .reu-block-feature-card__icon img {
     width: 2.5rem;
     height: 2.5rem;
     object-fit: contain;
   }
 
-  .pb-block-feature-card__heading {
+  .reu-block-feature-card__heading {
     font-size: 1.0625rem;
     font-weight: 700;
     color: var(--color-foreground-heading);
     margin: 0 0 0.625rem;
   }
 
-  .pb-block-feature-card__body {
+  .reu-block-feature-card__body {
     font-size: 0.9375rem;
     color: var(--color-foreground);
     line-height: 1.65;

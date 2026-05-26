@@ -16,11 +16,11 @@
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-video-embed"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-video-embed"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-video-embed__inner">
-    {%- render 'pb-section-intro',
+  <div class="reu-video-embed__inner">
+    {%- render 'reu-section-intro',
       above_line: section.settings.above_line,
       heading: section.settings.heading,
       body_text: section.settings.body_text,
@@ -28,7 +28,7 @@
     -%}
 
     {%- if embed_url != blank -%}
-      <div class="pb-video-embed__frame">
+      <div class="reu-video-embed__frame">
         <iframe
           src="{{ embed_url }}"
           title="{{ section.settings.heading | default: 'Video' | escape }}"
@@ -39,7 +39,7 @@
         ></iframe>
       </div>
     {%- elsif video_url != blank -%}
-      <div class="pb-video-embed__error">
+      <div class="reu-video-embed__error">
         <p>Unable to embed video. Please use a YouTube or Vimeo URL.</p>
       </div>
     {%- endif -%}
@@ -47,11 +47,11 @@
 </div>
 
 {% stylesheet %}
-  .pb-video-embed__inner {
+  .reu-video-embed__inner {
     width: 100%;
   }
 
-  .pb-video-embed__frame {
+  .reu-video-embed__frame {
     position: relative;
     width: 100%;
     padding-bottom: 56.25%;
@@ -60,7 +60,7 @@
     background-color: var(--color-border);
   }
 
-  .pb-video-embed__frame iframe {
+  .reu-video-embed__frame iframe {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -68,7 +68,7 @@
     border: none;
   }
 
-  .pb-video-embed__error {
+  .reu-video-embed__error {
     padding: 2rem;
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;

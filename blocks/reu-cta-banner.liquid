@@ -4,11 +4,11 @@
 -%}
 
 <div
-  class="pb-block-cta-banner pb-block-cta-banner--{{ text_alignment }}"
+  class="reu-block-cta-banner reu-block-cta-banner--{{ text_alignment }}"
   {{ block.shopify_attributes }}
 >
   {%- if block_settings.background_image != blank -%}
-    <div class="pb-block-cta-banner__bg" aria-hidden="true">
+    <div class="reu-block-cta-banner__bg" aria-hidden="true">
       <img
         src="{{ block_settings.background_image | image_url: width: 2000 }}"
         srcset="
@@ -26,26 +26,26 @@
   {%- endif -%}
 
   <div
-    class="pb-block-cta-banner__overlay"
+    class="reu-block-cta-banner__overlay"
     aria-hidden="true"
     style="opacity: {{ block_settings.overlay_opacity | divided_by: 100.0 }};"
   ></div>
 
-  <div class="pb-block-cta-banner__content">
+  <div class="reu-block-cta-banner__content">
     {%- if block_settings.above_line != blank -%}
-      <p class="pb-block-cta-banner__above-headline">{{ block_settings.above_line }}</p>
+      <p class="reu-block-cta-banner__above-headline">{{ block_settings.above_line }}</p>
     {%- endif -%}
 
     {%- if block_settings.heading != blank -%}
-      <h2 class="pb-block-cta-banner__heading">{{ block_settings.heading }}</h2>
+      <h2 class="reu-block-cta-banner__heading">{{ block_settings.heading }}</h2>
     {%- endif -%}
 
     {%- if block_settings.body_text != blank -%}
-      <p class="pb-block-cta-banner__body">{{ block_settings.body_text }}</p>
+      <p class="reu-block-cta-banner__body">{{ block_settings.body_text }}</p>
     {%- endif -%}
 
     {%- if block_settings.button_1_label != blank or block_settings.button_2_label != blank -%}
-      <div class="pb-block-cta-banner__buttons">
+      <div class="reu-block-cta-banner__buttons">
         {%- if block_settings.button_1_label != blank -%}
           <a
             {% if block_settings.button_1_link != blank %}href="{{ block_settings.button_1_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
@@ -64,7 +64,7 @@
 </div>
 
 {% stylesheet %}
-  .pb-block-cta-banner {
+  .reu-block-cta-banner {
     position: relative;
     overflow: hidden;
     min-height: 40svh;
@@ -73,26 +73,26 @@
     width: 100%;
   }
 
-  .pb-block-cta-banner__bg {
+  .reu-block-cta-banner__bg {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
 
-  .pb-block-cta-banner__bg img {
+  .reu-block-cta-banner__bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .pb-block-cta-banner__overlay {
+  .reu-block-cta-banner__overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background-color: var(--color-background);
   }
 
-  .pb-block-cta-banner__content {
+  .reu-block-cta-banner__content {
     position: relative;
     z-index: 2;
     padding: max(3rem, 6svh) max(1.5rem, 5vw);
@@ -100,17 +100,17 @@
     max-width: 54rem;
   }
 
-  .pb-block-cta-banner--center .pb-block-cta-banner__content {
+  .reu-block-cta-banner--center .reu-block-cta-banner__content {
     margin-inline: auto;
     text-align: center;
   }
 
-  .pb-block-cta-banner--right .pb-block-cta-banner__content {
+  .reu-block-cta-banner--right .reu-block-cta-banner__content {
     margin-inline-start: auto;
     text-align: right;
   }
 
-  .pb-block-cta-banner__heading {
+  .reu-block-cta-banner__heading {
     font-size: clamp(1.75rem, 3.5vw, 3rem);
     font-weight: 700;
     color: var(--color-foreground-heading);
@@ -118,7 +118,7 @@
     margin: 0 0 1rem;
   }
 
-  .pb-block-cta-banner__body {
+  .reu-block-cta-banner__body {
     font-size: 1.0625rem;
     color: var(--color-foreground);
     line-height: 1.65;
@@ -126,22 +126,22 @@
     max-width: 42rem;
   }
 
-  .pb-block-cta-banner--center .pb-block-cta-banner__body {
+  .reu-block-cta-banner--center .reu-block-cta-banner__body {
     margin-inline: auto;
   }
 
-  .pb-block-cta-banner__buttons {
+  .reu-block-cta-banner__buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 0.875rem;
     margin-top: 2rem;
   }
 
-  .pb-block-cta-banner--center .pb-block-cta-banner__buttons {
+  .reu-block-cta-banner--center .reu-block-cta-banner__buttons {
     justify-content: center;
   }
 
-  .pb-block-cta-banner--right .pb-block-cta-banner__buttons {
+  .reu-block-cta-banner--right .reu-block-cta-banner__buttons {
     justify-content: flex-end;
   }
 {% endstylesheet %}

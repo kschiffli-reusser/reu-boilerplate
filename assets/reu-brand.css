@@ -1,0 +1,20 @@
+:root {
+  --reu-card-bg: var(--color-background);
+  --reu-card-border: var(--color-border);
+  --reu-card-heading: var(--color-foreground-heading);
+  --reu-card-body: var(--color-foreground);
+  --reu-card-accent: #801425;
+  --reu-sidebar-bg: #801425;
+
+  --reu-narrow-content: 860px;
+}
+
+[class*="__above-headline"] {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0;
+}

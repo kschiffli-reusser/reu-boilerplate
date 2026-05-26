@@ -1,10 +1,10 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-stats"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-stats"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-stats__inner">
-    {%- render 'pb-section-intro',
+  <div class="reu-stats__inner">
+    {%- render 'reu-section-intro',
       above_line: section.settings.above_line,
       heading: section.settings.heading,
       body_text: section.settings.body_text,
@@ -12,15 +12,15 @@
     -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="pb-stats__row">
+      <div class="reu-stats__row">
         {%- for block in section.blocks -%}
           {%- if block.type == 'stat' -%}
-            <div class="pb-stats__item" style="{%- if block.settings.accent_color != blank -%}--pb-stat-accent:{{ block.settings.accent_color }};{%- endif -%}" {{ block.shopify_attributes }}>
+            <div class="reu-stats__item" style="{%- if block.settings.accent_color != blank -%}--reu-stat-accent:{{ block.settings.accent_color }};{%- endif -%}" {{ block.shopify_attributes }}>
               {%- if block.settings.value != blank -%}
-                <p class="pb-stats__value">{{ block.settings.value }}</p>
+                <p class="reu-stats__value">{{ block.settings.value }}</p>
               {%- endif -%}
               {%- if block.settings.description != blank -%}
-                <p class="pb-stats__description">{{ block.settings.description }}</p>
+                <p class="reu-stats__description">{{ block.settings.description }}</p>
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -31,17 +31,17 @@
 </div>
 
 {% stylesheet %}
-  .pb-stats__inner {
+  .reu-stats__inner {
     width: 100%;
   }
 
-  .pb-stats__row {
+  .reu-stats__row {
     display: flex;
     flex-wrap: wrap;
     gap: 0;
   }
 
-  .pb-stats__item {
+  .reu-stats__item {
     flex: 1;
     min-width: 150px;
     text-align: center;
@@ -49,31 +49,31 @@
     border-right: 1px solid var(--color-border);
   }
 
-  .pb-stats__item:first-child {
+  .reu-stats__item:first-child {
     border-left: 1px solid var(--color-border);
   }
 
   @media screen and (max-width: 749px) {
-    .pb-stats__item {
+    .reu-stats__item {
       min-width: 50%;
       border: none;
       border-bottom: 1px solid var(--color-border);
     }
 
-    .pb-stats__item:nth-child(odd) {
+    .reu-stats__item:nth-child(odd) {
       border-right: 1px solid var(--color-border);
     }
   }
 
-  .pb-stats__value {
+  .reu-stats__value {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    color: var(--pb-stat-accent, var(--color-primary));
+    color: var(--reu-stat-accent, var(--color-primary));
     line-height: 1;
     margin: 0 0 0.5rem;
   }
 
-  .pb-stats__description {
+  .reu-stats__description {
     font-size: 0.875rem;
     color: var(--color-foreground);
     text-transform: uppercase;

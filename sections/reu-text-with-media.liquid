@@ -2,36 +2,36 @@
   assign media_position = section.settings.media_position | default: 'right'
   assign image_modifier = ''
   if section.settings.smaller_image
-    assign image_modifier = 'pb-text-with-media__media--small'
+    assign image_modifier = 'reu-text-with-media__media--small'
   endif
   if media_position == 'left'
-    assign layout_modifier = 'pb-text-with-media--media-left'
+    assign layout_modifier = 'reu-text-with-media--media-left'
   else
-    assign layout_modifier = 'pb-text-with-media--media-right'
+    assign layout_modifier = 'reu-text-with-media--media-right'
   endif
 -%}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style pb-text-with-media {{ layout_modifier }}"
+  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-text-with-media {{ layout_modifier }}"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
-  <div class="pb-text-with-media__inner">
-    <div class="pb-text-with-media__text">
+  <div class="reu-text-with-media__inner">
+    <div class="reu-text-with-media__text">
       {%- if section.settings.above_line != blank -%}
-        <p class="pb-text-with-media__above-headline">{{ section.settings.above_line }}</p>
+        <p class="reu-text-with-media__above-headline">{{ section.settings.above_line }}</p>
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
-        <h2 class="pb-text-with-media__heading">{{ section.settings.heading }}</h2>
+        <h2 class="reu-text-with-media__heading">{{ section.settings.heading }}</h2>
       {%- endif -%}
 
       {%- if section.settings.richtext != blank -%}
-        <div class="pb-text-with-media__richtext rte">{{ section.settings.richtext }}</div>
+        <div class="reu-text-with-media__richtext rte">{{ section.settings.richtext }}</div>
       {%- endif -%}
 
       {%- if section.settings.button_label != blank -%}
-        <div class="pb-text-with-media__button-wrap">
+        <div class="reu-text-with-media__button-wrap">
           <a
             {% if section.settings.button_link != blank %}
               href="{{ section.settings.button_link }}"
@@ -46,7 +46,7 @@
       {%- endif -%}
     </div>
 
-    <div class="pb-text-with-media__media {{ image_modifier }}">
+    <div class="reu-text-with-media__media {{ image_modifier }}">
       {%- if section.settings.image != blank -%}
         <img
           src="{{ section.settings.image | image_url: width: 900 }}"
@@ -62,34 +62,34 @@
           height="{{ section.settings.image.height }}"
         >
       {%- else -%}
-        {{ 'image' | placeholder_svg_tag: 'pb-text-with-media__placeholder' }}
+        {{ 'image' | placeholder_svg_tag: 'reu-text-with-media__placeholder' }}
       {%- endif -%}
     </div>
   </div>
 </div>
 
 {% stylesheet %}
-  .pb-text-with-media__inner {
+  .reu-text-with-media__inner {
     display: grid;
     gap: 3rem;
     align-items: center;
   }
 
   @media screen and (min-width: 750px) {
-    .pb-text-with-media__inner {
+    .reu-text-with-media__inner {
       grid-template-columns: 1fr 1fr;
     }
 
-    .pb-text-with-media--media-left .pb-text-with-media__text {
+    .reu-text-with-media--media-left .reu-text-with-media__text {
       order: 2;
     }
 
-    .pb-text-with-media--media-left .pb-text-with-media__media {
+    .reu-text-with-media--media-left .reu-text-with-media__media {
       order: 1;
     }
   }
 
-  .pb-text-with-media__heading {
+  .reu-text-with-media__heading {
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 700;
     color: var(--color-foreground-heading);
@@ -98,30 +98,30 @@
     margin-bottom: 1.25rem;
   }
 
-  .pb-text-with-media__richtext {
+  .reu-text-with-media__richtext {
     color: var(--color-foreground);
     line-height: 1.65;
     margin-bottom: 1.5rem;
   }
 
-  .pb-text-with-media__button-wrap {
+  .reu-text-with-media__button-wrap {
     margin-top: 1.5rem;
   }
 
-  .pb-text-with-media__media img,
-  .pb-text-with-media__media svg {
+  .reu-text-with-media__media img,
+  .reu-text-with-media__media svg {
     width: 100%;
     height: auto;
     border-radius: var(--media-radius, 0.5rem);
     display: block;
   }
 
-  .pb-text-with-media__media--small {
+  .reu-text-with-media__media--small {
     max-width: 400px;
     margin-inline: auto;
   }
 
-  .pb-text-with-media__placeholder {
+  .reu-text-with-media__placeholder {
     width: 100%;
     height: auto;
     background: var(--color-border);
