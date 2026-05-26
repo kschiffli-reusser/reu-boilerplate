@@ -601,11 +601,15 @@
 
   .mega-menu__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--menu-columns-tablet), minmax(0, 1fr));
     gap: var(--menu-vertical-gap) var(--menu-horizontal-gap);
     width: 100%;
     min-height: 14rem;
     align-items: start;
+
+    @media screen and (min-width: 990px) {
+      grid-template-columns: repeat(var(--menu-columns-desktop), minmax(0, 1fr));
+    }
   }
 
   .mega-menu__column {
@@ -660,7 +664,7 @@
 
   .mega-menu__list {
     display: grid;
-    grid-template-columns: subgrid;
+    grid-template-columns: repeat(var(--mega-menu-columns, 4), 1fr);
     grid-column: 1 / -1;
     gap: var(--menu-vertical-gap) var(--menu-horizontal-gap);
   }

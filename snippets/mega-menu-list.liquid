@@ -74,7 +74,7 @@
 <ul
   data-menu-list-id="{{ id }}"
   class="mega-menu__list list-unstyled"
-  style="--menu-image-border-radius: {{ image_border_radius }}px;"
+  style="--menu-image-border-radius: {{ image_border_radius }}px; --mega-menu-columns: {{ parent_link.links.size }};"
 >
   {% for link in parent_link.links %}
     {% liquid
