@@ -451,7 +451,7 @@
           "type": "accordion",
           "name": "t:names.accordion",
           "settings": {
-            "icon": "caret",
+            "icon": "plus",
             "dividers": true,
             "type_preset": "h5",
             "inherit_color_scheme": true,
@@ -459,7 +459,7 @@
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 0,
+            "border_radius": 22,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -472,7 +472,7 @@
                 "heading": "What is the return policy?",
                 "open_by_default": false,
                 "icon": "none",
-                "width": 160
+                "width": 50
               },
               "blocks": {
                 "text_mXFDLH": {
@@ -480,7 +480,7 @@
                   "settings": {
                     "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -505,21 +505,21 @@
                 "text_mXFDLH"
               ]
             },
-            "accordion_row_AP6NFC": {
+            "accordion_row_dHq6fd": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "Are any purchases final sale?",
+                "heading": "What is the return policy?",
                 "open_by_default": false,
                 "icon": "none",
-                "width": 20
+                "width": 50
               },
               "blocks": {
-                "text_JfRTUQ": {
+                "text_xzYXQJ": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We are unable to accept returns on certain items. These will be carefully marked before purchase.</p>",
+                    "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -541,26 +541,24 @@
                 }
               },
               "block_order": [
-                "text_JfRTUQ"
+                "text_xzYXQJ"
               ]
             },
-            "accordion_row_QBJY93": {
+            "accordion_row_9giUrc": {
               "type": "_accordion-row",
-              "name": "t:names.accordion_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "What is the return policy?",
                 "open_by_default": false,
                 "icon": "none",
-                "width": 20
+                "width": 50
               },
               "blocks": {
-                "text_YfTkWk": {
+                "text_AiG3bf": {
                   "type": "text",
-                  "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -582,26 +580,24 @@
                 }
               },
               "block_order": [
-                "text_YfTkWk"
+                "text_AiG3bf"
               ]
             },
-            "accordion_row_HdNp9G": {
+            "accordion_row_twf3xD": {
               "type": "_accordion-row",
-              "name": "t:names.accordion_row",
               "settings": {
-                "heading": "Where are your products manufactured?",
+                "heading": "What is the return policy?",
                 "open_by_default": false,
                 "icon": "none",
-                "width": 20
+                "width": 50
               },
               "blocks": {
-                "text_89Pc4A": {
+                "text_mPKeLF": {
                   "type": "text",
-                  "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                    "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -623,57 +619,15 @@
                 }
               },
               "block_order": [
-                "text_89Pc4A"
-              ]
-            },
-            "accordion_row_nM4a9w": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "How much does shipping cost?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_tkP84b": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Shipping is calculated based on your location and the items in your order. You will always know the shipping price before you purchase.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_tkP84b"
+                "text_mPKeLF"
               ]
             }
           },
           "block_order": [
             "accordion_row_9wKfTh",
-            "accordion_row_AP6NFC",
-            "accordion_row_QBJY93",
-            "accordion_row_HdNp9G",
-            "accordion_row_nM4a9w"
+            "accordion_row_dHq6fd",
+            "accordion_row_9giUrc",
+            "accordion_row_twf3xD"
           ]
         }
       },
