@@ -29,10 +29,22 @@
     header-component for all submenu activations, which causes header__underlay-open
     to expand as a full-width background panel. CSS can't override inline custom
     properties, so we target the underlay element directly via :has() instead.
+
+    The base rule adds a 500ms delayed opacity transition. When aria-expanded goes
+    false (our :has() stops matching), opacity stays at 0 for 500ms before snapping
+    to 1 — giving the JS time to reset --full-open-header-height to 0 first.
+    CSS transitions use the TARGET state's declaration, so:
+      - Opening: target is the :has() rule → transition:none → instant hide
+      - Closing: target is the base rule → 500ms delay → no flash
   */
+  header-component .header__underlay-open {
+    transition: opacity 0s 0.5s linear;
+  }
+
   header-component:has(.menu-list__list-item--simple-dropdown .menu-list__link[aria-expanded='true']) .header__underlay-open {
     opacity: 0 !important;
     pointer-events: none !important;
+    transition: none !important;
   }
 
   .reu-simple-dropdown {
