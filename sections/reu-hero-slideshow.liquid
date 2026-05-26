@@ -89,7 +89,7 @@
     </div><!-- /.reu-hero-slideshow__viewport -->
 
     {%- if section.blocks.size > 1 -%}
-      <div class="reu-hero-slideshow__footer">
+      <div class="reu-hero-slideshow__footer"{% if section.settings.dot_color != blank %} style="--reu-dot-color: {{ section.settings.dot_color }}"{% endif %}>
         <div class="reu-hero-slideshow__dots" role="tablist" aria-label="Slideshow controls">
           {%- for block in section.blocks -%}
             {%- if block.type == 'slide' -%}
@@ -230,7 +230,7 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    background: var(--color-background);
+    background: var(--reu-dot-color, var(--color-background));
     opacity: 0.45;
     transition: opacity 0.2s;
     flex-shrink: 0;
@@ -306,6 +306,15 @@
       "max": 7,
       "step": 1,
       "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Pagination"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot color"
     },
     {
       "type": "color_scheme",
