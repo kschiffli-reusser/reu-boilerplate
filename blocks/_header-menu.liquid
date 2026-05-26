@@ -601,13 +601,11 @@
 
   .mega-menu__grid {
     display: grid;
-    grid-template-columns: repeat(var(--menu-columns-tablet), minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     gap: var(--menu-vertical-gap) var(--menu-horizontal-gap);
     width: 100%;
-
-    @media screen and (min-width: 990px) {
-      grid-template-columns: repeat(var(--menu-columns-desktop), minmax(0, 1fr));
-    }
+    min-height: 14rem;
+    align-items: start;
   }
 
   .mega-menu__column {
@@ -663,12 +661,8 @@
   .mega-menu__list {
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: span var(--menu-columns-tablet);
+    grid-column: 1 / -1;
     gap: var(--menu-vertical-gap) var(--menu-horizontal-gap);
-
-    @media screen and (min-width: 990px) {
-      grid-column: span var(--menu-columns-desktop);
-    }
   }
 
   .mega-menu__content {
