@@ -9,16 +9,6 @@
  */
 {
   "sections": {
-    "pb_banner_alert": {
-      "type": "pb-banner-alert",
-      "settings": {
-        "style": "info",
-        "content": "<p>This is an informational message. Use it to highlight important details for your customers.</p>",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 16,
-        "padding-block-end": 16
-      }
-    },
     "pb_call_to_action_ir8Kjy": {
       "type": "pb-call-to-action",
       "blocks": {
@@ -26,32 +16,22 @@
           "type": "button",
           "settings": {
             "label": "Shop now",
-            "link": "",
+            "link": "#",
             "style": "button",
-            "open_in_new_tab": false
-          }
-        },
-        "button_9wigUD": {
-          "type": "button",
-          "settings": {
-            "label": "Learn more",
-            "link": "",
-            "style": "button-secondary",
             "open_in_new_tab": false
           }
         }
       },
       "block_order": [
-        "button_ckEEkB",
-        "button_9wigUD"
+        "button_ckEEkB"
       ],
       "name": "Call to Action",
       "settings": {
         "richtext": "<h3>Ready to get started?</h3><p>Join thousands of happy customers today.</p>",
-        "card_bg": "",
-        "card_heading": "",
-        "card_body": "",
-        "color_scheme": "",
+        "card_bg": "#801425",
+        "card_heading": "#ffffff",
+        "card_body": "#ffffff",
+        "color_scheme": "scheme-1",
         "padding-block-start": 40,
         "padding-block-end": 40
       }
@@ -458,23 +438,9 @@
         "padding-block-start": 60,
         "padding-block-end": 60
       }
-    },
-    "pb_video_embed_TfCPCx": {
-      "type": "pb-video-embed",
-      "name": "Video Embed",
-      "settings": {
-        "above_line": "Watch and learn",
-        "heading": "See it in action",
-        "body_text": "Watch the video to learn more about what we do and how we do it.",
-        "video_url": "",
-        "color_scheme": "",
-        "padding-block-start": 60,
-        "padding-block-end": 60
-      }
     }
   },
   "order": [
-    "pb_banner_alert",
     "pb_call_to_action_ir8Kjy",
     "pb_cta_banner",
     "pb_grid_cards_R7w8ed",
@@ -486,7 +452,6 @@
     "pb_testimonial_picVij",
     "pb_text_columns_BhpW6t",
     "pb_text_with_media_73BUVY",
-    "pb_text_with_media_qLaFNU",
-    "pb_video_embed_TfCPCx"
+    "pb_text_with_media_qLaFNU"
   ]
 }
