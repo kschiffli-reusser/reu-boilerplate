@@ -84,9 +84,16 @@
 
     {% capture children %}
       {% for link in block_settings.menu.links %}
+        {%- assign is_mega_menu = false -%}
+        {%- for reu_block in section.blocks -%}
+          {%- if reu_block.type == 'reu_mega_menu' and reu_block.settings.nav_item_title == link.title -%}
+            {%- assign is_mega_menu = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
         <li
           role="presentation"
-          class="menu-list__list-item"
+          class="menu-list__list-item{% unless is_mega_menu %} menu-list__list-item--simple-dropdown{% endunless %}"
           on:focus="/activate"
           on:blur="/deactivate"
           on:pointerenter="/activate"
@@ -115,25 +122,29 @@
                 class="menu-list__submenu-inner"
                 style="{% render 'submenu-font-styles', settings: block_settings %}"
               >
-                {% assign list_id = 'MegaMenuList-' | append: forloop.index %}
-                <div class="mega-menu section section--full-width-margin section--{{ section.settings.section_width }}">
-                  <div
-                    class="mega-menu__grid"
-                    data-menu-grid-id="{{ list_id }}"
-                  >
-                    {% render 'mega-menu-list',
-                      parent_link: link,
-                      id: list_id,
-                      section: section,
-                      grid_columns_count: 6,
-                      grid_columns_count_tablet: 4,
-                      grid_columns_count_collection_images: 8,
-                      menu_content_type: menu_content_type,
-                      content_aspect_ratio: ratio,
-                      image_border_radius: image_border_radius
-                    %}
+                {%- if is_mega_menu -%}
+                  {% assign list_id = 'MegaMenuList-' | append: forloop.index %}
+                  <div class="mega-menu section section--full-width-margin section--{{ section.settings.section_width }}">
+                    <div
+                      class="mega-menu__grid"
+                      data-menu-grid-id="{{ list_id }}"
+                    >
+                      {% render 'mega-menu-list',
+                        parent_link: link,
+                        id: list_id,
+                        section: section,
+                        grid_columns_count: 6,
+                        grid_columns_count_tablet: 4,
+                        grid_columns_count_collection_images: 8,
+                        menu_content_type: menu_content_type,
+                        content_aspect_ratio: ratio,
+                        image_border_radius: image_border_radius
+                      %}
+                    </div>
                   </div>
-                </div>
+                {%- else -%}
+                  {% render 'reu-simple-dropdown', links: link.links %}
+                {%- endif -%}
               </div>
             </div>
           {%- endif -%}

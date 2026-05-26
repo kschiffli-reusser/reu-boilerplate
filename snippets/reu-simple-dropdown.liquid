@@ -1,0 +1,59 @@
+{% stylesheet %}
+  .menu-list__list-item--simple-dropdown {
+    position: relative;
+  }
+
+  .menu-list__list-item--simple-dropdown .menu-list__submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: auto;
+    inset-inline: unset;
+  }
+
+  .reu-simple-dropdown {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 0.375rem 0;
+    min-width: 13rem;
+    list-style: none;
+    margin: 0;
+  }
+
+  .reu-simple-dropdown__link {
+    display: block;
+    padding: 0.5rem 1.25rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    transition: background-color 0.15s, color 0.15s;
+  }
+
+  .reu-simple-dropdown__link:hover,
+  .reu-simple-dropdown__link:focus {
+    background-color: rgba(var(--color-foreground-rgb, 0, 0, 0), 0.05);
+    outline: none;
+  }
+
+  .reu-simple-dropdown__link[aria-current="page"] {
+    font-weight: 600;
+  }
+{% endstylesheet %}
+
+<ul class="reu-simple-dropdown" role="menu">
+  {%- for child_link in links -%}
+    <li role="none">
+      <a
+        href="{{ child_link.url }}"
+        class="reu-simple-dropdown__link"
+        role="menuitem"
+        {% if child_link.current %}aria-current="page"{% endif %}
+      >
+        {{- child_link.title -}}
+      </a>
+    </li>
+  {%- endfor -%}
+</ul>
