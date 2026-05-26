@@ -1,5 +1,6 @@
 class ReuHeroSlideshow extends HTMLElement {
   connectedCallback() {
+    this._viewport = this.querySelector('.reu-hero-slideshow__viewport');
     this._track = this.querySelector('[data-track]');
     this._slides = Array.from(this.querySelectorAll('[data-slide]'));
     this._dots = Array.from(this.querySelectorAll('[data-dot]'));
@@ -24,7 +25,8 @@ class ReuHeroSlideshow extends HTMLElement {
   }
 
   _activate(index) {
-    this._track.style.transform = `translateX(-${index * 100}%)`;
+    const slideWidth = this._viewport.offsetWidth;
+    this._track.style.transform = `translateX(-${index * slideWidth}px)`;
     this._dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === index)));
     this._index = index;
   }
