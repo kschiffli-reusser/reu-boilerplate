@@ -441,6 +441,24 @@
         "padding-block-end": 60
       }
     },
+    "pb_text_with_media_qLaFNU": {
+      "type": "pb-text-with-media",
+      "name": "Text with Media",
+      "settings": {
+        "above_line": "Our story",
+        "heading": "Your story starts here",
+        "richtext": "<p>Share your brand story, describe a product, or welcome customers with content that informs and inspires.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button",
+        "image": "shopify://shop_images/mountains.png",
+        "media_position": "left",
+        "smaller_image": false,
+        "color_scheme": "scheme-2",
+        "padding-block-start": 60,
+        "padding-block-end": 60
+      }
+    },
     "pb_video_embed_TfCPCx": {
       "type": "pb-video-embed",
       "name": "Video Embed",
@@ -468,6 +486,7 @@
     "pb_testimonial_picVij",
     "pb_text_columns_BhpW6t",
     "pb_text_with_media_73BUVY",
+    "pb_text_with_media_qLaFNU",
     "pb_video_embed_TfCPCx"
   ]
 }
