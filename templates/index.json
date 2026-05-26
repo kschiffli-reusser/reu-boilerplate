@@ -433,6 +433,7 @@
         "button_label": "",
         "button_link": "",
         "button_style": "button",
+        "image": "shopify://shop_images/mountains.png",
         "media_position": "right",
         "smaller_image": false,
         "color_scheme": "",
