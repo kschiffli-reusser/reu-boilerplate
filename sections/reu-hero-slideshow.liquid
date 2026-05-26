@@ -1,6 +1,6 @@
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  class="section section--page-width color-{{ section.settings.color_scheme }} spacing-style reu-hero-slideshow"
+  class="section section--full-width color-{{ section.settings.color_scheme }} spacing-style reu-hero-slideshow"
   style="{% render 'spacing-style', settings: section.settings %}"
 >
   {%- if section.settings.background_image != blank -%}
@@ -133,6 +133,9 @@
     display: block;
     position: relative;
     z-index: 1;
+    width: calc(100% - var(--page-margin) * 2);
+    max-width: var(--page-content-width);
+    margin-inline: auto;
   }
 
   .reu-hero-slideshow__viewport {
