@@ -42,6 +42,36 @@
     height: auto;
     margin-inline-end: var(--margin-xs);
   }
+
+  /* Card style */
+  accordion-custom {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    --summary-font-weight: 700;
+    --summary-font-size: 1.0625rem;
+  }
+
+  .accordion accordion-custom + accordion-custom {
+    margin-top: 0.625rem;
+  }
+
+  accordion-custom .details__header {
+    padding-inline: 1.5rem;
+  }
+
+  accordion-custom .details-content {
+    padding-inline: 1.5rem;
+    padding-block-end: 1.25rem;
+  }
+
+  /* Suppress divider borders — the card border serves the same purpose */
+  .accordion--dividers accordion-custom .details,
+  .accordion--dividers accordion-custom:first-child .details,
+  .accordion--dividers accordion-custom:last-child .details {
+    border: none !important;
+  }
 {% endstylesheet %}
 
 {% schema %}
