@@ -28,12 +28,13 @@
       data-autoplay-speed="{{ section.settings.autoplay_speed }}"
     {%- endif -%}
   >
+    <div class="reu-hero-slideshow__viewport">
+      <div class="reu-hero-slideshow__track" data-track>
     {%- for block in section.blocks -%}
       {%- if block.type == 'slide' -%}
         <div
           class="reu-hero-slideshow__slide"
           data-slide
-          {% unless forloop.first %}hidden{% endunless %}
           {{ block.shopify_attributes }}
         >
           <div class="reu-hero-slideshow__layout">
@@ -84,6 +85,8 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
+      </div><!-- /.reu-hero-slideshow__track -->
+    </div><!-- /.reu-hero-slideshow__viewport -->
 
     {%- if section.blocks.size > 1 -%}
       <div class="reu-hero-slideshow__footer">
@@ -132,8 +135,23 @@
     z-index: 1;
   }
 
-  .reu-hero-slideshow__slide[hidden] {
-    display: none;
+  .reu-hero-slideshow__viewport {
+    overflow: hidden;
+  }
+
+  .reu-hero-slideshow__track {
+    display: flex;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reu-hero-slideshow__track {
+      transition: transform 0.6s ease-in-out;
+    }
+  }
+
+  .reu-hero-slideshow__slide {
+    min-width: 100%;
+    flex-shrink: 0;
   }
 
   .reu-hero-slideshow__layout {

@@ -1,5 +1,6 @@
 class ReuHeroSlideshow extends HTMLElement {
   connectedCallback() {
+    this._track = this.querySelector('[data-track]');
     this._slides = Array.from(this.querySelectorAll('[data-slide]'));
     this._dots = Array.from(this.querySelectorAll('[data-dot]'));
     this._index = 0;
@@ -23,7 +24,7 @@ class ReuHeroSlideshow extends HTMLElement {
   }
 
   _activate(index) {
-    this._slides.forEach((s, i) => { s.hidden = i !== index; });
+    this._track.style.transform = `translateX(-${index * 100}%)`;
     this._dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === index)));
     this._index = index;
   }
