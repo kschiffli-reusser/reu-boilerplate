@@ -378,6 +378,7 @@
         "quote": "This is the most impressive product I've ever used. It completely transformed the way I work and I couldn't be happier.",
         "name": "Jane Smith",
         "position": "CEO, Acme Co.",
+        "background_image": "shopify://shop_images/mountains.png",
         "card_bg": "",
         "sidebar_bg": "",
         "card_accent": "",
