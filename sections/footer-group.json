@@ -284,13 +284,13 @@
               "type": "group",
               "name": "t:names.group",
               "settings": {
-                "content_direction": "column",
+                "content_direction": "row",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
+                "vertical_alignment": "flex-start",
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "flex-start",
                 "gap": 12,
                 "width": "fill",
                 "custom_width": 100,
@@ -320,17 +320,17 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "pb_footer_link_list_tkKfyq": {
-                  "type": "pb-footer-link-list",
-                  "name": "PB: Link List",
+                "pb_footer_social_link_list_4pVyRW": {
+                  "type": "pb-footer-social-link-list",
+                  "name": "PB: Social Link List",
                   "settings": {
-                    "heading": "Our Mission",
-                    "link_1_label": "About Us",
-                    "link_1_url": "#",
-                    "link_2_label": "Ambassadors",
-                    "link_2_url": "#",
-                    "link_3_label": "Blog",
-                    "link_3_url": "#",
+                    "heading": "Follow us",
+                    "link_1_label": "Instagram",
+                    "link_1_url": "https://www.instagram.com/reusseragency/",
+                    "link_2_label": "Facebook",
+                    "link_2_url": "https://www.facebook.com/reusser",
+                    "link_3_label": "LinkedIn",
+                    "link_3_url": "https://www.linkedin.com/company/reusser",
                     "link_4_label": "",
                     "link_4_url": "",
                     "link_5_label": "",
@@ -342,7 +342,7 @@
                 }
               },
               "block_order": [
-                "pb_footer_link_list_tkKfyq"
+                "pb_footer_social_link_list_4pVyRW"
               ]
             }
           },
