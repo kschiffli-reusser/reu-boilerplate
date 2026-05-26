@@ -1,15 +1,15 @@
 class ReuHeroSlideshow extends HTMLElement {
   connectedCallback() {
     this._viewport = this.querySelector('.reu-hero-slideshow__viewport');
-    this._track = this.querySelector('[data-track]');
-    this._slides = Array.from(this.querySelectorAll('[data-slide]'));
-    this._dots = Array.from(this.querySelectorAll('[data-dot]'));
-    this._index = 0;
+    this._slides   = Array.from(this.querySelectorAll('[data-slide]'));
+    this._dots     = Array.from(this.querySelectorAll('[data-dot]'));
+    this._index    = 0;
+    this._reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     this._dots.forEach((dot, i) => dot.addEventListener('click', () => this._activate(i)));
 
     const speed = parseInt(this.dataset.autoplaySpeed, 10);
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (speed && !reduced) {
+    if (speed && !this._reduced) {
       this._speed = speed * 1000;
       this._startAutoplay();
       this.addEventListener('mouseenter', () => this._stopAutoplay());
@@ -25,8 +25,10 @@ class ReuHeroSlideshow extends HTMLElement {
   }
 
   _activate(index) {
-    const slideWidth = this._viewport.offsetWidth;
-    this._track.style.transform = `translateX(-${index * slideWidth}px)`;
+    this._viewport.scrollTo({
+      left: index * this._viewport.offsetWidth,
+      behavior: this._reduced ? 'instant' : 'smooth',
+    });
     this._dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === index)));
     this._index = index;
   }

@@ -142,24 +142,24 @@
 
   .reu-hero-slideshow__viewport {
     position: relative;
-    overflow: hidden;
-    clip-path: inset(0);
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
     width: 100%;
+  }
+
+  .reu-hero-slideshow__viewport::-webkit-scrollbar {
+    display: none;
   }
 
   .reu-hero-slideshow__track {
     display: flex;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .reu-hero-slideshow__track {
-      transition: transform 0.6s ease-in-out;
-    }
-  }
-
   .reu-hero-slideshow__slide {
     min-width: 100%;
     flex-shrink: 0;
+    scroll-snap-align: start;
   }
 
   .reu-hero-slideshow__layout {
