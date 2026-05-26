@@ -73,7 +73,8 @@
             "drawer_accordion": false,
             "drawer_accordion_expand_first": false,
             "drawer_dividers": false,
-            "mega_menu_items": "Dropdown"
+            "mega_menu_items": "Mega Menu",
+            "nav_item_padding": 20
           },
           "blocks": {}
         }
