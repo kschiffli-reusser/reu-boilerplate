@@ -24,6 +24,17 @@
     transform: none;
   }
 
+  /*
+    The JS sets --submenu-height and --full-open-header-height as inline styles on
+    header-component for all submenu activations, which causes header__underlay-open
+    to expand as a full-width background panel. CSS can't override inline custom
+    properties, so we target the underlay element directly via :has() instead.
+  */
+  header-component:has(.menu-list__list-item--simple-dropdown .menu-list__link[aria-expanded='true']) .header__underlay-open {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
   .reu-simple-dropdown {
     background-color: var(--color-background);
     border: 1px solid var(--color-border);
