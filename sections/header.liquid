@@ -472,8 +472,7 @@
 
     z-index: var(--layer-overlay);
 
-    &[transparent='not-sticky'][data-sticky-state='active'],
-    &:has(.menu-list__link:not([aria-haspopup]):hover) {
+    &[transparent='not-sticky'][data-sticky-state='active'] {
       --header-logo-display: unset;
       --header-logo-inverse-display: unset;
       --color-foreground: inherit;
@@ -485,8 +484,8 @@
       --closed-underlay-height: 100%;
     }
 
-    /** For transparent header, apply inherit to rows when menu is not hovered */
-    &:not([data-sticky-state='active']):not(:has(.menu-list__link:is(:hover, [aria-expanded='true']))) .header__row {
+    /** For transparent header, apply inherit to rows when menu is not open */
+    &:not([data-sticky-state='active']):not(:has(.menu-list__link[aria-haspopup][aria-expanded='true'])) .header__row {
       --color-foreground: inherit;
       --color-foreground-rgb: inherit;
       --color-border: inherit;
@@ -496,9 +495,8 @@
     }
 
     /* Multiple selectors for performance: each simple :has() check is faster than one complex selector with multiple conditions */
-    &:has(.mega-menu__list:hover),
-    &:has(.menu-list__link:is(:hover, [aria-expanded='true'])),
-    &:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'])) {
+    &:has(.menu-list__link[aria-haspopup][aria-expanded='true']),
+    &:has(.menu-list__list-item[slot='overflow'] .menu-list__link[aria-haspopup][aria-expanded='true']) {
       --header-logo-display: unset;
       --header-logo-inverse-display: unset;
       --color-foreground: inherit;
@@ -512,9 +510,7 @@
   }
 
   /* When top row has transparent background, make it inherit colors from header component */
-  [data-transparent-color-scheme='top']:hover .header__row--top,
   [data-transparent-color-scheme='top']:focus-within .header__row--top,
-  [data-transparent-color-scheme='both']:hover .header__row--top,
   [data-transparent-color-scheme='both']:focus-within .header__row--top {
     --color-foreground: inherit;
     --color-foreground-rgb: inherit;
@@ -525,9 +521,7 @@
   }
 
   /* When bottom row has transparent background, make it inherit colors from header component */
-  [data-transparent-color-scheme='bottom']:hover .header__row--bottom,
   [data-transparent-color-scheme='bottom']:focus-within .header__row--bottom,
-  [data-transparent-color-scheme='both']:hover .header__row--bottom,
   [data-transparent-color-scheme='both']:focus-within .header__row--bottom {
     --color-foreground: inherit;
     --color-foreground-rgb: inherit;
@@ -595,6 +589,7 @@
       var(--color-scheme-top-row) 0 var(--top-row-height),
       var(--color-scheme-bottom-row) var(--top-row-height) var(--header-height)
     );
+    box-shadow: var(--shadow-popover);
     transition: height var(--animation-speed-slow) var(--ease-out-cubic);
   }
 
@@ -619,9 +614,7 @@
   }
 
   /* When top row has transparent background, make underlay inherit colors from header component */
-  [data-transparent-color-scheme='top']:hover,
   [data-transparent-color-scheme='top']:focus-within,
-  [data-transparent-color-scheme='both']:hover,
   [data-transparent-color-scheme='both']:focus-within {
     :is(.header__underlay-open, .header__underlay-closed) {
       --color-scheme-top-row: var(--color-background);
@@ -629,9 +622,7 @@
   }
 
   /* When bottom row has transparent background, make underlay inherit colors from header component */
-  [data-transparent-color-scheme='bottom']:hover,
   [data-transparent-color-scheme='bottom']:focus-within,
-  [data-transparent-color-scheme='both']:hover,
   [data-transparent-color-scheme='both']:focus-within {
     :is(.header__underlay-open, .header__underlay-closed) {
       --color-scheme-bottom-row: var(--color-background);

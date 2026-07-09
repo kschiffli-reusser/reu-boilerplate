@@ -9,8 +9,25 @@
   --reu-narrow-content: 860px;
 }
 
+/* Shopify Forms app — wider layout */
+.shopify-app-block:has(shopify-forms-embed) {
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+shopify-forms-embed {
+  display: block;
+  width: 100%;
+  --container-max-w: 600px;
+  --inline-container-max-width: 600px;
+  --inline-form-alignment: center;
+}
+
 [class*="__above-headline"] {
   display: inline-block;
+  font-family: var(--font-accent--family);
+  font-style: var(--font-accent--style);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.1em;

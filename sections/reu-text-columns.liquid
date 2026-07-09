@@ -33,6 +33,7 @@
                   {% else %}
                     role="link" aria-disabled="true"
                   {% endif %}
+                  {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
                   class="{{ block.settings.button_style }}"
                 >{{ block.settings.button_label }}</a>
               </div>
@@ -169,6 +170,12 @@
             { "value": "link", "label": "Link" }
           ],
           "default": "link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "t:settings.open_new_tab",
+          "default": false
         }
       ]
     }

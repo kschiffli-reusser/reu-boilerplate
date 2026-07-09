@@ -78,6 +78,7 @@
                             {% else %}
                               role="link" aria-disabled="true"
                             {% endif %}
+                            {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
                             class="button"
                           >{{ block.settings.button_label }}</a>
                         {%- endif -%}
@@ -88,6 +89,7 @@
                             {% else %}
                               role="link" aria-disabled="true"
                             {% endif %}
+                            {% if block.settings.sec_open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
                             class="button-secondary"
                           >{{ block.settings.sec_button_label }}</a>
                         {%- endif -%}
@@ -340,6 +342,12 @@
           "label": "Link"
         },
         {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "t:settings.open_new_tab",
+          "default": false
+        },
+        {
           "type": "header",
           "content": "Secondary button"
         },
@@ -352,6 +360,12 @@
           "type": "url",
           "id": "sec_button_link",
           "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "sec_open_in_new_tab",
+          "label": "t:settings.open_new_tab",
+          "default": false
         }
       ]
     }

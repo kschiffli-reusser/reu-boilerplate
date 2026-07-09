@@ -17,12 +17,22 @@
     {%- if block_settings.richtext != blank -%}
       <div class="reu-block-twm__richtext rte">{{ block_settings.richtext }}</div>
     {%- endif -%}
-    {%- if block_settings.button_label != blank -%}
+    {%- if block_settings.button_label != blank or block_settings.button_2_label != blank -%}
       <div class="reu-block-twm__button-wrap">
-        <a
-          {% if block_settings.button_link != blank %}href="{{ block_settings.button_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
-          class="{{ block_settings.button_style }}"
-        >{{ block_settings.button_label }}</a>
+        {%- if block_settings.button_label != blank -%}
+          <a
+            {% if block_settings.button_link != blank %}href="{{ block_settings.button_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+            {% if block_settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+            class="{{ block_settings.button_style }}"
+          >{{ block_settings.button_label }}</a>
+        {%- endif -%}
+        {%- if block_settings.button_2_label != blank -%}
+          <a
+            {% if block_settings.button_2_link != blank %}href="{{ block_settings.button_2_link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+            {% if block_settings.open_in_new_tab_2 %}target="_blank" rel="noopener noreferrer"{% endif %}
+            class="{{ block_settings.button_2_style }}"
+          >{{ block_settings.button_2_label }}</a>
+        {%- endif -%}
       </div>
     {%- endif -%}
   </div>
@@ -80,6 +90,9 @@
   }
 
   .reu-block-twm__button-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-top: 1.5rem;
   }
 
@@ -147,6 +160,43 @@
         { "value": "link", "label": "Link" }
       ],
       "default": "button"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "t:settings.open_new_tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Second button"
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "Label"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "button_2_style",
+      "label": "Style",
+      "options": [
+        { "value": "button", "label": "Primary" },
+        { "value": "button-secondary", "label": "Secondary" },
+        { "value": "link", "label": "Link" }
+      ],
+      "default": "button-secondary"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab_2",
+      "label": "t:settings.open_new_tab",
+      "default": false
     },
     {
       "type": "header",
